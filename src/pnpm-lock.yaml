@@ -17,6 +17,9 @@ importers:
       '@mantine/hooks':
         specifier: ^8.3.10
         version: 8.3.10(react@19.2.1)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       next:
         specifier: 16.0.10
         version: 16.0.10(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -26,6 +29,9 @@ importers:
       react-dom:
         specifier: 19.2.1
         version: 19.2.1(react@19.2.1)
+      zustand:
+        specifier: ^5.0.9
+        version: 5.0.9(@types/react@19.2.7)(react@19.2.1)
     devDependencies:
       '@biomejs/biome':
         specifier: 2.2.0
@@ -735,6 +741,24 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  zustand@5.0.9:
+    resolution: {integrity: sha512-ALBtUj0AfjJt3uNRQoL1tL2tMvj6Gp/6e39dnfT6uzpelGru8v1tPOGBzayOWbPJvujM8JojDk3E1LxeFisBNg==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      immer: '>=9.0.6'
+      react: '>=18.0.0'
+      use-sync-external-store: '>=1.2.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
+      use-sync-external-store:
+        optional: true
+
 snapshots:
 
   '@babel/helper-string-parser@7.27.1': {}
@@ -1293,3 +1317,8 @@ snapshots:
       '@types/react': 19.2.7
 
   util-deprecate@1.0.2: {}
+
+  zustand@5.0.9(@types/react@19.2.7)(react@19.2.1):
+    optionalDependencies:
+      '@types/react': 19.2.7
+      react: 19.2.1
