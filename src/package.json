@@ -6,8 +6,11 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
+		"start:standalone": "node .next/standalone/server.js",
 		"lint": "biome check",
-		"format": "biome format --write"
+		"format": "biome format --write",
+		"storybook": "storybook dev -p 6006",
+		"prepare": "git config core.hooksPath .githooks || true"
 	},
 	"dependencies": {
 		"@mantine/core": "^8.3.10",

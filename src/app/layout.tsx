@@ -1,14 +1,19 @@
-import {MantineProvider} from '@mantine/core';
-import clsx from 'clsx';
-import type {PropsWithChildren} from 'react';
-import {geistMono, geistSans} from '@/config/fonts';
+import type { ReactNode } from 'react';
 
-export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
+import { InterFont } from '@/shared/config/fonts';
+
+import '@/shared/styles/global.css';
+
+const RootLayout = ({
+	children,
+}: Readonly<{
+	children: ReactNode;
+}>) => {
 	return (
-		<html lang='ru'>
-			<body className={clsx(geistSans.variable, geistMono.variable)}>
-				<MantineProvider>{children}</MantineProvider>
-			</body>
+		<html lang="en">
+			<body className={InterFont.className}>{children}</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;

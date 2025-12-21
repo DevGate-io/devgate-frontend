@@ -2,27 +2,27 @@ const path = require('path');
 
 module.exports = {
 	plugins: {
-		autoprefixer: {},
+		'postcss-import': {
+			path: [path.resolve(__dirname, 'shared/styles')],
+		},
 		'postcss-mixins': {
 			mixinsDir: path.resolve(__dirname, 'shared/styles/mixins'),
 		},
-		'postcss-nested': {},
 		'postcss-simple-vars': {
 			variables: {
 				'mobile-min': '375px',
 				mobile: '767px',
 
 				'tablet-min': '768px',
-				tablet: '1024px',
+				tablet: '1023px',
 
-				'desktop-min': '1025px',
-				desktop: '1440px',
+				'desktop-min': '1024px',
+				desktop: '1439px',
 
-				'big-screen': '1441px',
+				'big-screen': '1440px',
 			},
 		},
-		'postcss-import': {
-			path: [path.resolve(__dirname, 'shared/styles')],
-		},
+		'postcss-nested': {},
+		autoprefixer: {},
 	},
 };

@@ -1,5 +1,5 @@
-"use client";
+import { Home } from '@/views/home';
 
-export default function Home() {
-	return <main></main>;
-}
+const HomePage = () => <Home />;
+
+export default HomePage;

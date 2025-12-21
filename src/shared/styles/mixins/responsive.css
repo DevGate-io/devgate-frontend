@@ -1,0 +1,24 @@
+/* prettier-ignore */
+@define-mixin responsive $property, $m, $t, $d {
+	$(property): $(m)px;
+
+	@media (min-width: $(mobile-min)) {
+		$(property): calc(
+			$(m)px + ($(t)px - $(m)px) *
+				var(--mobile-scale)
+		);
+	}
+
+	@media (min-width: $(tablet-min)) {
+		$(property): calc(
+			$(t)px + ($(d)px - $(t)px) *
+				var(--tablet-scale)
+		);
+	}
+
+	@media (min-width: $(big-screen)) {
+		$(property): calc(
+			$(d)px + ($(d) * 0.05) * var(--big-screen-scale)
+		);
+	}
+}
