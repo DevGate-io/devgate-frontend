@@ -2,14 +2,12 @@
 	font-size: var(--h1);
 	font-weight: 500;
 	line-height: var(--h1-lh);
-	text-transform: uppercase;
 }
 
 @define-mixin font-h2 {
 	font-size: var(--h2);
 	font-weight: 500;
 	line-height: var(--h2-lh);
-	text-transform: uppercase;
 }
 
 @define-mixin font-h3 {
@@ -27,27 +25,17 @@
 	line-height: var(--h5-lh);
 }
 
-@define-mixin font-text {
-	font-size: var(--text);
-	line-height: var(--text-lh);
+@define-mixin font-text-xl {
+	font-size: var(--text-xl);
+	line-height: var(--text-xl-lh);
 }
 
-@define-mixin font-button-text {
-	font-size: var(--button-text);
-	line-height: var(--button-text-lh);
+@define-mixin font-text-l {
+	font-size: var(--text-l);
+	line-height: var(--text-l-lh);
 }
 
-@define-mixin font-menu-item {
-	font-size: var(--menu-item);
-	line-height: var(--menu-item-lh);
-}
-
-@define-mixin font-additional-text {
-	font-size: var(--additional-text);
-	line-height: var(--additional-text-lh);
-}
-
-@define-mixin font-small-text {
-	font-size: var(--small-text);
-	line-height: var(--small-text-lh);
+@define-mixin font-text-xs {
+	font-size: var(--text-xs);
+	line-height: var(--text-xs-lh);
 }

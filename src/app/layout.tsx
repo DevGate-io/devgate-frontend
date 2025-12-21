@@ -1,16 +1,12 @@
-import type { ReactNode } from 'react';
+import type {PropsWithChildren} from 'react';
 
-import { InterFont } from '@/shared/config/fonts';
+import {InterFont} from '@/shared/config/fonts';
 
 import '@/shared/styles/global.css';
 
-const RootLayout = ({
-	children,
-}: Readonly<{
-	children: ReactNode;
-}>) => {
+const RootLayout = ({ children }: Readonly<PropsWithChildren>) => {
 	return (
-		<html lang="en">
+		<html lang='en'>
 			<body className={InterFont.className}>{children}</body>
 		</html>
 	);

@@ -1,3 +1,7 @@
+html {
+	font-size: 1vw;
+}
+
 button,
 a {
 	cursor: pointer;
@@ -9,6 +13,6 @@ img {
 }
 
 textarea {
-	resize: none;
 	overflow: auto;
+	resize: none;
 }
