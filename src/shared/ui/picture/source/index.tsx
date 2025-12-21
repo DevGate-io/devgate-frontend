@@ -9,7 +9,7 @@ type SourceProps = {
 export const Source = ({ source, mediaQuery }: SourceProps) => {
 	if (!source) return null;
 
-    const type = source.x1.split('.').pop();
+	const type = source.x1.split('.').pop();
 
 	if (mediaQuery) {
 		const srcSet = source.x2

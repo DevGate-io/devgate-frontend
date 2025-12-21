@@ -23,8 +23,8 @@ export const ChipGroup = ({
 	...props
 }: ChipGroupProps) => {
 	return (
-		<ul role="radiogroup" className={cx(css.root, className)} {...props}>
-			{options.map(option => (
+		<ul role='radiogroup' className={cx(css.root, className)} {...props}>
+			{options.map((option) => (
 				<li key={option.value}>
 					<Chip value={option.value} {...chipProps}>
 						{option.label}

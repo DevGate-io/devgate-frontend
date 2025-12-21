@@ -9,7 +9,7 @@ export function useMediaQuery(query: string) {
 				matchMedia.removeEventListener('change', callback);
 			};
 		},
-		[query]
+		[query],
 	);
 
 	const getSnapshot = () => {

@@ -12,7 +12,9 @@
 	"javascript": {
 		"formatter": {
 			"bracketSpacing": true,
+			"bracketSameLine": true,
 			"enabled": true,
+			"quoteStyle": "single",
 			"trailingCommas": "all",
 			"semicolons": "always",
 			"jsxQuoteStyle": "single"
@@ -21,12 +23,17 @@
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
-		"indentWidth": 2
+		"indentWidth": 2,
+		"bracketSpacing": true
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": true,
+			"suspicious": {
+				"noUnknownAtRules": "off",
+				"noArrayIndexKey": "off"
+			},
 			"correctness": {
 				"noVoidTypeReturn": "error",
 				"noUnreachable": "error"

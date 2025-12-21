@@ -25,8 +25,8 @@ img {
 html {
 	/* Улучшить согласованность шрифтов по умолчанию во всех браузерах. (https://github.com/sindresorhus/modern-normalize/issues/3) */
 	font-family:
-		system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
-		'Apple Color Emoji', 'Segoe UI Emoji';
+		system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji";
 
 	/* Исправить высоту строки во всех браузерах. */
 	line-height: 1.15;
@@ -64,7 +64,7 @@ samp,
 pre {
 	/* Улучшить согласованность шрифтов по умолчанию во всех браузерах. (https://github.com/sindresorhus/modern-normalize/issues/3) */
 	font-family:
-		ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+		ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
 
 	/* Исправить некорректный размер шрифта во всех браузерах. */
 	font-size: 1rem;
@@ -72,9 +72,9 @@ pre {
 
 /* Без этого свойства Safari иногда игнорирует большинство пользовательских CSS-стилей для этих элементов: например, background-color, border-radius, padding. */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
 	-webkit-appearance: button;
 }
 
@@ -84,7 +84,7 @@ button,
 	height: auto;
 }
 
-[type='search'] {
+[type="search"] {
 	/* Исправьте странный внешний вид в Chrome и Safari. */
 	-webkit-appearance: textfield;
 

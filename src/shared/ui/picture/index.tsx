@@ -71,7 +71,7 @@ export const Picture: FC<PictureProps> = ({
 				src={fallbackSrc}
 				className={css.image}
 				alt={`${poster.alt ?? 'img'}`}
-				loading="lazy"
+				loading='lazy'
 				{...imageProps}
 			/>
 		</picture>
