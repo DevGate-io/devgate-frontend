@@ -25,9 +25,9 @@
 	line-height: var(--h5-lh);
 }
 
-@define-mixin font-text-xl {
-	font-size: var(--text-xl);
-	line-height: var(--text-xl-lh);
+@define-mixin font-h6 {
+	font-size: var(--h6);
+	line-height: var(--h6-lh);
 }
 
 @define-mixin font-text-l {

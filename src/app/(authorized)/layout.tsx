@@ -3,7 +3,7 @@ import { Header } from '@/widgets/header';
 
 const AuthorizedLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
-		<main>
+		<main className='main'>
 			<Header />
 			{children}
 		</main>

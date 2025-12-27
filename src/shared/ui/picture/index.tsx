@@ -1,11 +1,9 @@
 import clsx from 'clsx';
 import type { ComponentProps, FC } from 'react';
-
-import css from './index.module.css';
-import { Source } from './source';
-
 import { MEDIA_QUERIES } from '@/shared/config/media-query';
 import type { ImageProps } from '@/shared/types/picture.types';
+import css from './index.module.css';
+import { Source } from './source';
 
 export type PosterImageProps = {
 	alt?: string;
@@ -17,12 +15,14 @@ type PictureProps = {
 	poster: PosterImageProps;
 	className?: string;
 	imageProps?: ComponentProps<'img'>;
+	loading?: 'lazy' | 'eager';
 };
 
 export const Picture: FC<PictureProps> = ({
 	poster,
 	className,
 	imageProps,
+	loading = 'lazy',
 	...props
 }) => {
 	if (!poster) return null;
@@ -71,7 +71,7 @@ export const Picture: FC<PictureProps> = ({
 				src={fallbackSrc}
 				className={css.image}
 				alt={`${poster.alt ?? 'img'}`}
-				loading='lazy'
+				loading={loading}
 				{...imageProps}
 			/>
 		</picture>

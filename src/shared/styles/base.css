@@ -2,6 +2,10 @@ html {
 	font-size: 1vw;
 }
 
+body {
+	height: 100dvh;
+}
+
 button,
 a {
 	cursor: pointer;
@@ -15,4 +19,13 @@ img {
 textarea {
 	overflow: auto;
 	resize: none;
+}
+
+.main {
+	display: flex;
+	height: 100dvh;
+
+	& > * {
+		flex: 1;
+	}
 }
