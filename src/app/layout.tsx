@@ -1,13 +1,12 @@
 import type { PropsWithChildren } from 'react';
 
-import { InterFont } from '@/shared/config/fonts';
-
 import '@mantine/core/styles.css';
 import '@/shared/styles/global.css';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import type { Metadata } from 'next';
 import { AppProviders } from '@/shared/config/app-providers';
 import { Favicons } from '@/shared/config/favicons';
+import { InterFont } from '@/shared/config/fonts';
 
 export const metadata: Metadata = {
 	title: 'DevGate',
