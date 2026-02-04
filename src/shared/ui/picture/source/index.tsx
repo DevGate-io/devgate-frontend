@@ -1,4 +1,4 @@
-import type { MEDIA_QUERIES } from '@/shared/config/media-query';
+import type { MEDIA_QUERIES } from '@/shared/config/media-queries';
 import type { RetinaImageProps } from '@/shared/types/picture.types';
 
 type SourceProps = {
