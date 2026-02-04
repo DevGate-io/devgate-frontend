@@ -1,0 +1,14 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	justify-self: center;
+	width: fit-content;
+	@mixin responsive gap, 12, 12, 12;
+}
+
+.form {
+	align-self: center;
+	width: 100%;
+	height: fit-content;
+}

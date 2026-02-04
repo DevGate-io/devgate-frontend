@@ -2,7 +2,10 @@ import type { MantineThemeOverride } from '@mantine/core';
 
 export const fontSizes: MantineThemeOverride['fontSizes'] = {
 	xs: 'var(--text-xs)',
-	xl: 'var(--text-l)',
+	sm: 'var(--text-l)',
+	md: 'var(--h6)',
+	lg: 'var(--h5)',
+	xl: 'var(--h4)',
 };
 
 export const headings: MantineThemeOverride['headings'] = {

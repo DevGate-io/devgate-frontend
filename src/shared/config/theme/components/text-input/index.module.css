@@ -1,0 +1,22 @@
+.input {
+	border: 1px solid var(--mantine-color-gray-2);
+	border-radius: var(--mantine-radius-md);
+	@mixin font-text-l;
+	@mixin responsive padding-block-end, 2, 2, 2;
+}
+
+.label {
+	color: var(--mantine-color-gray-3);
+	transition: color 0.3s var(--move-in-screen);
+	@mixin font-text-xs;
+}
+
+.root {
+	border-radius: var(--mantine-radius-md);
+
+	&:has(input:focus) {
+		.label {
+			color: var(--mantine-color-gray-9);
+		}
+	}
+}

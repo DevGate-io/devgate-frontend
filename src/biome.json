@@ -19,7 +19,7 @@
 	"javascript": {
 		"formatter": {
 			"bracketSpacing": true,
-			"bracketSameLine": true,
+			"bracketSameLine": false,
 			"enabled": true,
 			"quoteStyle": "single",
 			"trailingCommas": "all",

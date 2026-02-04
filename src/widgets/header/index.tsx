@@ -1,6 +1,7 @@
 'use client';
 
-import { Button, useMantineColorScheme } from '@mantine/core';
+import { useMantineColorScheme } from '@mantine/core';
+import Logo from '@/public/images/icons/full-logo-dark.svg';
 import css from './index.module.css';
 
 export const Header = () => {
@@ -8,9 +9,7 @@ export const Header = () => {
 
 	return (
 		<header className={css.root}>
-			<Button color='primary.1' onClick={toggleColorScheme}>
-				Сменить тему
-			</Button>
+			<Logo className={css.logo} />
 		</header>
 	);
 };

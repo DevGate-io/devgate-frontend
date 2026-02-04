@@ -2,14 +2,7 @@ import type { MantineThemeColorsOverride } from '@mantine/core';
 
 export default {
 	dark: ['#f5f5f5', '#e6e6e6', '#cccccc', '#999999', '#333333', '#000000'],
-	light: [
-		'#ffffff',
-		'rgba(255,255,255,0.8)',
-		'rgba(255,255,255,0.4)',
-		'rgba(255,255,255,0.2)',
-		'rgba(255,255,255,0.1)',
-		'rgba(255,255,255,0.04)',
-	],
+	light: ['#ffffff', '#d2d2d3', '#777879', '#4a4b4d', '#343538', '#26272a'],
 	bg: ['#ffffff', '#f9f9fa', '#edeefc', '#e6f1fd', '#333333'],
 	primary: [
 		'#adadfb',

@@ -1,0 +1,41 @@
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-height: 100vh;
+	margin-inline: unset;
+	@mixin responsive padding, 40, 40, 40;
+
+	.logoWrapper {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.productName {
+		font-weight: 700;
+		color: var(--mantine-color-white);
+		@mixin font-h1;
+	}
+}
+
+.banner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	@mixin responsive padding, 10, 10, 10;
+
+	img {
+		height: 100%;
+		border-radius: 16px;
+	}
+}
+
+.logo {
+	@mixin responsive width, 34, 42, 42;
+	@mixin responsive height, 42, 52, 52;
+}

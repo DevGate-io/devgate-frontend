@@ -1,3 +1,10 @@
 .root {
+	position: fixed;
+	top: 0;
 	display: flex;
+	width: 100%;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+	@mixin responsive padding-block, 10, 20;
+	@mixin responsive padding-inline, 20, 28;
 }

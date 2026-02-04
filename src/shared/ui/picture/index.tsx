@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { ComponentProps, FC } from 'react';
-import { MEDIA_QUERIES } from '@/shared/config/media-query';
+import { MEDIA_QUERIES } from '@/shared/config/media-queries';
 import type { ImageProps } from '@/shared/types/picture.types';
 import css from './index.module.css';
 import { Source } from './source';
