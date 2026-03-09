@@ -1,9 +1,9 @@
 'use client';
 
-import {Button, PasswordInput, TextInput} from '@mantine/core';
+import { Button, PasswordInput, TextInput } from '@mantine/core';
 import clsx from 'clsx';
-import type {FC} from 'react';
-import {useAuthForm} from '@/features/auth-form/hooks/use-auth-form';
+import type { FC } from 'react';
+import { useAuthForm } from '@/features/auth-form/hooks/use-auth-form';
 import IdentificationThinIcon from '@/public/images/icons/identification-badge-thin.svg';
 import PasswordThinIcon from '@/public/images/icons/password-thin.svg';
 import css from './index.module.css';

@@ -1,7 +1,11 @@
-import type {UserDto} from '@/entities/dto/user-dto';
-import type {AccessTokenResponse, AuthDto, AuthenticatedResponse} from '@/shared/api/auth/types';
-import {apiClient} from '@/shared/api/client';
-import {API_URLS} from '@/shared/config/api-urls';
+import type { UserDto } from '@/entities/dto/user-dto';
+import type {
+	AccessTokenResponse,
+	AuthDto,
+	AuthenticatedResponse,
+} from '@/shared/api/auth/types';
+import { apiClient } from '@/shared/api/client';
+import { API_URLS } from '@/shared/config/api-urls';
 
 export const AuthService = {
 	login: async (data: AuthDto): Promise<AuthenticatedResponse> => {

@@ -1,4 +1,4 @@
-import axios, {type AxiosResponse,} from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 import onServerSuccess from '@/shared/api/interceptors/server';
 
 export const apiClient = axios.create({

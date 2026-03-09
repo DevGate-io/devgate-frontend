@@ -1,7 +1,10 @@
-import {useForm} from '@mantine/form';
-import {AUTH_FORM_DEFAULT_STATE, AUTH_FORM_VALIDATORS,} from '@/features/auth-form/models/auth-form.constants';
-import type {AuthFormState} from '@/features/auth-form/types';
-import {AuthService} from '@/shared/api/auth';
+import { useForm } from '@mantine/form';
+import {
+	AUTH_FORM_DEFAULT_STATE,
+	AUTH_FORM_VALIDATORS,
+} from '@/features/auth-form/models/auth-form.constants';
+import type { AuthFormState } from '@/features/auth-form/types';
+import { AuthService } from '@/shared/api/auth';
 
 const QUERY_KEY = 'auth';
 

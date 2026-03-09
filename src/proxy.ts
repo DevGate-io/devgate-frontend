@@ -1,5 +1,5 @@
-import {type NextRequest, NextResponse} from 'next/server';
-import {pageConfig} from '@/shared/config/page.config';
+import { type NextRequest, NextResponse } from 'next/server';
+import { pageConfig } from '@/shared/config/page.config';
 
 const protectedRoutes: string[] = [pageConfig.base];
 const JWT_ACCESS_TOKEN_KEY = 'jwtToken';

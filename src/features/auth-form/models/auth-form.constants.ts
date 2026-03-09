@@ -1,5 +1,5 @@
-import {isEmail} from '@mantine/form';
-import type {AuthFormState} from '@/features/auth-form/types';
+import { isEmail } from '@mantine/form';
+import type { AuthFormState } from '@/features/auth-form/types';
 
 export const PASSWORD_MIN_LENGTH = 8;
 

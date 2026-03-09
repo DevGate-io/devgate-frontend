@@ -1,5 +1,5 @@
-import {apiClient} from '@/shared/api/client';
-import {HomeView} from '@/views/home';
+import { apiClient } from '@/shared/api/client';
+import { HomeView } from '@/views/home';
 
 const HomePage = async () => {
 	const getUsers = async () => {
