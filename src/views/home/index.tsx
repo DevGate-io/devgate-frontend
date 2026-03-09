@@ -1,4 +1,6 @@
-import type { NextPage } from 'next';
+'use client';
+
+import type {NextPage} from 'next';
 import css from './index.module.css';
 
 export const HomeView: NextPage = () => {
