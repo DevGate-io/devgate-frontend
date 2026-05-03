@@ -1,0 +1,12 @@
+.text {
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-3));
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	margin-block-start: 16px;
+}

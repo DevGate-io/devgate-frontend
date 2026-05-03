@@ -25,6 +25,19 @@ export const replaceMockService = (
 	return next;
 };
 
+export const removeMockService = (id: string): boolean => {
+	const index = MOCK_SERVICES.findIndex(
+		(service) => service.id === id || service.slug === id,
+	);
+
+	if (index === -1) {
+		return false;
+	}
+
+	MOCK_SERVICES.splice(index, 1);
+	return true;
+};
+
 export const MOCK_SERVICES: ServiceType[] = [
 	{
 		id: 'svc-payments-api',
