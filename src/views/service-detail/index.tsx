@@ -1,8 +1,9 @@
 'use client';
 
 import { Tabs } from '@mantine/core';
-import type { FC } from 'react';
+import { type FC, useEffect } from 'react';
 import type { ServiceType } from '@/entities/service';
+import { useRecentlyViewedStore } from '@/shared/stores/use-recently-viewed-store';
 import {
 	SERVICE_DETAIL_LABELS,
 	SERVICE_DETAIL_TABS,
@@ -22,6 +23,10 @@ export const ServiceDetailView: FC<ServiceDetailViewProps> = ({
 	service,
 	dependencies,
 }) => {
+	useEffect(() => {
+		useRecentlyViewedStore.getState().markViewed(service.id, service.name);
+	}, [service.id, service.name]);
+
 	return (
 		<div className={css.root}>
 			<ServiceHeaderSection service={service} />

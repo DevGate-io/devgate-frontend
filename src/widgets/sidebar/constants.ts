@@ -6,6 +6,7 @@ export const SIDEBAR_LABELS = {
 	brand: 'DevGate',
 	workspace: 'Workspace',
 	system: 'Система',
+	recent: 'Недавние',
 } as const;
 
 export const SIDEBAR_SECTIONS: SidebarSectionType[] = [
