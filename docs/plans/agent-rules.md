@@ -219,6 +219,77 @@ widgets/header/
 
 ---
 
+## 10а. Zustand (клиентский UI-state)
+
+Глобальный клиентский state, который не привязан к серверным данным, живёт в **Zustand**.
+
+**Где жить:** `shared/stores/use-<topic>-store.ts` (kebab-case файл, camelCase хук).
+
+**Naming:**
+- Хук — `use<Topic>Store` (`useSidebarStore`, `useRecentlyViewedStore`).
+- Тип состояния — `<Topic>StateType` внутри файла (не экспортируем — только через хук).
+- Файл `'use client'` сверху.
+
+**Структура:**
+```ts
+'use client';
+
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+
+const STORAGE_KEY = 'devgate-<topic>';
+
+type TopicStateType = {
+  field: T;
+  action: () => void;
+};
+
+export const useTopicStore = create<TopicStateType>()(
+  persist(
+    (set) => ({
+      field: defaultValue,
+      action: () => set({...}),
+    }),
+    {
+      name: STORAGE_KEY,
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({ field: state.field }),
+    },
+  ),
+);
+```
+
+**Когда использовать:**
+- Глобальный UI-state, который должен пережить ре-рендер: collapsed sidebar, выбранный workspace, недавно просмотренные сервисы, избранное.
+- State, который нужен в нескольких разрозненных частях дерева, и тащить через context-провайдер избыточно.
+
+**Когда НЕ использовать:**
+- Серверные данные → `react-query`. Не дублируем кэш.
+- Цветовая схема → Mantine `useMantineColorScheme` + cookie. Не дублируем.
+- Локальный UI-state одного компонента → `useState` / `@mantine/hooks::useDisclosure`.
+- Состояние формы → `@mantine/form`.
+- Текущий пользователь → `useSession` (react-query) + `AuthProvider` контекст.
+
+**Persist middleware:**
+- `localStorage` для того, что нужно между сессиями.
+- `partialize` — не персистим actions/computed.
+- Префикс ключа `devgate-` чтобы не было коллизий на домене.
+
+**Гидрация (SSR):**
+- Persist не доступен на сервере → начальный SSR-рендер использует initial state.
+- Если отображение зависит от persisted-данных (как «Недавние»), использовать `useHydrated()` из `shared/hooks/use-hydrated.ts` и не рендерить контент до окончания гидрации.
+- Атрибуты вроде `data-collapsed`, влияющие только на CSS, можно применять без guard'а — React reconciliation сгладит без визуального flicker.
+
+**Селекторы:**
+- Подписка точечная: `useSomeStore((s) => s.field)` — не пишем `useSomeStore()`, иначе ре-рендер на любое изменение.
+- Actions без подписки на состояние — `useSomeStore.getState().action(...)` (например, в `useEffect`).
+
+**Текущие сторы:**
+- `use-recently-viewed-store.ts` — последние N (≤6) просмотренных сервисов с `viewedAt`. `ServiceDetailView` дёргает `markViewed` на mount.
+- `use-sidebar-store.ts` — `isCollapsed` для свёрнутого режима sidebar. Toggle в Header через `SidebarToggle`.
+
+---
+
 ## 11. Auth
 
 **Тестовый вход без бэкенда.** Пока бэк недоступен, в системе живёт демо-пользователь:
@@ -311,6 +382,8 @@ widgets/header/
 - ❌ Бизнес-сущности и API-вызовы в `shared/` (для них есть `entities/`, `features/`, `shared/api/<domain>`).
 - ❌ Магические числа в коде — выносим в `constants.ts`.
 - ❌ Один файл с десятком inline-объявленных под-компонентов — декомпозируй.
+- ❌ Zustand для серверных данных или для дублирования Mantine/react-query кэша. Используем только для собственного UI-state.
+- ❌ `useSomeStore()` без селектора, если не нужны все поля — точечно подписываемся `useSomeStore((s) => s.field)`.
 
 ---
 

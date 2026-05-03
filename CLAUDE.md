@@ -30,6 +30,7 @@ UX direction (spec §13): top-nav `Catalog / Templates / My Services / Teams / M
 - **Auth:** access+refresh — HttpOnly cookie. Refresh-interceptor: 401 → `/auth/refresh` → retry с `_retry`; на повторный fail — `clearAuthCookie` + redirect + `queryClient.invalidateQueries`. `useSession()` через react-query с `AUTH_QUERY_KEYS.CURRENT_USER`.
 - **CSS:** только модули, **только логические свойства** (`margin-block-*`, `padding-inline-*`), цвета через `light-dark()` + `--mantine-color-*` токены. Адаптив — `@mixin responsive prop, mobile, tablet, desktop` (см. `docs/responsive.md`).
 - **React Compiler включён** — НЕ использовать `useMemo`/`useCallback` без явной причины.
+- **State:** серверный — `react-query`; UI-глобальный (collapsed sidebar, recently-viewed, workspace) — `zustand` в `shared/stores/use-<topic>-store.ts` с `persist`+`partialize`. Не дублируем react-query/Mantine context. Persisted-зависимый рендер — через `useHydrated()`. Селекторы точечные: `useStore((s) => s.field)`.
 - **Текст** — в `constants.ts` модуля, не inline в JSX.
 - **Изображения** — `<Picture>` из `shared/ui/picture`, **не** `next/image`. SVG-иконки: декоративные → `aria-hidden`; информативные → `<title>`+`role="img"` или `aria-label` на кнопке-родителе.
 - **Запреты:** `<div onClick>`, inline-стили (кроме динамических), хардкод цветов, физические свойства отступов, магические строки в JSX.
@@ -91,7 +92,7 @@ Higher layers may import from lower layers, never the reverse. `app/` files shou
 - **Next.js 16** with React 19 and the React Compiler (`reactCompiler: true` in `next.config.ts`).
 - **Mantine v8** is the component library. Theme lives in `shared/config/theme/`; the root `MantineProvider` is in `shared/config/app-providers/`. `app/layout.tsx` imports `@mantine/core/styles.css` plus `shared/styles/global.css`, and uses `ColorSchemeScript` + `mantineHtmlProps`.
 - **Forms**: `@mantine/form` (uncontrolled mode, `validateInputOnBlur`); see `features/auth-form/hooks/use-auth-form.ts` for the canonical pattern.
-- **Server state**: `react-query` is installed; **client state**: `zustand`. (No global query/store wiring yet — add providers in `shared/config/app-providers` when introducing them.)
+- **Server state**: `react-query` (хук `useSession` + сервисы каталога). **Client UI-state**: `zustand` в `shared/stores/use-<topic>-store.ts` с `persist` middleware. Сейчас живут `useRecentlyViewedStore` (последние просмотренные сервисы) и `useSidebarStore` (collapsed flag). Гидрация через `useHydrated()` в `shared/hooks`. Полные конвенции — `docs/plans/agent-rules.md` §10а.
 - **SVGs**: imported as React components via `@svgr/webpack` (Turbopack rule in `next.config.ts`, types in `src/svgr.d.ts`).
 - **CSS**: PostCSS with `postcss-preset-mantine`, mixins, nested, simple-vars. Component styles use CSS Modules (`*.module.css`); shared mixins under `shared/styles/mixins` are excluded from Biome.
 

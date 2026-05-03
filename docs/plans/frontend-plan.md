@@ -241,13 +241,33 @@ shared/api/
 
 | Где | Чем | Пример |
 |---|---|---|
-| Серверные данные | `react-query` | список сервисов, карточка |
-| URL state (фильтры/пагинация) | `useSearchParams` + `useRouter` | `/catalog?search=&tags=` |
-| Глобальный UI-стейт | `zustand` | сайдбар collapsed, тема |
-| Текущий пользователь | server fetch + Context | `useCurrentUser()` в client-компонентах |
+| Серверные данные | `react-query` | список сервисов, карточка, `useSession` |
+| URL state (фильтры/пагинация) | `useSearchParams` + `useRouter` | `/catalog?q=&health=&tags=` |
+| Глобальный UI-state | `zustand` | `useSidebarStore`, `useRecentlyViewedStore` |
+| Цветовая схема | Mantine `useMantineColorScheme` + cookie | переключатель в Header |
+| Текущий пользователь | `useSession` (react-query) + `AuthProvider` | `useCurrentUser()` в client-компонентах |
 | Формы | `@mantine/form` | uncontrolled mode + `validateInputOnBlur` |
+| Локальный UI-флаг | `useState` / `@mantine/hooks::useDisclosure` | модалки, expand/collapse |
 
-Запрет: zustand для серверных данных; localStorage для персистентного UI-state — только для тривиальных вещей (theme, sidebar).
+**Zustand-конвенция:**
+- `shared/stores/use-<topic>-store.ts` (`'use client'` сверху).
+- `create()` + `persist` middleware с `partialize` для отсечения actions от localStorage.
+- Префикс ключа `devgate-<topic>`.
+- Селекторы точечные: `useStore((s) => s.field)`.
+- Actions без подписки — `useStore.getState().action(...)` (например, в `useEffect`).
+- SSR: persisted поля недоступны на сервере → use `useHydrated()` хук из `shared/hooks` если рендер зависит от persisted-данных. Атрибуты для CSS (`data-collapsed`) не требуют guard.
+
+**Запреты:**
+- ❌ `zustand` для серверных данных (дубль кэша react-query).
+- ❌ `zustand` для цветовой схемы (Mantine context уже справляется).
+- ❌ `useStore()` без селектора, если не нужны все поля.
+- ❌ Persist с initial state, который зависит от `Date.now()` или другого SSR-несериализуемого — будет hydration mismatch.
+
+**Текущие сторы:**
+- `useRecentlyViewedStore` — последние ≤6 просмотренных сервисов с `viewedAt`. Заполняется в `ServiceDetailView` через `markViewed`. Отображается секцией «Недавние» в Sidebar.
+- `useSidebarStore` — `isCollapsed` сворачивает sidebar в rail-режим (72px); используется в `(authorized)/layout.tsx` (ширина navbar) и каждым подкомпонентом sidebar (`Brand`, `NavItem`, `RecentlyViewedSection`) для рендера компактной формы. Toggle — `SidebarToggle` в Header.
+
+Полные конвенции — `agent-rules.md` §10а.
 
 ## 7а. Дизайн-направление
 
