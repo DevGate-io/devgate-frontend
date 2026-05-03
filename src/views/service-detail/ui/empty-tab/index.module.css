@@ -1,0 +1,39 @@
+.root {
+	padding-block: 18px;
+	padding-inline: 20px;
+	background-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	border-radius: var(--mantine-radius-xl);
+	box-shadow: var(--mantine-shadow-xs);
+}
+
+.title {
+	margin-block-end: 8px;
+	font-size: 14.5px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-1));
+}
+
+.text {
+	font-size: 13px;
+	line-height: 1.5;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-4));
+}
+
+.link {
+	display: inline-block;
+	margin-block-start: 12px;
+	font-size: 13px;
+	font-weight: 500;
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-2)
+	);
+	text-decoration: none;
+}
+
+.link:hover {
+	text-decoration: underline;
+}

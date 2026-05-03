@@ -1,0 +1,9 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+}
+
+.tabs {
+	margin-block-start: 4px;
+}

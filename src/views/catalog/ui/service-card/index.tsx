@@ -1,6 +1,8 @@
 import { Badge } from '@mantine/core';
+import Link from 'next/link';
 import type { FC } from 'react';
 import type { ServiceType } from '@/entities/service';
+import { pageConfig } from '@/shared/config/page.config';
 import {
 	CATALOG_LABELS,
 	SERVICE_HEALTH_LABEL,
@@ -22,7 +24,14 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
 						style={{ backgroundColor: getHealthColor(service.health) }}
 						aria-hidden='true'
 					/>
-					<h2 className={css.name}>{service.name}</h2>
+					<h2 className={css.name}>
+						<Link
+							className={css.nameLink}
+							href={`${pageConfig.catalog}/${service.id}`}
+						>
+							{service.name}
+						</Link>
+					</h2>
 				</div>
 				<Badge
 					variant='light'

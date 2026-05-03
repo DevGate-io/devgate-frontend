@@ -51,6 +51,18 @@
 	white-space: nowrap;
 }
 
+.nameLink {
+	color: inherit;
+	text-decoration: none;
+}
+
+.nameLink:hover {
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-2)
+	);
+}
+
 .healthBadge {
 	flex-shrink: 0;
 	font-size: 11px;
