@@ -6,4 +6,5 @@ export const API_URLS = {
 	currentUser: '/auth/me',
 	services: '/services',
 	templates: '/templates',
+	teams: '/teams',
 } as const;
