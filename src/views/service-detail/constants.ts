@@ -25,6 +25,16 @@ export const SERVICE_DETAIL_LABELS = {
 	notFoundTitle: 'Сервис не найден',
 	notFoundDescription: 'Проверьте идентификатор или вернитесь в каталог.',
 	backToCatalog: 'Вернуться в каталог',
+	healthTitle: 'Здоровье',
+	availabilityLabel: 'Доступность',
+	latencyLabel: 'p95-задержка',
+	noSloData: 'нет SLO-данных',
+	healthyText: 'Сервис работает в штатном режиме.',
+	degradedText: 'Зафиксирована деградация. Проверьте мониторинг.',
+	downText: 'Сервис недоступен. Возможно идёт инцидент.',
+	unknownText: 'Health-статус не отдан мониторингом.',
+	activityTitle: 'Последние события',
+	activityEmpty: 'По этому сервису событий пока нет.',
 } as const;
 
 export const SERVICE_DETAIL_TABS = {

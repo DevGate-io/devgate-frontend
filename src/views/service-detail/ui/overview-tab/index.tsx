@@ -1,20 +1,32 @@
 import { Badge } from '@mantine/core';
 import type { FC } from 'react';
+import type { AuditEventType } from '@/entities/audit-event';
 import type { ServiceType } from '@/entities/service';
 import { formatDate } from '@/shared/lib/format-date';
 import {
 	ENVIRONMENT_LABEL,
 	SERVICE_DETAIL_LABELS,
 } from '@/views/service-detail/constants';
+import { HealthPanel } from '@/views/service-detail/ui/health-panel';
+import { RecentActivityPanel } from '@/views/service-detail/ui/recent-activity-panel';
 import css from './index.module.css';
 
 type OverviewTabProps = {
 	service: ServiceType;
+	events: AuditEventType[];
+	usersById: Record<string, string>;
 };
 
-export const OverviewTab: FC<OverviewTabProps> = ({ service }) => {
+export const OverviewTab: FC<OverviewTabProps> = ({
+	service,
+	events,
+	usersById,
+}) => {
 	return (
 		<section className={css.root}>
+			<HealthPanel service={service} />
+
+			<RecentActivityPanel events={events} usersById={usersById} />
 			<article className={css.panel}>
 				<h2 className={css.panelTitle}>{SERVICE_DETAIL_LABELS.tagsTitle}</h2>
 				{service.tags.length > 0 ? (
@@ -46,17 +58,6 @@ export const OverviewTab: FC<OverviewTabProps> = ({ service }) => {
 								{SERVICE_DETAIL_LABELS.language}
 							</dt>
 							<dd className={css.metaValue}>{service.language}</dd>
-						</div>
-					)}
-					{service.slo && (
-						<div className={css.metaRow}>
-							<dt className={css.metaLabel}>{SERVICE_DETAIL_LABELS.slo}</dt>
-							<dd className={css.metaValue}>
-								{service.slo.availability}%
-								{service.slo.latencyP95Ms
-									? ` · p95 ${service.slo.latencyP95Ms}мс`
-									: ''}
-							</dd>
 						</div>
 					)}
 					<div className={css.metaRow}>

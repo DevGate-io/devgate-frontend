@@ -2,6 +2,7 @@
 
 import { Tabs } from '@mantine/core';
 import { type FC, useEffect } from 'react';
+import type { AuditEventType } from '@/entities/audit-event';
 import type { ServiceType } from '@/entities/service';
 import { useRecentlyViewedStore } from '@/shared/stores/use-recently-viewed-store';
 import {
@@ -17,11 +18,15 @@ import css from './index.module.css';
 type ServiceDetailViewProps = {
 	service: ServiceType;
 	dependencies: ServiceType[];
+	events: AuditEventType[];
+	usersById: Record<string, string>;
 };
 
 export const ServiceDetailView: FC<ServiceDetailViewProps> = ({
 	service,
 	dependencies,
+	events,
+	usersById,
 }) => {
 	useEffect(() => {
 		useRecentlyViewedStore.getState().markViewed(service.id, service.name);
@@ -52,7 +57,11 @@ export const ServiceDetailView: FC<ServiceDetailViewProps> = ({
 				</Tabs.List>
 
 				<Tabs.Panel value={SERVICE_DETAIL_TABS.overview} pt='md'>
-					<OverviewTab service={service} />
+					<OverviewTab
+						service={service}
+						events={events}
+						usersById={usersById}
+					/>
 				</Tabs.Panel>
 
 				<Tabs.Panel value={SERVICE_DETAIL_TABS.pipeline} pt='md'>
