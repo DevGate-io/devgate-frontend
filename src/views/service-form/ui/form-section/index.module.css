@@ -1,0 +1,30 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding-block: 18px;
+	padding-inline: 20px;
+	margin: 0;
+	background-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	border: none;
+	border-radius: var(--mantine-radius-xl);
+	box-shadow: var(--mantine-shadow-xs);
+}
+
+.legend {
+	padding: 0;
+	font-size: 13px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 14px;
+}

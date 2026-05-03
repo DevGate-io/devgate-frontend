@@ -4,6 +4,10 @@ import {
 	type ServiceType,
 } from '@/entities/service';
 
+export const addMockService = (service: ServiceType): void => {
+	MOCK_SERVICES.unshift(service);
+};
+
 export const MOCK_SERVICES: ServiceType[] = [
 	{
 		id: 'svc-payments-api',

@@ -1,0 +1,23 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	max-inline-size: 920px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.fullWidth {
+	grid-column: 1 / -1;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	padding-block-start: 4px;
+}
