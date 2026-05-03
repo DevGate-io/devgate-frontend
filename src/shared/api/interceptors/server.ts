@@ -9,8 +9,6 @@ const onSuccess = async (request: InternalAxiosRequestConfig) => {
 	const cookieStore = await cookies();
 	const token = cookieStore.get(ACCESS_TOKEN_KEY)?.value?.replaceAll('"', '');
 
-	console.log(token);
-
 	if (token) {
 		request.headers.Authorization = generateAuthorizationHeader(token);
 	}

@@ -13,7 +13,7 @@ type AuthFormProps = {
 };
 
 export const AuthForm: FC<AuthFormProps> = ({ className }) => {
-	const { form, handlers } = useAuthForm();
+	const { form, handlers, state } = useAuthForm();
 
 	return (
 		<form
@@ -33,7 +33,7 @@ export const AuthForm: FC<AuthFormProps> = ({ className }) => {
 				label='Пароль'
 			/>
 
-			<Button bg='primary.1' type='submit'>
+			<Button type='submit' loading={state.isLoading}>
 				Войти
 			</Button>
 		</form>

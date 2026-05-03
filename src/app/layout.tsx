@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from 'react';
 
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import '@/shared/styles/global.css';
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 import type { Metadata } from 'next';
