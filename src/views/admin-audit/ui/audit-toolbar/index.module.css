@@ -1,0 +1,35 @@
+.root {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: end;
+	padding-block: 14px;
+	padding-inline: 16px;
+	background-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	border: 1px solid var(--devgate-card-border-color);
+	border-radius: var(--mantine-radius-xl);
+	box-shadow: var(--devgate-card-shadow);
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	flex: 1;
+	min-inline-size: 180px;
+}
+
+.label {
+	font-size: 11px;
+	font-weight: 500;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.reset {
+	margin-block-end: 1px;
+}

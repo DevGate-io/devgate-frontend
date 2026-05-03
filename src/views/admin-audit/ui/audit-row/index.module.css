@@ -1,0 +1,59 @@
+.row {
+	border-block-end: 1px solid var(--devgate-card-divider-color);
+}
+
+.row:last-child {
+	border-block-end: none;
+}
+
+.timeCell {
+	padding-block: 12px;
+	padding-inline: 8px;
+	font-size: 12.5px;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-4));
+	white-space: nowrap;
+}
+
+.actorCell {
+	padding-block: 12px;
+	padding-inline: 8px;
+	font-size: 13px;
+	font-weight: 500;
+	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+}
+
+.actionCell {
+	padding-block: 12px;
+	padding-inline: 8px;
+}
+
+.targetCell {
+	padding-block: 12px;
+	padding-inline: 8px;
+	font-size: 13px;
+}
+
+.targetType {
+	font-size: 11px;
+	font-weight: 500;
+	color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-gray-6));
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.targetLink {
+	font-weight: 500;
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-2)
+	);
+	text-decoration: none;
+}
+
+.targetLink:hover {
+	text-decoration: underline;
+}
+
+.targetLabel {
+	color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-3));
+}

@@ -8,4 +8,6 @@ export const API_URLS = {
 	templates: '/templates',
 	teams: '/teams',
 	users: '/users',
+	integrations: '/admin/integrations',
+	auditEvents: '/admin/audit',
 } as const;

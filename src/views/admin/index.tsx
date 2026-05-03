@@ -20,7 +20,7 @@ const SECTIONS: AdminSectionType[] = [
 		description:
 			'Подключение SCM, CI/CD и систем мониторинга. Конфиг управляется через бэк, UI — read-only.',
 		href: `${pageConfig.admin}/integrations`,
-		available: false,
+		available: true,
 	},
 	{
 		id: 'audit',
@@ -28,7 +28,7 @@ const SECTIONS: AdminSectionType[] = [
 		description:
 			'Просмотр критических действий с фильтрами по дате, актору и типу события. Экспорт в CSV.',
 		href: `${pageConfig.admin}/audit`,
-		available: false,
+		available: true,
 	},
 ];
 
