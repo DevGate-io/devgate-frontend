@@ -1,12 +1,10 @@
-import { Button } from '@mantine/core';
-import Link from 'next/link';
 import type { FC } from 'react';
 import type { ServiceType } from '@/entities/service';
-import { pageConfig } from '@/shared/config/page.config';
 import { EmptyState } from '@/shared/ui/empty-state';
 import { PageHeader } from '@/shared/ui/page-header';
 import { CATALOG_LABELS } from '@/views/catalog/constants';
 import { CatalogToolbar } from '@/views/catalog/ui/catalog-toolbar';
+import { CreateServiceButton } from '@/views/catalog/ui/create-service-button';
 import { ServiceCard } from '@/views/catalog/ui/service-card';
 import css from './index.module.css';
 
@@ -20,16 +18,7 @@ export const CatalogView: FC<CatalogViewProps> = ({ services }) => {
 			<PageHeader
 				title={CATALOG_LABELS.title}
 				description={CATALOG_LABELS.description}
-				actions={
-					<Button
-						component={Link}
-						href={`${pageConfig.catalog}/new`}
-						color='lavender'
-						size='sm'
-					>
-						{CATALOG_LABELS.createServiceCta}
-					</Button>
-				}
+				actions={<CreateServiceButton />}
 			/>
 
 			<CatalogToolbar />
