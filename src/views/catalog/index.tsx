@@ -10,9 +10,13 @@ import css from './index.module.css';
 
 type CatalogViewProps = {
 	services: ServiceType[];
+	availableTags: string[];
 };
 
-export const CatalogView: FC<CatalogViewProps> = ({ services }) => {
+export const CatalogView: FC<CatalogViewProps> = ({
+	services,
+	availableTags,
+}) => {
 	return (
 		<div className={css.root}>
 			<PageHeader
@@ -21,7 +25,7 @@ export const CatalogView: FC<CatalogViewProps> = ({ services }) => {
 				actions={<CreateServiceButton />}
 			/>
 
-			<CatalogToolbar />
+			<CatalogToolbar availableTags={availableTags} />
 
 			{services.length === 0 ? (
 				<EmptyState

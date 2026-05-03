@@ -1,8 +1,8 @@
 'use client';
 
-import { Select, TextInput } from '@mantine/core';
+import { MultiSelect, Select, TextInput } from '@mantine/core';
 import { useDebouncedCallback } from '@mantine/hooks';
-import { type ChangeEvent, useId, useState } from 'react';
+import { type ChangeEvent, type FC, useId, useState } from 'react';
 import {
 	HEALTH_FILTER_OPTIONS,
 	SEARCH_DEBOUNCE_MS,
@@ -11,10 +11,15 @@ import {
 import { useCatalogFilters } from '@/views/catalog/ui/catalog-toolbar/hooks/use-catalog-filters';
 import css from './index.module.css';
 
-export const CatalogToolbar = () => {
+type CatalogToolbarProps = {
+	availableTags: string[];
+};
+
+export const CatalogToolbar: FC<CatalogToolbarProps> = ({ availableTags }) => {
 	const filters = useCatalogFilters();
 	const searchInputId = useId();
 	const healthInputId = useId();
+	const tagsInputId = useId();
 
 	const [searchDraft, setSearchDraft] = useState(filters.search);
 
@@ -30,6 +35,10 @@ export const CatalogToolbar = () => {
 
 	const handleHealthChange = (value: string | null) => {
 		filters.setHealth(value);
+	};
+
+	const handleTagsChange = (values: string[]) => {
+		filters.setTags(values);
 	};
 
 	return (
@@ -61,6 +70,23 @@ export const CatalogToolbar = () => {
 					radius='md'
 					size='sm'
 					clearable
+				/>
+			</div>
+
+			<div className={css.tags}>
+				<label htmlFor={tagsInputId} className={css.label}>
+					{TOOLBAR_LABELS.tagsLabel}
+				</label>
+				<MultiSelect
+					id={tagsInputId}
+					placeholder={TOOLBAR_LABELS.tagsPlaceholder}
+					data={availableTags}
+					value={filters.tags}
+					onChange={handleTagsChange}
+					radius='md'
+					size='sm'
+					clearable
+					searchable
 				/>
 			</div>
 		</search>

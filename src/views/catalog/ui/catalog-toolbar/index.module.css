@@ -22,6 +22,11 @@
 	min-inline-size: 180px;
 }
 
+.tags {
+	flex: 1;
+	min-inline-size: 220px;
+}
+
 .label {
 	position: absolute;
 	inline-size: 1px;

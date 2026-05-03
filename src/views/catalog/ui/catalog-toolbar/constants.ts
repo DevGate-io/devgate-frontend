@@ -5,6 +5,8 @@ export const TOOLBAR_LABELS = {
 	searchPlaceholder: 'Имя, описание сервиса…',
 	healthLabel: 'Состояние',
 	healthPlaceholder: 'Любое',
+	tagsLabel: 'Теги',
+	tagsPlaceholder: 'Все',
 } as const;
 
 export const SEARCH_DEBOUNCE_MS = 250;
@@ -19,4 +21,5 @@ export const HEALTH_FILTER_OPTIONS: Array<{ value: string; label: string }> = [
 export const SEARCH_PARAM_KEYS = {
 	search: 'q',
 	health: 'health',
+	tags: 'tags',
 } as const;
