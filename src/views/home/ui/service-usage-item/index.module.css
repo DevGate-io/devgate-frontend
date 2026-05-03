@@ -1,0 +1,76 @@
+.root {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	justify-content: space-between;
+	padding-block: 10px;
+	padding-inline: 12px;
+	background-color: light-dark(
+		var(--mantine-color-gray-0),
+		var(--mantine-color-dark-7)
+	);
+	border-radius: var(--mantine-radius-md);
+}
+
+.left {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	min-inline-size: 0;
+}
+
+.dot {
+	flex-shrink: 0;
+	inline-size: 8px;
+	block-size: 8px;
+	border-radius: 50%;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+}
+
+.name {
+	font-size: 13px;
+	font-weight: 500;
+	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-1));
+}
+
+.owner {
+	font-size: 11.5px;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+}
+
+.bar {
+	position: relative;
+	inline-size: 96px;
+	block-size: 6px;
+	overflow: hidden;
+	background-color: light-dark(
+		var(--mantine-color-gray-2),
+		var(--mantine-color-dark-5)
+	);
+	border-radius: 999px;
+}
+
+.barFill {
+	block-size: 100%;
+	background: linear-gradient(
+		90deg,
+		var(--mantine-color-lavender-5),
+		var(--mantine-color-sky-4)
+	);
+}
+
+.srOnly {
+	position: absolute;
+	inline-size: 1px;
+	block-size: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	white-space: nowrap;
+	border: 0;
+	clip: rect(0 0 0 0);
+}

@@ -1,15 +1,14 @@
-'use client';
-
-import { useMantineColorScheme } from '@mantine/core';
-import Logo from '@/public/images/icons/full-logo-dark.svg';
+import { HEADER_LABELS } from '@/widgets/header/constants';
+import { HeaderActions } from '@/widgets/header/ui/header-actions';
+import { SearchField } from '@/widgets/header/ui/search-field';
 import css from './index.module.css';
 
 export const Header = () => {
-	const { toggleColorScheme } = useMantineColorScheme();
-
 	return (
-		<header className={css.root}>
-			<Logo className={css.logo} />
-		</header>
+		<div className={css.root}>
+			<span className={css.workspace}>{HEADER_LABELS.workspace}</span>
+			<SearchField />
+			<HeaderActions />
+		</div>
 	);
 };

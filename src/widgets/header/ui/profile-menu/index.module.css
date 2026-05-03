@@ -1,0 +1,17 @@
+.trigger {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 36px;
+	block-size: 36px;
+	padding: 0;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	border-radius: var(--mantine-radius-md);
+}
+
+.trigger:focus-visible {
+	outline: 2px solid var(--mantine-color-lavender-5);
+	outline-offset: 2px;
+}

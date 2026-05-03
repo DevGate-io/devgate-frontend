@@ -1,0 +1,54 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-block: 18px;
+	padding-inline: 20px;
+	background-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	border-radius: var(--mantine-radius-xl);
+	box-shadow: var(--mantine-shadow-sm);
+}
+
+.label {
+	font-size: 11.5px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.row {
+	display: flex;
+	gap: 12px;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+.value {
+	font-size: 28px;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+	letter-spacing: -0.02em;
+}
+
+.delta {
+	padding-block: 4px;
+	padding-inline: 8px;
+	font-size: 12px;
+	font-weight: 600;
+	border-radius: 999px;
+}
+
+.deltaPositive {
+	color: var(--mantine-color-mint-7);
+	background-color: var(--mantine-color-mint-0);
+}
+
+.deltaNegative {
+	color: var(--mantine-color-danger-6);
+	background-color: var(--mantine-color-danger-0);
+}

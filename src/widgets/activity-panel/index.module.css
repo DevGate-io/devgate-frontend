@@ -1,0 +1,32 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	block-size: 100%;
+	padding-block: 20px;
+	padding-inline: 18px;
+	overflow-y: auto;
+}
+
+.section {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.title {
+	font-size: 12px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}

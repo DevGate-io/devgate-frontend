@@ -1,10 +1,24 @@
 .root {
-	position: fixed;
-	top: 0;
 	display: flex;
-	width: 100%;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	gap: 12px;
+	align-items: center;
+	inline-size: 100%;
+	block-size: 100%;
+	padding-inline: 18px;
+}
 
-	@mixin responsive padding-block, 10, 20;
-	@mixin responsive padding-inline, 20, 28;
+.workspace {
+	display: inline-flex;
+	gap: 8px;
+	align-items: center;
+	padding-block: 6px;
+	padding-inline: 10px;
+	font-size: 13px;
+	font-weight: 500;
+	color: light-dark(var(--mantine-color-gray-8), var(--mantine-color-gray-2));
+	background-color: light-dark(
+		var(--mantine-color-gray-1),
+		var(--mantine-color-dark-6)
+	);
+	border-radius: var(--mantine-radius-md);
 }

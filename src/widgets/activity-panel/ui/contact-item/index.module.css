@@ -1,0 +1,31 @@
+.root {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	padding-block: 6px;
+	padding-inline: 8px;
+	border-radius: var(--mantine-radius-md);
+}
+
+.root:hover {
+	background-color: light-dark(
+		var(--mantine-color-gray-1),
+		var(--mantine-color-dark-6)
+	);
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+}
+
+.name {
+	font-size: 13px;
+	font-weight: 500;
+	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-1));
+}
+
+.role {
+	font-size: 11.5px;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+}
