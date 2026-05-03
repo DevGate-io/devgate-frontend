@@ -4,6 +4,7 @@ import type { ServiceType } from '@/entities/service';
 import { SERVICE_HEALTH_LABEL } from '@/views/catalog/constants';
 import { getHealthColor } from '@/views/catalog/lib/get-health-color';
 import { SERVICE_DETAIL_LABELS } from '@/views/service-detail/constants';
+import { EditServiceLink } from '@/views/service-detail/ui/edit-service-link';
 import css from './index.module.css';
 
 type ServiceHeaderSectionProps = {
@@ -33,6 +34,7 @@ export const ServiceHeaderSection: FC<ServiceHeaderSectionProps> = ({
 				<Badge variant='light' color='gray' radius='sm'>
 					{SERVICE_HEALTH_LABEL[service.health]}
 				</Badge>
+				<EditServiceLink serviceId={service.id} />
 				{service.repoUrl && (
 					<Button
 						component='a'

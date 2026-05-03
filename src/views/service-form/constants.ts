@@ -43,6 +43,15 @@ export const SERVICE_FORM_LABELS = {
 	successMessage: 'Запись добавлена в каталог.',
 	errorTitle: 'Не удалось создать сервис',
 	errorMessage: 'Проверьте поля и попробуйте ещё раз.',
+
+	editTitle: 'Редактирование сервиса',
+	editDescription:
+		'Обновите метаданные сервиса. Изменения сохранятся после нажатия «Сохранить».',
+	editSubmit: 'Сохранить',
+	editSuccessTitle: 'Сервис обновлён',
+	editSuccessMessage: 'Изменения сохранены.',
+	editErrorTitle: 'Не удалось сохранить',
+	editLink: 'Редактировать',
 } as const;
 
 export const LANGUAGE_OPTIONS: Array<{ value: string; label: string }> = [

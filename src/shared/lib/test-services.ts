@@ -8,6 +8,23 @@ export const addMockService = (service: ServiceType): void => {
 	MOCK_SERVICES.unshift(service);
 };
 
+export const replaceMockService = (
+	id: string,
+	updater: (current: ServiceType) => ServiceType,
+): ServiceType | null => {
+	const index = MOCK_SERVICES.findIndex(
+		(service) => service.id === id || service.slug === id,
+	);
+
+	if (index === -1) {
+		return null;
+	}
+
+	const next = updater(MOCK_SERVICES[index]);
+	MOCK_SERVICES[index] = next;
+	return next;
+};
+
 export const MOCK_SERVICES: ServiceType[] = [
 	{
 		id: 'svc-payments-api',

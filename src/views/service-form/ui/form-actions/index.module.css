@@ -1,0 +1,6 @@
+.root {
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	padding-block-start: 4px;
+}
