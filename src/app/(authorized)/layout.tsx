@@ -13,7 +13,7 @@ const AuthorizedLayout: FC<PropsWithChildren> = ({ children }) => {
 			header={{ height: 60 }}
 			navbar={{ width: 248, breakpoint: 'sm' }}
 			aside={{ width: 320, breakpoint: 'lg' }}
-			padding={0}
+			padding={24}
 			classNames={{
 				root: css.shell,
 				header: css.header,
@@ -29,7 +29,7 @@ const AuthorizedLayout: FC<PropsWithChildren> = ({ children }) => {
 				<Sidebar />
 			</AppShell.Navbar>
 
-			<AppShell.Main className={css.main}>{children}</AppShell.Main>
+			<AppShell.Main>{children}</AppShell.Main>
 
 			<AppShell.Aside>
 				<ActivityPanel />
