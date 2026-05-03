@@ -1,0 +1,118 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding-block: 18px;
+	padding-inline: 20px;
+	background-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	border: 1px solid var(--devgate-card-border-color);
+	border-radius: var(--mantine-radius-xl);
+	box-shadow: var(--devgate-card-shadow);
+}
+
+.title {
+	font-size: 13px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.empty {
+	font-size: 13px;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+}
+
+.bar {
+	display: flex;
+	overflow: hidden;
+	block-size: 8px;
+	background-color: light-dark(
+		var(--mantine-color-gray-2),
+		var(--mantine-color-dark-6)
+	);
+	border-radius: 999px;
+}
+
+.barSegment {
+	block-size: 100%;
+	transition: inline-size var(--devgate-transition);
+}
+
+.barSegment[data-health="healthy"] {
+	background-color: var(--mantine-color-mint-5);
+}
+
+.barSegment[data-health="degraded"] {
+	background-color: var(--mantine-color-peach-5);
+}
+
+.barSegment[data-health="down"] {
+	background-color: var(--mantine-color-danger-5);
+}
+
+.barSegment[data-health="unknown"] {
+	background-color: light-dark(
+		var(--mantine-color-gray-4),
+		var(--mantine-color-dark-3)
+	);
+}
+
+.tiles {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 10px;
+	padding: 0;
+	margin: 0;
+}
+
+.tile {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding-block: 10px;
+	padding-inline: 12px;
+	border-radius: var(--mantine-radius-md);
+	background-color: light-dark(
+		var(--mantine-color-gray-0),
+		var(--mantine-color-dark-7)
+	);
+	border-inline-start: 3px solid transparent;
+}
+
+.tile[data-health="healthy"] {
+	border-inline-start-color: var(--mantine-color-mint-5);
+}
+
+.tile[data-health="degraded"] {
+	border-inline-start-color: var(--mantine-color-peach-5);
+}
+
+.tile[data-health="down"] {
+	border-inline-start-color: var(--mantine-color-danger-5);
+}
+
+.tile[data-health="unknown"] {
+	border-inline-start-color: light-dark(
+		var(--mantine-color-gray-4),
+		var(--mantine-color-dark-3)
+	);
+}
+
+.tileLabel {
+	font-size: 11px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.tileValue {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+}

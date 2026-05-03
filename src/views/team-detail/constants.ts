@@ -10,6 +10,8 @@ export const TEAM_DETAIL_LABELS = {
 	memberMissing: 'Пользователь не найден',
 	openService: 'Открыть сервис',
 	memberEmail: 'Email',
+	healthTitle: 'Здоровье сервисов',
+	healthEmpty: 'У команды пока нет сервисов в каталоге.',
 } as const;
 
 export const ROLE_LABEL: Record<TeamRoleType, string> = {
