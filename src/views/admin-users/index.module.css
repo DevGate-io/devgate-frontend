@@ -1,0 +1,33 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+}
+
+.tableWrap {
+	overflow-x: auto;
+	background-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	border: 1px solid var(--devgate-card-border-color);
+	border-radius: var(--mantine-radius-xl);
+	box-shadow: var(--devgate-card-shadow);
+}
+
+.table {
+	inline-size: 100%;
+	border-collapse: collapse;
+}
+
+.th {
+	padding-block: 12px;
+	padding-inline: 8px;
+	font-size: 11px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+	text-align: start;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	border-block-end: 1px solid var(--devgate-card-divider-color);
+}

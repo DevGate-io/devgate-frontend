@@ -1,10 +1,5 @@
-import { ComingSoonView } from '@/views/coming-soon';
+import { AdminView } from '@/views/admin';
 
-const AdminPage = () => (
-	<ComingSoonView
-		title='Администрирование'
-		description='Пользователи, интеграции, audit-лог и системные настройки.'
-	/>
-);
+const AdminPage = () => <AdminView />;
 
 export default AdminPage;
