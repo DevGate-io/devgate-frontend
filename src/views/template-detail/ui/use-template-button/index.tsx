@@ -1,27 +1,25 @@
 'use client';
 
 import { Button } from '@mantine/core';
-import { notifications } from '@mantine/notifications';
+import Link from 'next/link';
 import type { FC } from 'react';
+import { pageConfig } from '@/shared/config/page.config';
 import { TEMPLATE_DETAIL_LABELS } from '@/views/template-detail/constants';
 
 type UseTemplateButtonProps = {
-	templateName: string;
+	templateId: string;
 };
 
 export const UseTemplateButton: FC<UseTemplateButtonProps> = ({
-	templateName,
+	templateId,
 }) => {
-	const handleClick = () => {
-		notifications.show({
-			color: 'lavender',
-			title: 'Запуск scaffolder',
-			message: `Шаблон «${templateName}» будет применён, когда форма scaffolder будет готова.`,
-		});
-	};
-
 	return (
-		<Button color='lavender' size='sm' onClick={handleClick}>
+		<Button
+			component={Link}
+			href={`${pageConfig.templates}/${templateId}/run`}
+			color='lavender'
+			size='sm'
+		>
 			{TEMPLATE_DETAIL_LABELS.useTemplate}
 		</Button>
 	);

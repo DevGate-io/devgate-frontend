@@ -35,7 +35,7 @@ export const TemplateHeaderSection: FC<TemplateHeaderSectionProps> = ({
 				<Badge variant='light' color='gray' radius='sm'>
 					{`${TEMPLATE_DETAIL_LABELS.createdAt}: ${formatDate(template.createdAt)}`}
 				</Badge>
-				<UseTemplateButton templateName={template.name} />
+				<UseTemplateButton templateId={template.id} />
 			</div>
 		</header>
 	);
