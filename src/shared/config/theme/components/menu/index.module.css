@@ -1,0 +1,23 @@
+.item:hover,
+.item[data-hovered] {
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-1)
+	);
+	background-color: light-dark(
+		var(--mantine-color-lavender-0),
+		var(--mantine-color-dark-6)
+	);
+}
+
+.item[data-mantine-color="red"]:hover,
+.item[data-mantine-color="red"][data-hovered] {
+	color: light-dark(
+		var(--mantine-color-danger-7),
+		var(--mantine-color-danger-2)
+	);
+	background-color: light-dark(
+		var(--mantine-color-danger-0),
+		color-mix(in srgb, var(--mantine-color-danger-9) 25%, transparent)
+	);
+}
