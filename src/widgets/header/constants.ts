@@ -4,6 +4,8 @@ export const HEADER_LABELS = {
 	searchLabel: 'Глобальный поиск',
 	notificationsAriaLabel: 'Уведомления',
 	settingsAriaLabel: 'Настройки',
+	sidebarExpand: 'Развернуть боковую панель',
+	sidebarCollapse: 'Свернуть боковую панель',
 	profileAriaLabel: 'Меню профиля',
 	themeLight: 'Светлая тема',
 	themeDark: 'Тёмная тема',

@@ -8,6 +8,7 @@ import { SettingsIcon } from '@/widgets/header/icons/settings-icon';
 import { SunIcon } from '@/widgets/header/icons/sun-icon';
 import { IconButton } from '@/widgets/header/ui/icon-button';
 import { ProfileMenu } from '@/widgets/header/ui/profile-menu';
+import { SidebarToggle } from '@/widgets/header/ui/sidebar-toggle';
 import css from './index.module.css';
 
 export const HeaderActions = () => {
@@ -15,6 +16,8 @@ export const HeaderActions = () => {
 
 	return (
 		<nav className={css.root} aria-label='Действия пользователя'>
+			<SidebarToggle />
+
 			<IconButton
 				ariaLabel={isDark ? HEADER_LABELS.themeLight : HEADER_LABELS.themeDark}
 				onClick={handleToggle}

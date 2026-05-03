@@ -9,9 +9,18 @@
 		light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-6));
 }
 
+.root[data-collapsed] {
+	justify-content: center;
+	padding-inline: 0;
+}
+
 .name {
 	font-size: 15px;
 	font-weight: 600;
 	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
 	letter-spacing: -0.01em;
+}
+
+.root[data-collapsed] .name {
+	font-size: 18px;
 }

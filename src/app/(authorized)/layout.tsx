@@ -2,16 +2,25 @@
 
 import { AppShell } from '@mantine/core';
 import type { FC, PropsWithChildren } from 'react';
+import { useSidebarStore } from '@/shared/stores/use-sidebar-store';
 import { ActivityPanel } from '@/widgets/activity-panel';
 import { Header } from '@/widgets/header';
 import { Sidebar } from '@/widgets/sidebar';
 import css from './layout.module.css';
 
+const NAVBAR_WIDTH_EXPANDED = 248;
+const NAVBAR_WIDTH_COLLAPSED = 72;
+
 const AuthorizedLayout: FC<PropsWithChildren> = ({ children }) => {
+	const isCollapsed = useSidebarStore((state) => state.isCollapsed);
+	const navbarWidth = isCollapsed
+		? NAVBAR_WIDTH_COLLAPSED
+		: NAVBAR_WIDTH_EXPANDED;
+
 	return (
 		<AppShell
 			header={{ height: 60 }}
-			navbar={{ width: 248, breakpoint: 'sm' }}
+			navbar={{ width: navbarWidth, breakpoint: 'sm' }}
 			aside={{ width: 320, breakpoint: 'lg' }}
 			padding={24}
 			classNames={{
@@ -25,7 +34,7 @@ const AuthorizedLayout: FC<PropsWithChildren> = ({ children }) => {
 				<Header />
 			</AppShell.Header>
 
-			<AppShell.Navbar>
+			<AppShell.Navbar data-collapsed={isCollapsed || undefined}>
 				<Sidebar />
 			</AppShell.Navbar>
 

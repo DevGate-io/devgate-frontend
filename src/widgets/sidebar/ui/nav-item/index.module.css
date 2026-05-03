@@ -46,3 +46,18 @@
 	block-size: 18px;
 	color: inherit;
 }
+
+.label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.root[data-collapsed] {
+	justify-content: center;
+	padding-inline: 8px;
+}
+
+.root[data-collapsed] .label {
+	display: none;
+}
