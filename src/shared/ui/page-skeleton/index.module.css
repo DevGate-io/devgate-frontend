@@ -1,0 +1,81 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.kpiGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 16px;
+}
+
+.contentGrid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 16px;
+}
+
+@media (max-width: 720px) {
+	.contentGrid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.panel {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-block: 18px;
+	padding-inline: 20px;
+	background-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	border: 1px solid var(--devgate-card-border-color);
+	border-radius: var(--mantine-radius-xl);
+	box-shadow: var(--devgate-card-shadow);
+}
+
+.panelTitle {
+	margin-block-end: 6px;
+}
+
+.panelRow {
+	margin-block-end: 0;
+}
+
+.cardsGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 16px;
+}
+
+.table {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding-block: 12px;
+	padding-inline: 12px;
+	background-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	border: 1px solid var(--devgate-card-border-color);
+	border-radius: var(--mantine-radius-xl);
+	box-shadow: var(--devgate-card-shadow);
+}
+
+.tableRow {
+	margin: 0;
+}
+
+.tabsBar {
+	max-inline-size: 480px;
+}
