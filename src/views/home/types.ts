@@ -1,24 +1,32 @@
+import type { ServiceHealthType } from '@/entities/service';
+
 export type HealthToneType = 'mint' | 'sky' | 'peach' | 'danger';
 
-export type KpiType = {
+export type KpiToneType = 'lavender' | 'sky' | 'mint' | 'peach';
+
+export type HomeKpiType = {
 	id: string;
 	label: string;
 	value: string;
 	delta: string;
 	positive: boolean;
+	tone: KpiToneType;
 };
 
-export type ServiceUsageType = {
+export type TopServiceType = {
 	id: string;
 	name: string;
-	owner: string;
-	health: HealthToneType;
-	usage: number;
+	ownerTeamId: string;
+	ownerTeamName: string;
+	health: ServiceHealthType;
+	activity: number;
+	usagePercent: number;
 };
 
-export type EnvironmentHealthType = {
+export type EnvironmentSummaryType = {
 	id: string;
 	name: string;
-	slo: string;
-	tone: HealthToneType;
+	servicesCount: number;
+	healthyCount: number;
+	ratio: number;
 };

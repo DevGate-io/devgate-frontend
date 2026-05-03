@@ -20,7 +20,8 @@ export const formatRussianCount = (
 	return `${count} ${forms.many}`;
 };
 
-export const COUNT_FORMS = {
+export const RUSSIAN_PLURAL_FORMS = {
 	members: { one: 'участник', few: 'участника', many: 'участников' },
 	services: { one: 'сервис', few: 'сервиса', many: 'сервисов' },
+	events: { one: 'событие', few: 'события', many: 'событий' },
 } as const;

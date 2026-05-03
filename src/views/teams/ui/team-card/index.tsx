@@ -6,9 +6,9 @@ import { pageConfig } from '@/shared/config/page.config';
 import { formatDate } from '@/shared/lib/format-date';
 import { TEAMS_LABELS } from '@/views/teams/constants';
 import {
-	COUNT_FORMS,
 	formatRussianCount,
-} from '@/views/teams/lib/format-count';
+	RUSSIAN_PLURAL_FORMS,
+} from '@/shared/lib/format-russian-count';
 import css from './index.module.css';
 
 type TeamCardProps = {
@@ -45,7 +45,10 @@ export const TeamCard: FC<TeamCardProps> = ({ team, servicesCount }) => {
 				<div className={css.metaItem}>
 					<dt className={css.metaLabel}>состав</dt>
 					<dd className={css.metaValue}>
-						{formatRussianCount(team.members.length, COUNT_FORMS.members)}
+						{formatRussianCount(
+							team.members.length,
+							RUSSIAN_PLURAL_FORMS.members,
+						)}
 					</dd>
 				</div>
 				<div className={css.metaItem}>
@@ -55,7 +58,7 @@ export const TeamCard: FC<TeamCardProps> = ({ team, servicesCount }) => {
 				<div className={css.metaItem}>
 					<dt className={css.metaLabel}>сервисов</dt>
 					<dd className={css.metaValue}>
-						{formatRussianCount(servicesCount, COUNT_FORMS.services)}
+						{formatRussianCount(servicesCount, RUSSIAN_PLURAL_FORMS.services)}
 					</dd>
 				</div>
 				<div className={css.metaItem}>

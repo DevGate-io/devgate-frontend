@@ -49,3 +49,8 @@
 	margin: 0;
 	list-style: none;
 }
+
+.empty {
+	font-size: 13px;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+}
