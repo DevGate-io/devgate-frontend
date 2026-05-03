@@ -5,7 +5,7 @@ import { getServiceById } from '@/shared/api/services/get-service-by-id';
 import { getServices } from '@/shared/api/services/get-services';
 import { getUsers } from '@/shared/api/users/get-users';
 import { ServiceDetailView } from '@/views/service-detail';
-import { computeDependencyGraph } from '@/views/service-detail/lib/compute-dependency-graph';
+import { computeServiceGraph } from '@/views/service-detail/lib/compute-service-graph';
 
 const RECENT_ACTIVITY_LIMIT = 5;
 
@@ -27,7 +27,7 @@ const ServiceDetailPage = async ({ params }: ServiceDetailPageProps) => {
 		getUsers(),
 	]);
 
-	const dependencyGraph = computeDependencyGraph(service, allServices);
+	const serviceGraph = computeServiceGraph(service.id, allServices);
 
 	const events = allEvents
 		.filter(
@@ -44,7 +44,7 @@ const ServiceDetailPage = async ({ params }: ServiceDetailPageProps) => {
 	return (
 		<ServiceDetailView
 			service={service}
-			dependencyGraph={dependencyGraph}
+			serviceGraph={serviceGraph}
 			events={events}
 			usersById={usersById}
 		/>

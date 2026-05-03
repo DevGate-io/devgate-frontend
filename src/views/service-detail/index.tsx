@@ -9,7 +9,7 @@ import {
 	SERVICE_DETAIL_LABELS,
 	SERVICE_DETAIL_TABS,
 } from '@/views/service-detail/constants';
-import type { DependencyGraphType } from '@/views/service-detail/lib/compute-dependency-graph';
+import type { ServiceGraphType } from '@/views/service-detail/lib/compute-service-graph';
 import { DependenciesTab } from '@/views/service-detail/ui/dependencies-tab';
 import { EmptyTab } from '@/views/service-detail/ui/empty-tab';
 import { OverviewTab } from '@/views/service-detail/ui/overview-tab';
@@ -18,14 +18,14 @@ import css from './index.module.css';
 
 type ServiceDetailViewProps = {
 	service: ServiceType;
-	dependencyGraph: DependencyGraphType;
+	serviceGraph: ServiceGraphType;
 	events: AuditEventType[];
 	usersById: Record<string, string>;
 };
 
 export const ServiceDetailView: FC<ServiceDetailViewProps> = ({
 	service,
-	dependencyGraph,
+	serviceGraph,
 	events,
 	usersById,
 }) => {
@@ -84,7 +84,7 @@ export const ServiceDetailView: FC<ServiceDetailViewProps> = ({
 				</Tabs.Panel>
 
 				<Tabs.Panel value={SERVICE_DETAIL_TABS.dependencies} pt='md'>
-					<DependenciesTab service={service} graph={dependencyGraph} />
+					<DependenciesTab graph={serviceGraph} />
 				</Tabs.Panel>
 			</Tabs>
 		</div>
