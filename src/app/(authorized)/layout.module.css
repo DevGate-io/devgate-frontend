@@ -10,8 +10,7 @@
 		var(--mantine-color-white),
 		var(--mantine-color-dark-8)
 	);
-	border-bottom: 1px solid
-		light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-6));
+	border-bottom: 1px solid var(--devgate-card-border-color);
 }
 
 .navbar,
@@ -20,8 +19,5 @@
 		var(--mantine-color-white),
 		var(--mantine-color-dark-8)
 	);
-	border-color: light-dark(
-		var(--mantine-color-gray-2),
-		var(--mantine-color-dark-6)
-	);
+	border-color: var(--devgate-card-border-color);
 }

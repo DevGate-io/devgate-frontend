@@ -9,6 +9,7 @@
 		var(--mantine-color-gray-0),
 		var(--mantine-color-dark-7)
 	);
+	border: 1px solid var(--devgate-card-border-color);
 	border-radius: var(--mantine-radius-md);
 }
 

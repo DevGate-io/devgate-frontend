@@ -8,7 +8,15 @@
 		var(--mantine-color-gray-0),
 		var(--mantine-color-dark-7)
 	);
+	border: 1px solid var(--devgate-card-border-color);
 	border-radius: var(--mantine-radius-md);
+	transition:
+		border-color var(--devgate-transition-fast),
+		background-color var(--devgate-transition-fast);
+}
+
+.root:hover {
+	border-color: var(--devgate-card-border-color-hover);
 }
 
 .dot {

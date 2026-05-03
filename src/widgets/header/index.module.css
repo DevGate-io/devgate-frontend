@@ -1,24 +1,15 @@
 .root {
 	display: flex;
-	gap: 12px;
+	gap: 14px;
 	align-items: center;
 	inline-size: 100%;
 	block-size: 100%;
 	padding-inline: 18px;
 }
 
-.workspace {
-	display: inline-flex;
-	gap: 8px;
-	align-items: center;
-	padding-block: 6px;
-	padding-inline: 10px;
-	font-size: 13px;
-	font-weight: 500;
-	color: light-dark(var(--mantine-color-gray-8), var(--mantine-color-gray-2));
-	background-color: light-dark(
-		var(--mantine-color-gray-1),
-		var(--mantine-color-dark-6)
-	);
-	border-radius: var(--mantine-radius-md);
+.divider {
+	flex-shrink: 0;
+	inline-size: 1px;
+	block-size: 26px;
+	background-color: var(--devgate-card-divider-color);
 }

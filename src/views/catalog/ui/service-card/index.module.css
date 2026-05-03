@@ -9,16 +9,19 @@
 		var(--mantine-color-white),
 		var(--mantine-color-dark-8)
 	);
+	border: 1px solid var(--devgate-card-border-color);
 	border-radius: var(--mantine-radius-xl);
-	box-shadow: var(--mantine-shadow-sm);
+	box-shadow: var(--devgate-card-shadow);
 	transition:
-		transform 120ms ease,
-		box-shadow 120ms ease;
+		transform var(--devgate-transition),
+		box-shadow var(--devgate-transition),
+		border-color var(--devgate-transition);
 }
 
 .root:hover {
-	box-shadow: var(--mantine-shadow-md);
-	transform: translateY(-1px);
+	border-color: var(--devgate-card-border-color-hover);
+	box-shadow: var(--devgate-card-shadow-hover);
+	transform: translateY(-2px);
 }
 
 .head {

@@ -9,9 +9,9 @@
 		var(--mantine-color-white),
 		var(--mantine-color-dark-8)
 	);
-	border: none;
+	border: 1px solid var(--devgate-card-border-color);
 	border-radius: var(--mantine-radius-xl);
-	box-shadow: var(--mantine-shadow-xs);
+	box-shadow: var(--devgate-card-shadow);
 }
 
 .legend {
