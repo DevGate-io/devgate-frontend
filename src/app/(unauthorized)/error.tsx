@@ -3,12 +3,12 @@
 import { useEffect } from 'react';
 import { ErrorView } from '@/views/error';
 
-type RootErrorProps = {
+type UnauthorizedErrorProps = {
 	error: Error & { digest?: string };
 	reset: () => void;
 };
 
-const RootError = ({ error, reset }: RootErrorProps) => {
+const UnauthorizedError = ({ error, reset }: UnauthorizedErrorProps) => {
 	useEffect(() => {
 		console.error(error);
 	}, [error]);
@@ -16,4 +16,4 @@ const RootError = ({ error, reset }: RootErrorProps) => {
 	return <ErrorView status={500} digest={error.digest} onRetry={reset} />;
 };
 
-export default RootError;
+export default UnauthorizedError;

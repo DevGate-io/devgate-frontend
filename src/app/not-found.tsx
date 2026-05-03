@@ -1,5 +1,5 @@
-import { Error } from '@/views/error';
+import { ErrorView } from '@/views/error';
 
-const NotFoundPage = () => <Error statusCode={404} />;
+const NotFoundPage = () => <ErrorView status={404} />;
 
 export default NotFoundPage;
