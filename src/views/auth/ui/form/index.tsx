@@ -9,7 +9,7 @@ export const AuthFormCard = () => {
 				<Title order={1} fz='h4' fw={700}>
 					Войдите в DevGate
 				</Title>
-				<Text fz='sm' c='gray.8' ta='center'>
+				<Text fz='sm' c='dimmed' ta='center'>
 					и получите доступ к корпоративному пространству
 				</Text>
 			</Stack>

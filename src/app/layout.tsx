@@ -8,21 +8,28 @@ import type { Metadata } from 'next';
 import { AppProviders } from '@/shared/config/app-providers';
 import { Favicons } from '@/shared/config/favicons';
 import { InterFont } from '@/shared/config/fonts';
+import { readColorScheme } from '@/shared/lib/color-scheme';
 
 export const metadata: Metadata = {
 	title: 'DevGate',
 };
 
-const RootLayout = ({ children }: Readonly<PropsWithChildren>) => {
+const RootLayout = async ({ children }: Readonly<PropsWithChildren>) => {
+	const colorScheme = await readColorScheme();
+
 	return (
-		<html lang='ru' {...mantineHtmlProps}>
+		<html
+			lang='ru'
+			{...mantineHtmlProps}
+			data-mantine-color-scheme={colorScheme}
+		>
 			<head>
 				<Favicons />
-				<ColorSchemeScript defaultColorScheme='light' />
+				<ColorSchemeScript defaultColorScheme={colorScheme} />
 			</head>
 
 			<body className={InterFont.className}>
-				<AppProviders>{children}</AppProviders>
+				<AppProviders defaultColorScheme={colorScheme}>{children}</AppProviders>
 			</body>
 		</html>
 	);

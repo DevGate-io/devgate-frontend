@@ -1,9 +1,9 @@
 import type { MantineRadiusValues } from '@mantine/core';
 
 const radius: MantineRadiusValues = {
-	xs: '',
-	sm: '4px',
-	md: '8px',
+	xs: '4px',
+	sm: '6px',
+	md: '10px',
 	lg: '12px',
 	xl: '16px',
 };

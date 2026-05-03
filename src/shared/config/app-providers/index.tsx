@@ -1,12 +1,19 @@
 'use client';
 
-import { MantineProvider } from '@mantine/core';
+import { type MantineColorScheme, MantineProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { type FC, type PropsWithChildren, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AppTheme } from '@/shared/config/theme';
 
-export const AppProviders: FC<PropsWithChildren> = ({ children }) => {
+type AppProvidersProps = PropsWithChildren<{
+	defaultColorScheme?: MantineColorScheme;
+}>;
+
+export const AppProviders: FC<AppProvidersProps> = ({
+	children,
+	defaultColorScheme = 'light',
+}) => {
 	const [queryClient] = useState(
 		() =>
 			new QueryClient({
@@ -20,7 +27,7 @@ export const AppProviders: FC<PropsWithChildren> = ({ children }) => {
 	);
 
 	return (
-		<MantineProvider theme={AppTheme}>
+		<MantineProvider theme={AppTheme} defaultColorScheme={defaultColorScheme}>
 			<Notifications />
 			<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 		</MantineProvider>
