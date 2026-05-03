@@ -5,12 +5,12 @@ import css from './index.module.css';
 
 export const Header = () => {
 	return (
-		<div className={css.root}>
+		<>
 			<WorkspaceChip />
 			<span className={css.divider} aria-hidden='true' />
 			<SearchField />
 			<span className={css.divider} aria-hidden='true' />
 			<HeaderActions />
-		</div>
+		</>
 	);
 };

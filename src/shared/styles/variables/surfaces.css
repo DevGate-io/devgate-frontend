@@ -1,22 +1,38 @@
 :root {
-	--devgate-card-border-color: light-dark(
-		var(--mantine-color-gray-2),
-		var(--mantine-color-dark-5)
+	--devgate-page-background: light-dark(
+		var(--mantine-color-gray-1),
+		var(--mantine-color-dark-9)
 	);
-	--devgate-card-border-color-hover: light-dark(
+	--devgate-surface-color: light-dark(
+		var(--mantine-color-white),
+		var(--mantine-color-dark-8)
+	);
+	--devgate-card-border-color: light-dark(
 		var(--mantine-color-gray-3),
 		var(--mantine-color-dark-4)
 	);
-	--devgate-card-divider-color: light-dark(
-		var(--mantine-color-gray-1),
-		var(--mantine-color-dark-6)
+	--devgate-card-border-color-hover: light-dark(
+		var(--mantine-color-gray-4),
+		var(--mantine-color-dark-3)
 	);
-	--devgate-card-shadow: 0 1px 2px rgba(15, 16, 18, 0.04);
+	--devgate-shell-border-color: light-dark(
+		var(--mantine-color-gray-3),
+		var(--mantine-color-dark-5)
+	);
+	--devgate-card-divider-color: light-dark(
+		var(--mantine-color-gray-2),
+		var(--mantine-color-dark-5)
+	);
+	--devgate-card-shadow:
+		0 1px 2px rgba(15, 16, 18, 0.04), 0 1px 3px rgba(15, 16, 18, 0.05);
 	--devgate-card-shadow-hover:
-		0 6px 18px rgba(15, 16, 18, 0.08), 0 2px 4px rgba(15, 16, 18, 0.04);
-	--devgate-card-shadow-dark: 0 1px 2px rgba(0, 0, 0, 0.4);
+		0 8px 24px rgba(15, 16, 18, 0.1), 0 2px 6px rgba(15, 16, 18, 0.05);
+	--devgate-card-shadow-dark:
+		0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.25);
 	--devgate-card-shadow-hover-dark:
-		0 8px 24px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
+		0 10px 28px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+	--devgate-shell-shadow: 0 1px 0 rgba(15, 16, 18, 0.04);
+	--devgate-shell-shadow-dark: 0 1px 0 rgba(0, 0, 0, 0.4);
 	--devgate-transition: 220ms cubic-bezier(0.16, 1, 0.3, 1);
 	--devgate-transition-fast: 140ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -25,4 +41,5 @@
 [data-mantine-color-scheme="dark"] {
 	--devgate-card-shadow: var(--devgate-card-shadow-dark);
 	--devgate-card-shadow-hover: var(--devgate-card-shadow-hover-dark);
+	--devgate-shell-shadow: var(--devgate-shell-shadow-dark);
 }

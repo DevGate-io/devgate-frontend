@@ -1,23 +1,24 @@
 .shell {
-	background-color: light-dark(
-		var(--mantine-color-gray-0),
-		var(--mantine-color-dark-9)
-	);
+	--app-shell-border-color: var(--devgate-shell-border-color);
+	background-color: var(--devgate-page-background);
 }
 
 .header {
-	background-color: light-dark(
-		var(--mantine-color-white),
-		var(--mantine-color-dark-8)
-	);
-	border-bottom: 1px solid var(--devgate-card-border-color);
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	padding-inline: 18px;
+	background-color: var(--devgate-surface-color);
+	border-block-end: 1px solid var(--devgate-shell-border-color);
+	box-shadow: var(--devgate-shell-shadow);
 }
 
-.navbar,
+.navbar {
+	background-color: var(--devgate-surface-color);
+	border-inline-end: 1px solid var(--devgate-shell-border-color);
+}
+
 .aside {
-	background-color: light-dark(
-		var(--mantine-color-white),
-		var(--mantine-color-dark-8)
-	);
-	border-color: var(--devgate-card-border-color);
+	background-color: var(--devgate-surface-color);
+	border-inline-start: 1px solid var(--devgate-shell-border-color);
 }
