@@ -1,0 +1,45 @@
+.root {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	min-inline-size: 0;
+}
+
+.name {
+	font-size: 24px;
+	font-weight: 600;
+	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+	letter-spacing: -0.02em;
+}
+
+.description {
+	max-inline-size: 640px;
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-3));
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	padding: 0;
+	margin: 0;
+	margin-block-start: 4px;
+	list-style: none;
+}
+
+.actions {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+}

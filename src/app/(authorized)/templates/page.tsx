@@ -1,10 +1,10 @@
-import { ComingSoonView } from '@/views/coming-soon';
+import { getTemplates } from '@/shared/api/templates/get-templates';
+import { TemplatesView } from '@/views/templates';
 
-const TemplatesPage = () => (
-	<ComingSoonView
-		title='Шаблоны'
-		description='Scaffolder: создание новых сервисов из шаблонов с готовым CI и инфраструктурой.'
-	/>
-);
+const TemplatesPage = async () => {
+	const templates = await getTemplates();
+
+	return <TemplatesView templates={templates} />;
+};
 
 export default TemplatesPage;

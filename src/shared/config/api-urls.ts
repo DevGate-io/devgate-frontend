@@ -5,4 +5,5 @@ export const API_URLS = {
 	logout: '/auth/logout',
 	currentUser: '/auth/me',
 	services: '/services',
+	templates: '/templates',
 } as const;
