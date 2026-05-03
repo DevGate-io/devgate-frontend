@@ -4,26 +4,6 @@
 	gap: 22px;
 }
 
-.head {
-	display: flex;
-	gap: 16px;
-	align-items: flex-end;
-	justify-content: space-between;
-}
-
-.title {
-	font-size: 22px;
-	font-weight: 600;
-	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
-	letter-spacing: -0.01em;
-}
-
-.subtitle {
-	margin-block-start: 2px;
-	font-size: 13px;
-	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
-}
-
 .kpiGrid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

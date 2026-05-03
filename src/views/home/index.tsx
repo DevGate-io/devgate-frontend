@@ -1,3 +1,4 @@
+import { PageHeader } from '@/shared/ui/page-header';
 import {
 	ENVIRONMENTS,
 	HOME_LABELS,
@@ -15,12 +16,10 @@ const ENVIRONMENTS_TITLE_ID = 'home-environments-title';
 export const HomeView = () => {
 	return (
 		<div className={css.root}>
-			<header className={css.head}>
-				<div>
-					<h1 className={css.title}>{HOME_LABELS.title}</h1>
-					<p className={css.subtitle}>{HOME_LABELS.subtitle}</p>
-				</div>
-			</header>
+			<PageHeader
+				title={HOME_LABELS.title}
+				description={HOME_LABELS.subtitle}
+			/>
 
 			<dl className={css.kpiGrid} aria-label={HOME_LABELS.kpiSectionLabel}>
 				{KPIS.map((kpi) => (
