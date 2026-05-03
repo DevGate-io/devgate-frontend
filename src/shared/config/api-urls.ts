@@ -3,4 +3,5 @@ export const API_URLS = {
 	register: '/auth/register',
 	refresh: '/auth/refresh',
 	logout: '/auth/logout',
+	currentUser: '/auth/me',
 } as const;

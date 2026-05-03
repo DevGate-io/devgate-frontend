@@ -11,5 +11,3 @@ export const HEADER_LABELS = {
 	menuProfile: 'Профиль',
 	menuLogout: 'Выйти',
 } as const;
-
-export const PROFILE_INITIALS = 'DG';
