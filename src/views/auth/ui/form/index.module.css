@@ -3,12 +3,52 @@
 	flex-direction: column;
 	align-self: center;
 	justify-self: center;
-	width: fit-content;
+	inline-size: fit-content;
 	@mixin responsive gap, 12, 12, 12;
 }
 
 .form {
 	align-self: center;
-	width: 100%;
-	height: fit-content;
+	inline-size: 100%;
+	block-size: fit-content;
+}
+
+.demo {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding-block: 10px;
+	padding-inline: 12px;
+	font-size: 12px;
+	color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-3));
+	background-color: light-dark(
+		var(--mantine-color-lavender-0),
+		var(--mantine-color-dark-6)
+	);
+	border-radius: var(--mantine-radius-md);
+}
+
+.demoTitle {
+	font-weight: 600;
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-2)
+	);
+}
+
+.demoLine {
+	display: flex;
+	gap: 6px;
+	align-items: baseline;
+}
+
+.demoLabel {
+	min-inline-size: 56px;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+}
+
+.demoValue {
+	font-family: var(--mantine-font-family-monospace, monospace);
+	font-weight: 500;
+	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
 }

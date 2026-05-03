@@ -221,6 +221,16 @@ widgets/header/
 
 ## 11. Auth
 
+**Тестовый вход без бэкенда.** Пока бэк недоступен, в системе живёт демо-пользователь:
+- `shared/lib/test-auth.ts` хранит `TEST_USER`, `TEST_AUTH_EMAIL`, `TEST_AUTH_PASSWORD`, sentinel-токен `TEST_ACCESS_TOKEN` и хелперы `isTestCredentials` / `isTestAccessToken`.
+- В `features/auth-form/lib/perform-login.ts` тест-креды короткозамыкают вызов `AuthService.login` — возвращают `{ accessToken: TEST_ACCESS_TOKEN, user: TEST_USER }` напрямую.
+- В `shared/api/auth/get-current-user.ts` server action проверяет cookie: при sentinel-токене возвращает `TEST_USER`, минуя axios.
+- Подсказка с демо-кредами выводится в `views/auth/ui/form` под формой.
+
+После появления реального `/auth/login` и `/auth/me` тестовый bypass можно оставить (удобно для локального разработчика и для UI-тестов) или убрать одной правкой `perform-login` + `get-current-user`.
+
+
+
 - **Access токен** — в HttpOnly cookie (через server actions). Браузеру он недоступен.
 - **Refresh токен** — также HttpOnly cookie, выставляется бэком.
 - **Request interceptor** (server-only) — подмешивает `Authorization: Bearer <token>` из cookie. Уже реализовано в `shared/api/interceptors/server.ts`.
