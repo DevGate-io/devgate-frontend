@@ -1,4 +1,5 @@
 .root {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
@@ -56,11 +57,24 @@
 	text-decoration: none;
 }
 
+.nameLink::before {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	content: "";
+	border-radius: inherit;
+}
+
 .nameLink:hover {
 	color: light-dark(
 		var(--mantine-color-lavender-7),
 		var(--mantine-color-lavender-2)
 	);
+}
+
+.nameLink:focus-visible::before {
+	outline: 2px solid var(--mantine-color-lavender-5);
+	outline-offset: 2px;
 }
 
 .healthBadge {
@@ -115,6 +129,8 @@
 }
 
 .actions {
+	position: relative;
+	z-index: 2;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 6px;
