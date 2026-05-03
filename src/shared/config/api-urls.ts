@@ -4,4 +4,5 @@ export const API_URLS = {
 	refresh: '/auth/refresh',
 	logout: '/auth/logout',
 	currentUser: '/auth/me',
+	services: '/services',
 } as const;

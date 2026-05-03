@@ -1,10 +1,24 @@
-import { ComingSoonView } from '@/views/coming-soon';
+import { getServices } from '@/shared/api/services/get-services';
+import { parseHealthFilter } from '@/shared/api/services/lib/parse-health-filter';
+import { CatalogView } from '@/views/catalog';
 
-const CatalogPage = () => (
-	<ComingSoonView
-		title='Каталог сервисов'
-		description='Список сервисов с поиском, фильтрами и быстрыми действиями.'
-	/>
-);
+type CatalogSearchParamsType = {
+	q?: string;
+	health?: string;
+};
+
+type CatalogPageProps = {
+	searchParams: Promise<CatalogSearchParamsType>;
+};
+
+const CatalogPage = async ({ searchParams }: CatalogPageProps) => {
+	const params = await searchParams;
+	const services = await getServices({
+		search: params.q,
+		health: parseHealthFilter(params.health),
+	});
+
+	return <CatalogView services={services} />;
+};
 
 export default CatalogPage;
