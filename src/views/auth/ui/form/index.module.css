@@ -48,7 +48,7 @@
 }
 
 .demoValue {
-	font-family: var(--mantine-font-family-monospace, monospace);
+	font-family: var(--mantine-font-family-monospace, monospace), serif;
 	font-weight: 500;
 	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
 }

@@ -1,8 +1,8 @@
 'use client';
 
-import {useTransition} from 'react';
-import {AuthService} from '@/shared/api/auth';
-import {logout} from '@/shared/api/auth/actions';
+import { useTransition } from 'react';
+import { AuthService } from '@/shared/api/auth';
+import { logout } from '@/shared/api/auth/actions';
 
 export const useLogout = () => {
 	const [isPending, startTransition] = useTransition();
