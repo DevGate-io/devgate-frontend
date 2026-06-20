@@ -65,23 +65,27 @@ export const CONTACTS: ContactItemType[] = [
 		name: 'Анна Иванова',
 		role: 'Platform Lead',
 		initials: 'АИ',
+		tone: 'lavender',
 	},
 	{
 		id: 'contact-denis-kravtsov',
 		name: 'Денис Кравцов',
 		role: 'SRE',
 		initials: 'ДК',
+		tone: 'sky',
 	},
 	{
 		id: 'contact-olga-petrova',
 		name: 'Ольга Петрова',
 		role: 'QA Lead',
 		initials: 'ОП',
+		tone: 'mint',
 	},
 	{
 		id: 'contact-mikhail-orlov',
 		name: 'Михаил Орлов',
 		role: 'Tech Lead',
 		initials: 'МО',
+		tone: 'peach',
 	},
 ];

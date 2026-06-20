@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import type { ServiceType } from '@/entities/service';
 import { pageConfig } from '@/shared/config/page.config';
+import { getHealthBadgeColor } from '@/views/catalog/lib/get-health-color';
 import { TEAM_DETAIL_LABELS } from '@/views/team-detail/constants';
 import css from './index.module.css';
 
@@ -32,7 +33,7 @@ export const OwnedServicesList: FC<OwnedServicesListProps> = ({ services }) => {
 							</Link>
 							<Badge
 								variant='light'
-								color='gray'
+								color={getHealthBadgeColor(service.health)}
 								radius='sm'
 								size='xs'
 								className={css.health}

@@ -7,7 +7,10 @@ import {
 	CATALOG_LABELS,
 	SERVICE_HEALTH_LABEL,
 } from '@/views/catalog/constants';
-import { getHealthColor } from '@/views/catalog/lib/get-health-color';
+import {
+	getHealthBadgeColor,
+	getHealthColor,
+} from '@/views/catalog/lib/get-health-color';
 import css from './index.module.css';
 
 type ServiceCardProps = {
@@ -21,7 +24,12 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
 				<div className={css.title}>
 					<span
 						className={css.dot}
-						style={{ backgroundColor: getHealthColor(service.health) }}
+						style={
+							{ '--dot-color': getHealthColor(service.health) } as Record<
+								string,
+								string
+							>
+						}
 						aria-hidden='true'
 					/>
 					<h2 className={css.name}>
@@ -35,7 +43,7 @@ export const ServiceCard: FC<ServiceCardProps> = ({ service }) => {
 				</div>
 				<Badge
 					variant='light'
-					color='gray'
+					color={getHealthBadgeColor(service.health)}
 					radius='sm'
 					size='sm'
 					className={css.healthBadge}

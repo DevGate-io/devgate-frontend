@@ -41,12 +41,21 @@
 	gap: 12px;
 	align-items: center;
 	padding-block: 8px;
-	padding-inline: 4px;
+	padding-inline: 8px;
 	border-block-end: 1px solid var(--devgate-card-divider-color);
+	border-radius: var(--mantine-radius-sm);
+	transition: background-color var(--devgate-transition-fast);
 }
 
 .item:last-child {
 	border-block-end: none;
+}
+
+.item:hover {
+	background-color: light-dark(
+		var(--mantine-color-lavender-0),
+		var(--mantine-color-dark-6)
+	);
 }
 
 .avatar {

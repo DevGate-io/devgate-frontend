@@ -37,14 +37,27 @@
 	white-space: nowrap;
 	text-decoration: none;
 	border-radius: var(--mantine-radius-md);
-	transition: background-color 120ms ease;
+	transition:
+		background-color var(--devgate-transition-fast),
+		color var(--devgate-transition-fast);
 }
 
 .item:hover {
-	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-1)
+	);
 	background-color: light-dark(
-		var(--mantine-color-gray-1),
-		var(--mantine-color-dark-6)
+		var(--mantine-color-lavender-1),
+		color-mix(in srgb, var(--mantine-color-lavender-9) 28%, transparent)
+	);
+}
+
+.item:hover .dot {
+	transform: scale(1.4);
+	background-color: light-dark(
+		var(--mantine-color-lavender-6),
+		var(--mantine-color-lavender-3)
 	);
 }
 
@@ -54,4 +67,7 @@
 	block-size: 6px;
 	background-color: var(--mantine-color-lavender-5);
 	border-radius: 50%;
+	transition:
+		transform var(--devgate-transition-fast),
+		background-color var(--devgate-transition-fast);
 }

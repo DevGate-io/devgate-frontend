@@ -1,9 +1,14 @@
 .root {
+	--kpi-accent-5: var(--mantine-color-lavender-5);
+	--kpi-accent-3: var(--mantine-color-lavender-3);
+	--kpi-accent-0: var(--mantine-color-lavender-0);
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 	padding-block: 18px;
 	padding-inline: 20px;
+	overflow: hidden;
 	background-color: light-dark(
 		var(--mantine-color-white),
 		var(--mantine-color-dark-8)
@@ -11,9 +16,52 @@
 	border: 1px solid var(--devgate-card-border-color);
 	border-radius: var(--mantine-radius-xl);
 	box-shadow: var(--devgate-card-shadow);
+	transition:
+		transform var(--devgate-transition),
+		box-shadow var(--devgate-transition),
+		border-color var(--devgate-transition);
+}
+
+.root::before {
+	position: absolute;
+	inset-inline: 0;
+	inset-block-start: 0;
+	block-size: 3px;
+	content: "";
+	background: linear-gradient(90deg, var(--kpi-accent-5), var(--kpi-accent-3));
+}
+
+.root:hover {
+	border-color: light-dark(var(--kpi-accent-3), var(--mantine-color-dark-3));
+	box-shadow: var(--devgate-card-shadow-hover);
+	transform: translateY(-2px);
+}
+
+.root[data-tone="lavender"] {
+	--kpi-accent-5: var(--mantine-color-lavender-5);
+	--kpi-accent-3: var(--mantine-color-lavender-3);
+	--kpi-accent-0: var(--mantine-color-lavender-0);
+}
+.root[data-tone="sky"] {
+	--kpi-accent-5: var(--mantine-color-sky-5);
+	--kpi-accent-3: var(--mantine-color-sky-3);
+	--kpi-accent-0: var(--mantine-color-sky-0);
+}
+.root[data-tone="mint"] {
+	--kpi-accent-5: var(--mantine-color-mint-5);
+	--kpi-accent-3: var(--mantine-color-mint-3);
+	--kpi-accent-0: var(--mantine-color-mint-0);
+}
+.root[data-tone="peach"] {
+	--kpi-accent-5: var(--mantine-color-peach-5);
+	--kpi-accent-3: var(--mantine-color-peach-3);
+	--kpi-accent-0: var(--mantine-color-peach-0);
 }
 
 .label {
+	display: inline-flex;
+	gap: 8px;
+	align-items: center;
 	font-size: 11.5px;
 	font-weight: 600;
 	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
@@ -21,10 +69,19 @@
 	letter-spacing: 0.08em;
 }
 
+.bullet {
+	flex-shrink: 0;
+	inline-size: 8px;
+	block-size: 8px;
+	background-color: var(--kpi-accent-5);
+	border-radius: 50%;
+	box-shadow: 0 0 0 3px var(--kpi-accent-0);
+}
+
 .row {
 	display: flex;
 	gap: 12px;
-	align-items: baseline;
+	align-items: center;
 	justify-content: space-between;
 }
 
@@ -37,19 +94,40 @@
 }
 
 .delta {
+	display: inline-flex;
+	align-items: center;
 	padding-block: 4px;
-	padding-inline: 8px;
+	padding-inline: 9px;
 	font-size: 12px;
 	font-weight: 600;
+	letter-spacing: -0.01em;
+	border: 1px solid transparent;
 	border-radius: 999px;
 }
 
 .deltaPositive {
-	color: var(--mantine-color-mint-7);
-	background-color: var(--mantine-color-mint-0);
+	color: light-dark(var(--mantine-color-mint-8), var(--mantine-color-mint-2));
+	background-color: light-dark(
+		var(--mantine-color-mint-0),
+		color-mix(in srgb, var(--mantine-color-mint-9) 35%, transparent)
+	);
+	border-color: light-dark(
+		var(--mantine-color-mint-2),
+		color-mix(in srgb, var(--mantine-color-mint-7) 40%, transparent)
+	);
 }
 
 .deltaNegative {
-	color: var(--mantine-color-danger-6);
-	background-color: var(--mantine-color-danger-0);
+	color: light-dark(
+		var(--mantine-color-danger-7),
+		var(--mantine-color-danger-2)
+	);
+	background-color: light-dark(
+		var(--mantine-color-danger-0),
+		color-mix(in srgb, var(--mantine-color-danger-9) 35%, transparent)
+	);
+	border-color: light-dark(
+		var(--mantine-color-danger-2),
+		color-mix(in srgb, var(--mantine-color-danger-7) 40%, transparent)
+	);
 }

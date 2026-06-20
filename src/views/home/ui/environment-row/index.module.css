@@ -11,6 +11,24 @@
 	);
 	border: 1px solid var(--devgate-card-border-color);
 	border-radius: var(--mantine-radius-md);
+	transition:
+		background-color var(--devgate-transition-fast),
+		border-color var(--devgate-transition-fast);
+}
+
+.root:hover {
+	background-color: light-dark(
+		var(--mantine-color-lavender-0),
+		var(--mantine-color-dark-6)
+	);
+	border-color: light-dark(
+		var(--mantine-color-lavender-2),
+		var(--mantine-color-lavender-7)
+	);
+}
+
+.root:hover .dot {
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--dot-color) 22%, transparent);
 }
 
 .left {
@@ -23,7 +41,9 @@
 	flex-shrink: 0;
 	inline-size: 8px;
 	block-size: 8px;
+	background-color: var(--dot-color);
 	border-radius: 50%;
+	transition: box-shadow var(--devgate-transition);
 }
 
 .name {

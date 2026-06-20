@@ -5,11 +5,12 @@
 	padding-block: 6px;
 	padding-inline: 8px;
 	border-radius: var(--mantine-radius-md);
+	transition: background-color var(--devgate-transition-fast);
 }
 
 .root:hover {
 	background-color: light-dark(
-		var(--mantine-color-gray-1),
+		var(--mantine-color-lavender-0),
 		var(--mantine-color-dark-6)
 	);
 }

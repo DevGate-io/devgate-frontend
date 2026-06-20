@@ -21,4 +21,5 @@ export type ContactItemType = {
 	name: string;
 	role: string;
 	initials: string;
+	tone: ActivityToneType;
 };

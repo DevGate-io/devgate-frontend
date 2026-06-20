@@ -62,6 +62,7 @@ export const ActivityPanel = () => {
 								name={contact.name}
 								role={contact.role}
 								initials={contact.initials}
+								tone={contact.tone}
 							/>
 						</li>
 					))}

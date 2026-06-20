@@ -2,7 +2,10 @@ import { Badge, Button } from '@mantine/core';
 import type { FC } from 'react';
 import type { ServiceType } from '@/entities/service';
 import { SERVICE_HEALTH_LABEL } from '@/views/catalog/constants';
-import { getHealthColor } from '@/views/catalog/lib/get-health-color';
+import {
+	getHealthBadgeColor,
+	getHealthColor,
+} from '@/views/catalog/lib/get-health-color';
 import { SERVICE_DETAIL_LABELS } from '@/views/service-detail/constants';
 import { DeleteServiceButton } from '@/views/service-detail/ui/delete-service-button';
 import { EditServiceLink } from '@/views/service-detail/ui/edit-service-link';
@@ -32,7 +35,11 @@ export const ServiceHeaderSection: FC<ServiceHeaderSectionProps> = ({
 			</div>
 
 			<div className={css.actions}>
-				<Badge variant='light' color='gray' radius='sm'>
+				<Badge
+					variant='light'
+					color={getHealthBadgeColor(service.health)}
+					radius='sm'
+				>
 					{SERVICE_HEALTH_LABEL[service.health]}
 				</Badge>
 				<EditServiceLink serviceId={service.id} />

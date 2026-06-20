@@ -11,16 +11,24 @@
 	border: none;
 	border-radius: var(--mantine-radius-md);
 	transition:
-		background-color 120ms ease,
-		color 120ms ease;
+		background-color var(--devgate-transition-fast),
+		color var(--devgate-transition-fast),
+		transform var(--devgate-transition-fast);
 }
 
 .root:hover {
-	color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-2)
+	);
 	background-color: light-dark(
-		var(--mantine-color-gray-1),
+		var(--mantine-color-lavender-0),
 		var(--mantine-color-dark-6)
 	);
+}
+
+.root:active {
+	transform: scale(0.94);
 }
 
 .root:focus-visible {

@@ -1,6 +1,4 @@
-import clsx from 'clsx';
 import type { FC } from 'react';
-import { getToneClass } from '@/widgets/activity-panel/lib/get-tone-class';
 import type { ActivityToneType } from '@/widgets/activity-panel/types';
 import css from './index.module.css';
 
@@ -11,13 +9,6 @@ type EventItemProps = {
 	tone: ActivityToneType;
 };
 
-const TONE_CLASSES = {
-	lavender: css.dotLavender,
-	sky: css.dotSky,
-	mint: css.dotMint,
-	peach: css.dotPeach,
-};
-
 export const EventItem: FC<EventItemProps> = ({
 	text,
 	occurredAt,
@@ -25,11 +16,8 @@ export const EventItem: FC<EventItemProps> = ({
 	tone,
 }) => {
 	return (
-		<article className={css.root}>
-			<span
-				className={clsx(css.dot, getToneClass(tone, TONE_CLASSES))}
-				aria-hidden='true'
-			/>
+		<article className={css.root} data-tone={tone}>
+			<span className={css.dot} aria-hidden='true' />
 			<div className={css.body}>
 				<p className={css.text}>{text}</p>
 				<time className={css.time} dateTime={occurredAt}>

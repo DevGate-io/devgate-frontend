@@ -1,9 +1,17 @@
 .root {
+	--event-tint-5: var(--mantine-color-lavender-5);
+	--event-tint-3: var(--mantine-color-lavender-3);
+	--event-tint-0: var(--mantine-color-lavender-0);
+	--event-tint-9: var(--mantine-color-lavender-9);
+	position: relative;
 	display: flex;
 	gap: 10px;
 	align-items: flex-start;
 	padding-block: 10px;
+	padding-block-start: 10px;
 	padding-inline: 12px;
+	padding-inline-start: 14px;
+	overflow: hidden;
 	background-color: light-dark(
 		var(--mantine-color-gray-0),
 		var(--mantine-color-dark-7)
@@ -15,8 +23,57 @@
 		background-color var(--devgate-transition-fast);
 }
 
+.root::before {
+	position: absolute;
+	inset-block: 0;
+	inset-inline-start: 0;
+	inline-size: 3px;
+	content: "";
+	background-color: var(--event-tint-5);
+}
+
 .root:hover {
-	border-color: var(--devgate-card-border-color-hover);
+	background-color: light-dark(
+		var(--event-tint-0),
+		color-mix(in srgb, var(--event-tint-9) 18%, var(--mantine-color-dark-7))
+	);
+	border-color: light-dark(
+		var(--event-tint-3),
+		color-mix(in srgb, var(--event-tint-9) 50%, transparent)
+	);
+}
+
+.root:hover .dot {
+	box-shadow: 0 0 0 4px
+		light-dark(
+			color-mix(in srgb, var(--event-tint-5) 25%, transparent),
+			color-mix(in srgb, var(--event-tint-5) 30%, transparent)
+		);
+}
+
+.root[data-tone="lavender"] {
+	--event-tint-5: var(--mantine-color-lavender-5);
+	--event-tint-3: var(--mantine-color-lavender-3);
+	--event-tint-0: var(--mantine-color-lavender-0);
+	--event-tint-9: var(--mantine-color-lavender-9);
+}
+.root[data-tone="sky"] {
+	--event-tint-5: var(--mantine-color-sky-5);
+	--event-tint-3: var(--mantine-color-sky-3);
+	--event-tint-0: var(--mantine-color-sky-0);
+	--event-tint-9: var(--mantine-color-sky-9);
+}
+.root[data-tone="mint"] {
+	--event-tint-5: var(--mantine-color-mint-5);
+	--event-tint-3: var(--mantine-color-mint-3);
+	--event-tint-0: var(--mantine-color-mint-0);
+	--event-tint-9: var(--mantine-color-mint-9);
+}
+.root[data-tone="peach"] {
+	--event-tint-5: var(--mantine-color-peach-5);
+	--event-tint-3: var(--mantine-color-peach-3);
+	--event-tint-0: var(--mantine-color-peach-0);
+	--event-tint-9: var(--mantine-color-peach-9);
 }
 
 .dot {
@@ -24,20 +81,9 @@
 	inline-size: 8px;
 	block-size: 8px;
 	margin-block-start: 6px;
+	background-color: var(--event-tint-5);
 	border-radius: 50%;
-}
-
-.dotLavender {
-	background-color: var(--mantine-color-lavender-5);
-}
-.dotSky {
-	background-color: var(--mantine-color-sky-5);
-}
-.dotMint {
-	background-color: var(--mantine-color-mint-5);
-}
-.dotPeach {
-	background-color: var(--mantine-color-peach-5);
+	transition: box-shadow var(--devgate-transition);
 }
 
 .body {

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
+import type { KpiToneType } from '@/views/home/types';
 import css from './index.module.css';
 
 type KpiCardProps = {
@@ -7,6 +8,7 @@ type KpiCardProps = {
 	value: string;
 	delta: string;
 	positive: boolean;
+	tone: KpiToneType;
 };
 
 export const KpiCard: FC<KpiCardProps> = ({
@@ -14,10 +16,14 @@ export const KpiCard: FC<KpiCardProps> = ({
 	value,
 	delta,
 	positive,
+	tone,
 }) => {
 	return (
-		<div className={css.root}>
-			<dt className={css.label}>{label}</dt>
+		<div className={css.root} data-tone={tone}>
+			<dt className={css.label}>
+				<span className={css.bullet} aria-hidden='true' />
+				{label}
+			</dt>
 			<dd className={css.row}>
 				<span className={css.value}>{value}</span>
 				<span

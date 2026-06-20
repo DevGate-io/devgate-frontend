@@ -45,6 +45,20 @@
 	);
 	border: 1px solid var(--devgate-card-border-color);
 	border-radius: var(--mantine-radius-md);
+	transition:
+		background-color var(--devgate-transition-fast),
+		border-color var(--devgate-transition-fast);
+}
+
+.item:hover {
+	background-color: light-dark(
+		var(--mantine-color-lavender-0),
+		var(--mantine-color-dark-6)
+	);
+	border-color: light-dark(
+		var(--mantine-color-lavender-2),
+		var(--mantine-color-lavender-7)
+	);
 }
 
 @media (max-width: 880px) {

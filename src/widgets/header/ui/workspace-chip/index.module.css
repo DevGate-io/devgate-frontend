@@ -16,15 +16,30 @@
 	border-radius: var(--mantine-radius-md);
 	transition:
 		background-color var(--devgate-transition-fast),
-		border-color var(--devgate-transition-fast);
+		border-color var(--devgate-transition-fast),
+		color var(--devgate-transition-fast);
 }
 
 .root:hover {
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-2)
+	);
 	background-color: light-dark(
-		var(--mantine-color-gray-2),
+		var(--mantine-color-lavender-0),
 		var(--mantine-color-dark-5)
 	);
-	border-color: var(--devgate-card-border-color-hover);
+	border-color: light-dark(
+		var(--mantine-color-lavender-2),
+		var(--mantine-color-lavender-7)
+	);
+}
+
+.root:hover .chevron {
+	color: light-dark(
+		var(--mantine-color-lavender-6),
+		var(--mantine-color-lavender-3)
+	);
 }
 
 .root:focus-visible {
@@ -35,4 +50,5 @@
 .chevron {
 	display: inline-flex;
 	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-gray-5));
+	transition: color var(--devgate-transition-fast);
 }

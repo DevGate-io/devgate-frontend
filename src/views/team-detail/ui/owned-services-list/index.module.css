@@ -36,17 +36,34 @@
 }
 
 .item {
+	position: relative;
 	display: flex;
 	gap: 10px;
 	align-items: center;
 	justify-content: space-between;
 	padding-block: 8px;
-	padding-inline: 4px;
+	padding-inline: 8px;
 	border-block-end: 1px solid var(--devgate-card-divider-color);
+	border-radius: var(--mantine-radius-sm);
+	transition: background-color var(--devgate-transition-fast);
 }
 
 .item:last-child {
 	border-block-end: none;
+}
+
+.item:hover {
+	background-color: light-dark(
+		var(--mantine-color-lavender-0),
+		var(--mantine-color-dark-6)
+	);
+}
+
+.item:hover .name {
+	color: light-dark(
+		var(--mantine-color-lavender-7),
+		var(--mantine-color-lavender-1)
+	);
 }
 
 .link {
@@ -59,16 +76,22 @@
 	border-radius: var(--mantine-radius-sm);
 }
 
-.link:hover .name {
-	color: light-dark(
-		var(--mantine-color-lavender-7),
-		var(--mantine-color-lavender-2)
-	);
+.link::before {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	content: "";
+	border-radius: inherit;
 }
 
-.link:focus-visible {
+.link:focus-visible::before {
 	outline: 2px solid var(--mantine-color-lavender-5);
 	outline-offset: 2px;
+}
+
+.health {
+	position: relative;
+	z-index: 2;
 }
 
 .name {

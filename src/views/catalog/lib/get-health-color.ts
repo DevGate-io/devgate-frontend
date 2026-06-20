@@ -7,5 +7,15 @@ const HEALTH_COLOR: Record<ServiceHealthType, string> = {
 	[ServiceHealthEnum.UNKNOWN]: 'var(--mantine-color-gray-4)',
 };
 
+const HEALTH_BADGE_COLOR: Record<ServiceHealthType, string> = {
+	[ServiceHealthEnum.HEALTHY]: 'mint',
+	[ServiceHealthEnum.DEGRADED]: 'peach',
+	[ServiceHealthEnum.DOWN]: 'danger',
+	[ServiceHealthEnum.UNKNOWN]: 'gray',
+};
+
 export const getHealthColor = (health: ServiceHealthType): string =>
 	HEALTH_COLOR[health];
+
+export const getHealthBadgeColor = (health: ServiceHealthType): string =>
+	HEALTH_BADGE_COLOR[health];
