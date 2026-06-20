@@ -8,7 +8,7 @@ import {
 	AUTH_FORM_VALIDATORS,
 } from '@/features/auth-form/models/auth-form.constants';
 import type { AuthFormState } from '@/features/auth-form/types';
-import { setAuthCookie } from '@/shared/api/auth/actions';
+import { setAuthCookies } from '@/shared/api/auth/actions';
 import type { AuthenticatedResponse } from '@/shared/api/auth/types';
 import { pageConfig } from '@/shared/config/page.config';
 
@@ -29,8 +29,8 @@ export const useAuthForm = () => {
 	const mutation = useMutation<AuthenticatedResponse, unknown, AuthFormState>(
 		(data) => performLogin(data),
 		{
-			onSuccess: async ({ accessToken }) => {
-				await setAuthCookie(accessToken);
+			onSuccess: async ({ accessToken, refreshToken }) => {
+				await setAuthCookies(accessToken, refreshToken);
 				router.replace(pageConfig.base);
 				router.refresh();
 			},

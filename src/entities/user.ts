@@ -1,15 +1,15 @@
 export enum Role {
-	MEMBER = 'member',
-	ADMIN = 'admin',
-	MANAGER = 'manager',
-	DEVOPS = 'devops',
-	QA = 'qa',
+	MEMBER = 'MEMBER',
+	ADMIN = 'ADMIN',
+	MANAGER = 'MANAGER',
+	DEVOPS = 'DEVOPS',
+	QA = 'QA',
 }
 
 export type User = {
 	id: string;
 	email: string;
-	password: string;
+	password?: string;
 	lastLogin?: string;
 	role: Role;
 	fullName: string;

@@ -7,6 +7,7 @@ export type AuthDto = {
 
 export type AccessTokenResponse = {
 	accessToken: string;
+	refreshToken: string;
 };
 
 export type AuthenticatedResponse = AccessTokenResponse & {
