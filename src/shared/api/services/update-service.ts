@@ -1,14 +1,12 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { cookies } from 'next/headers';
 import type { ServiceType } from '@/entities/service';
 import { apiClient } from '@/shared/api/client';
 import type { CreateServiceDtoType } from '@/shared/api/services/create-service';
 import { API_URLS } from '@/shared/config/api-urls';
+import { MOCK_API } from '@/shared/config/mock-api';
 import { pageConfig } from '@/shared/config/page.config';
-import { ACCESS_TOKEN_KEY } from '@/shared/constants';
-import { isTestAccessToken } from '@/shared/lib/test-auth';
 import { replaceMockService } from '@/shared/lib/test-services';
 
 export type UpdateServiceDtoType = CreateServiceDtoType;
@@ -17,10 +15,7 @@ export const updateService = async (
 	id: string,
 	dto: UpdateServiceDtoType,
 ): Promise<ServiceType> => {
-	const store = await cookies();
-	const token = store.get(ACCESS_TOKEN_KEY)?.value;
-
-	if (token && isTestAccessToken(token)) {
+	if (MOCK_API.services) {
 		const updated = replaceMockService(id, (current) => ({
 			...current,
 			name: dto.name,

@@ -1,11 +1,9 @@
 'use server';
 
-import { cookies } from 'next/headers';
 import type { TeamType } from '@/entities/team';
 import { apiClient } from '@/shared/api/client';
 import { API_URLS } from '@/shared/config/api-urls';
-import { ACCESS_TOKEN_KEY } from '@/shared/constants';
-import { isTestAccessToken } from '@/shared/lib/test-auth';
+import { MOCK_API } from '@/shared/config/mock-api';
 import { MOCK_TEAMS } from '@/shared/lib/test-teams';
 
 export type TeamsFiltersType = {
@@ -25,10 +23,7 @@ const matchesSearch = (team: TeamType, query: string): boolean => {
 export const getTeams = async (
 	filters: TeamsFiltersType = {},
 ): Promise<TeamType[]> => {
-	const store = await cookies();
-	const token = store.get(ACCESS_TOKEN_KEY)?.value;
-
-	if (token && isTestAccessToken(token)) {
+	if (MOCK_API.teams) {
 		return MOCK_TEAMS.filter((team) =>
 			matchesSearch(team, filters.search ?? ''),
 		);
