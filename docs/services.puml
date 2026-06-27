@@ -1,0 +1,126 @@
+@startuml "Микросервисная архитектура"
+
+skinparam componentStyle rectangle
+skinparam nodesep 50
+skinparam ranksep 70
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 13
+skinparam ArrowColor #555555
+
+skinparam component {
+  BorderColor DarkSlateGray
+  BackgroundColor<<mvp>> #C8E6C9
+  BackgroundColor<<p1>> #FFE0B2
+  BackgroundColor<<p2>> #E1BEE7
+  BackgroundColor<<edge>> #BBDEFB
+  BackgroundColor<<ext>> #ECEFF1
+}
+skinparam queue {
+  BackgroundColor #FFF3CD
+  BorderColor #B8860B
+}
+
+title Микросервисная архитектура DevGate — RabbitMQ, фазы MVP / P1 / P2
+
+' =====================
+' EDGE
+' =====================
+[Frontend — Next.js BFF] as FE <<edge>>
+[API Gateway / Webhooks] as GW <<edge>>
+
+' =====================
+' MICROSERVICES (БД на сервис: schema-per-service в PostgreSQL)
+' =====================
+package "Микросервисы" {
+  [User & Access — Identity\n(login / JWT / refresh / JWKS,\nRBAC, User / Team / Organization)] as UA <<mvp>>
+  [Catalog\n(Service / Project / Environment,\nhealth-кэш, tags, repo-links)] as CAT <<mvp>>
+  [Scaffolder & Templates\n(Template, инстанциация)] as ST <<mvp>>
+  [SCM Integration\n(OAuth, приём вебхуков, read-only)] as SCM <<mvp>>
+  [Audit & Compliance\n(immutable log)] as AC <<mvp>>
+  [Metrics / Health\n(Observability + Analytics)] as OBS <<mvp>>
+  [CI/CD Integration\n(Pipeline / Status, триггеры)] as CI <<p1>>
+  [Notifications & Alerts] as NA <<p1>>
+  [Secrets & Config\n(ссылки на Vault, без значений)] as SEC <<p1>>
+  [Documentation & Knowledge\n(TechDocs, runbooks)] as DK <<p1>>
+}
+
+note bottom of UA
+  Заменяет devgate-auth-service:
+  единый авторитет токенов (issue/refresh + JWKS),
+  остальные сервисы только валидируют JWT.
+end note
+
+' =====================
+' RABBITMQ — события и команды РАЗДЕЛЕНЫ
+' =====================
+package "RabbitMQ" {
+  queue "exchange devgate.events  (topic)\n— СОБЫТИЯ (pub/sub, fan-out) —\nservice.* | pipeline.status |\ntemplate.used | secret.rotated |\nscm.webhook.received" as EX
+  queue "command queues  (work queue)\n— КОМАНДЫ (1 воркер, идемпотентно) —\nscaffold.project |\npipeline.trigger |\nwebhook.deliver" as CMD
+}
+
+' =====================
+' EXTERNAL
+' =====================
+package "Внешние системы" {
+  [SCM: GitHub / GitLab / Bitbucket] as EXTSCM <<ext>>
+  [CI/CD: Actions / Jenkins / GitLab CI] as EXTCI <<ext>>
+  [Vault / Secrets Manager] as EXTVAULT <<ext>>
+  [Prometheus / Grafana / Datadog] as EXTMON <<ext>>
+  [Slack / Teams / Email / Telegram] as EXTNOTIFY <<ext>>
+}
+
+' =====================
+' SYNC REST (сплошная)
+' =====================
+FE --> GW : HTTPS (HttpOnly cookie)
+GW --> UA : REST
+GW --> CAT : REST
+GW --> ST : REST
+GW --> SCM : REST
+GW --> CI : REST
+GW --> OBS : REST
+GW --> DK : REST
+GW --> SEC : REST
+
+' =====================
+' СОБЫТИЯ (синий пунктир): publishers -> exchange -> consumers
+' =====================
+CAT -[#1E88E5,dashed]-> EX : service.*
+CI  -[#1E88E5,dashed]-> EX : pipeline.status
+ST  -[#1E88E5,dashed]-> EX : template.used
+SEC -[#1E88E5,dashed]-> EX : secret.rotated
+SCM -[#1E88E5,dashed]-> EX : scm.webhook.received
+
+EX -[#1E88E5,dashed]-> AC  : # (всё)
+EX -[#1E88E5,dashed]-> NA
+EX -[#1E88E5,dashed]-> OBS
+EX -[#1E88E5,dashed]-> CAT : обновление health
+
+' =====================
+' КОМАНДЫ (красный пунктир): enqueue -> воркер
+' =====================
+GW  -[#E53935,dashed]-> CMD : enqueue
+CMD -[#E53935,dashed]-> ST  : scaffold.project
+CMD -[#E53935,dashed]-> CI  : pipeline.trigger
+CMD -[#E53935,dashed]-> NA  : webhook.deliver
+
+' =====================
+' ВНЕШНИЕ ИНТЕГРАЦИИ
+' =====================
+EXTSCM --> SCM : вебхуки
+SCM --> EXTSCM : REST (статусы)
+ST --> EXTSCM : создать репо / PR
+CI --> EXTCI
+OBS --> EXTMON
+SEC --> EXTVAULT
+NA --> EXTNOTIFY
+
+legend right
+  Цвет узла = фаза:  зелёный MVP  |  оранжевый P1  |  фиолетовый P2
+  Линии:  сплошная = sync REST   |   синий пунктир = СОБЫТИЕ   |   красный пунктир = КОМАНДА
+  Событие — «факт случился» (fan-out нескольким консьюмерам).
+  Команда — «сделай это» (одна очередь-воркер, idempotent + retry + DLQ).
+  Каждый сервис — своя БД (schema-per-service); Audit пишет в immutable-store при консьюминге.
+endlegend
+
+@enduml

@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 import type { TeamRole, TeamType } from '@/entities/team';
+import type { User } from '@/entities/user';
 import { getAuditEvents } from '@/shared/api/audit/get-audit-events';
 import { getCurrentUser } from '@/shared/api/auth/get-current-user';
 import { getTeams } from '@/shared/api/teams/get-teams';
@@ -11,10 +12,12 @@ const ACTIVITY_LIMIT = 5;
 type TeamMembershipType = { team: TeamType; role: TeamRole };
 
 const ProfilePage = async () => {
-	let user;
+	let user: User;
+
 	try {
 		user = await getCurrentUser();
-	} catch {
+	} catch (error) {
+		console.error(error);
 		redirect(pageConfig.auth);
 	}
 

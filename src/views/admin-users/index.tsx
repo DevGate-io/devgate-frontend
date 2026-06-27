@@ -1,7 +1,7 @@
 import type { FC } from 'react';
+import type { TeamMemberUserType } from '@/shared/lib/test-users';
 import { EmptyState } from '@/shared/ui/empty-state';
 import { PageHeader } from '@/shared/ui/page-header';
-import type { TeamMemberUserType } from '@/shared/lib/test-users';
 import { ADMIN_USERS_LABELS } from '@/views/admin-users/constants';
 import { UserRow } from '@/views/admin-users/ui/user-row';
 import { UsersToolbar } from '@/views/admin-users/ui/users-toolbar';

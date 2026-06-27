@@ -1,5 +1,3 @@
-'use server';
-
 import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { cookies } from 'next/headers';
 import { refreshSession } from '@/shared/api/auth/refresh-session';

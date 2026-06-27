@@ -1,10 +1,10 @@
 import { Badge } from '@mantine/core';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { type TeamRole, type TeamType } from '@/entities/team';
+import type { TeamRole, TeamType } from '@/entities/team';
 import { pageConfig } from '@/shared/config/page.config';
-import { ROLE_COLOR, ROLE_LABEL } from '@/views/team-detail/constants';
 import { PROFILE_LABELS } from '@/views/profile/constants';
+import { ROLE_COLOR, ROLE_LABEL } from '@/views/team-detail/constants';
 import css from './index.module.css';
 
 type MyTeamsPanelProps = {

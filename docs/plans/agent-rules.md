@@ -32,7 +32,7 @@
 | Компоненты | PascalCase | `AuthForm`, `ActivityPanel` |
 | Тип props компонента | `<Component>Props` | `AuthFormProps` |
 | Тип данных API/моделей | `<Name>Type` | `ServiceType`, `AuthDtoType` |
-| Enum | `<Name>Enum` | `UserRoleEnum`, `ServiceHealthEnum` |
+| Enum | PascalCase, без суффикса | `Role`, `ServiceHealth`, `AuditAction` |
 | Функции/хуки/утилиты | lowerCamelCase | `getSitemapObject`, `useSession` |
 | Константы | UPPER_SNAKE_CASE | `ACCESS_TOKEN_KEY`, `AUTH_QUERY_KEYS` |
 | Свойства объектов | lowerCamelCase | `isPolicy`, `accessToken` |
@@ -41,7 +41,7 @@
 | CSS-переменные | kebab-case | `--width-video`, `--color-blue` |
 | Картинки/статика | kebab-case | `team-icon.png` |
 
-**Критично:** старый код может использовать `Role` (без `Enum`-суффикса), `User` (без `Type`-суффикса). Это легаси, но новые сущности именуем по правилам и при правках поблизости — приводим к гайду.
+**Критично:** enum'ы именуем PascalCase **без** суффикса `Enum` (как `Role`, `ServiceHealth`). Старый код может использовать `User` (без `Type`-суффикса для типа данных) — это легаси, при правках поблизости приводим к гайду.
 
 ---
 

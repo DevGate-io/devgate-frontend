@@ -2,6 +2,26 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Working with me (workflow)
+
+How I work in this repo. Details live in the imported rule files:
+
+@.claude/rules/general.md
+@.claude/rules/workflow.md
+@.claude/rules/orchestration.md
+@.claude/rules/checks.md
+@.claude/rules/naming.md
+@.claude/rules/code-generation.md
+
+In short:
+- **Language:** ответы — на русском; код, идентификаторы, комментарии и commit *types* — English (commit subjects — Russian, как в истории репо).
+- **Plan first:** для нетривиальных задач сначала `EnterPlanMode` с планом, жду одобрения (тривиальные правки <10 строк/1 файл — сразу).
+- **After code changes:** параллельно гоняю проверки фоновыми субагентами — `static-analysis` (`tsc --noEmit`) и `code-style` (Biome). Тест-раннера в проекте нет.
+- **Commits:** Conventional Commits, типы только `feat|fix|docs|refactor|ci|build`, нижний регистр типа, без точки в конце, **без** `Co-Authored-By` и прочих footer'ов. Команда `/commit`.
+- **Git push:** всегда спрашиваю перед пушем; не делаю force-push.
+- **Logs:** после задачи — `.claude/logs/YYYY-MM-DD-<task>.md` с разделом `## Summary`. На «продолжаем» беру свежий лог и продолжаю без переспроса.
+- **pnpm — из `src/`** (`cd src && pnpm …`); хуки в `.claude/hooks/` блокируют опасные команды и гоняют `tsc` перед коммитом.
+
 ## What this is
 
 **DevGate** is the frontend for an Internal Developer Portal (IDP) — a single entry point for engineering teams to discover services, scaffold projects, and access docs/CI/observability. Reference implementations: Backstage, Port, Cortex, OpsLevel, Atlassian Compass.
@@ -25,7 +45,7 @@ UX direction (spec §13): top-nav `Catalog / Templates / My Services / Teams / M
 
 - **Семантика > div.** Перед каждым `<div>` спросить: `<section>` / `<article>` / `<aside>` / `<header>` / `<nav>` / `<main>` / `<ul>`+`<li>` / `<dl>`+`<dt>`+`<dd>` / `<form>` / `<button>` / `<a>` / `<time>`?
 - **Декомпозиция.** Компонент >80 строк JSX или с 3+ блоками → разбить на под-компоненты (`<parent>/ui/<child>/index.tsx`). Логика → в `use-<feature>.ts`. Mock-данные и UI-тексты → в `constants.ts`.
-- **Naming строго:** папки lower-kebab-case; компоненты PascalCase; props `<Component>Props`; типы данных `<Name>Type`; enums `<Name>Enum`; константы UPPER_SNAKE_CASE; CSS-классы lowerCamelCase; CSS-переменные kebab-case; обработчики `handle*`; файлы хуков/утилит kebab-case (`use-foo.ts`, `do-bar.ts`).
+- **Naming строго:** папки lower-kebab-case; компоненты PascalCase; props `<Component>Props`; типы данных `<Name>Type`; enums — PascalCase без суффикса (как `Role`, `ServiceHealth`); константы UPPER_SNAKE_CASE; CSS-классы lowerCamelCase; CSS-переменные kebab-case; обработчики `handle*`; файлы хуков/утилит kebab-case (`use-foo.ts`, `do-bar.ts`).
 - **API:** каждый запрос — отдельный файл в `shared/api/<domain>/<verb-resource>.ts` (`login.ts`, `get-services.ts`). React Query keys в `query-keys.ts` как UPPER_SNAKE_CASE. `useQuery`/`useMutation` — в хуках фичи.
 - **Auth:** access+refresh — HttpOnly cookie. Refresh-interceptor: 401 → `/auth/refresh` → retry с `_retry`; на повторный fail — `clearAuthCookie` + redirect + `queryClient.invalidateQueries`. `useSession()` через react-query с `AUTH_QUERY_KEYS.CURRENT_USER`.
 - **CSS:** только модули, **только логические свойства** (`margin-block-*`, `padding-inline-*`), цвета через `light-dark()` + `--mantine-color-*` токены. Адаптив — `@mixin responsive prop, mobile, tablet, desktop` (см. `docs/responsive.md`).

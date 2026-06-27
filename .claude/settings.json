@@ -1,0 +1,78 @@
+{
+	"$schema": "https://json.schemastore.org/claude-code-settings.json",
+	"permissions": {
+		"allow": [
+			"Bash(git status*)",
+			"Bash(git diff*)",
+			"Bash(git log*)",
+			"Bash(git show*)",
+			"Bash(git branch*)",
+			"Bash(git rev-parse*)",
+			"Bash(git add*)",
+			"Bash(git restore*)",
+			"Bash(git stash push*)",
+			"Bash(git stash list*)",
+			"Bash(git fetch*)",
+			"Bash(git switch*)",
+			"Bash(git checkout -b*)",
+			"Bash(ls*)",
+			"Bash(cat*)",
+			"Bash(grep*)",
+			"Bash(rg*)",
+			"Bash(find*)",
+			"Bash(echo*)",
+			"Bash(mkdir*)",
+			"Bash(pnpm lint*)",
+			"Bash(pnpm format*)",
+			"Bash(pnpm build*)",
+			"Bash(pnpm audit*)",
+			"Bash(pnpm why*)",
+			"Bash(pnpm outdated*)",
+			"Bash(pnpm exec*)",
+			"Bash(cd src*)"
+		],
+		"ask": [
+			"Bash(git push*)"
+		],
+		"deny": [],
+		"defaultMode": "acceptEdits"
+	},
+	"hooks": {
+		"PreToolUse": [
+			{
+				"matcher": "Bash|Edit|Write|NotebookEdit",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/permission-guard.py\""
+					}
+				]
+			},
+			{
+				"matcher": "Bash",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/pre-commit-typecheck.sh\"",
+						"timeout": 120,
+						"statusMessage": "Type-checking before commit..."
+					}
+				]
+			}
+		],
+		"PostToolUse": [
+			{
+				"matcher": "Edit|Write",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/lint-changed.sh\"",
+						"timeout": 30,
+						"statusMessage": "Linting changed file..."
+					}
+				]
+			}
+		]
+	},
+	"plansDirectory": "./docs/plans"
+}

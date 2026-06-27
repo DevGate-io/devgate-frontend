@@ -4,11 +4,11 @@ import type { FC } from 'react';
 import { TeamRole, type TeamType } from '@/entities/team';
 import { pageConfig } from '@/shared/config/page.config';
 import { formatDate } from '@/shared/lib/format-date';
-import { TEAMS_LABELS } from '@/views/teams/constants';
 import {
 	formatRussianCount,
 	RUSSIAN_PLURAL_FORMS,
 } from '@/shared/lib/format-russian-count';
+import { TEAMS_LABELS } from '@/views/teams/constants';
 import css from './index.module.css';
 
 type TeamCardProps = {
