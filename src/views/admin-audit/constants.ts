@@ -1,9 +1,4 @@
-import {
-	AuditActionEnum,
-	type AuditActionType,
-	type AuditTargetTypeType,
-	AuditTargetTypeEnum,
-} from '@/entities/audit-event';
+import { AuditAction, AuditTargetType } from '@/entities/audit-event';
 
 export const ADMIN_AUDIT_LABELS = {
 	title: 'Audit-лог',
@@ -25,36 +20,36 @@ export const ADMIN_AUDIT_LABELS = {
 	unknownActor: 'Неизвестный актор',
 } as const;
 
-export const AUDIT_ACTION_LABEL: Record<AuditActionType, string> = {
-	[AuditActionEnum.SERVICE_CREATED]: 'Создание сервиса',
-	[AuditActionEnum.SERVICE_UPDATED]: 'Изменение сервиса',
-	[AuditActionEnum.SERVICE_DELETED]: 'Удаление сервиса',
-	[AuditActionEnum.TEMPLATE_USED]: 'Запуск шаблона',
-	[AuditActionEnum.ROLE_CHANGED]: 'Смена роли',
-	[AuditActionEnum.TEAM_MEMBER_ADDED]: 'Добавлен участник',
-	[AuditActionEnum.TEAM_MEMBER_REMOVED]: 'Удалён участник',
-	[AuditActionEnum.INTEGRATION_CONNECTED]: 'Подключена интеграция',
-	[AuditActionEnum.INTEGRATION_DISCONNECTED]: 'Отключена интеграция',
+export const AUDIT_ACTION_LABEL: Record<AuditAction, string> = {
+	[AuditAction.SERVICE_CREATED]: 'Создание сервиса',
+	[AuditAction.SERVICE_UPDATED]: 'Изменение сервиса',
+	[AuditAction.SERVICE_DELETED]: 'Удаление сервиса',
+	[AuditAction.TEMPLATE_USED]: 'Запуск шаблона',
+	[AuditAction.ROLE_CHANGED]: 'Смена роли',
+	[AuditAction.TEAM_MEMBER_ADDED]: 'Добавлен участник',
+	[AuditAction.TEAM_MEMBER_REMOVED]: 'Удалён участник',
+	[AuditAction.INTEGRATION_CONNECTED]: 'Подключена интеграция',
+	[AuditAction.INTEGRATION_DISCONNECTED]: 'Отключена интеграция',
 };
 
-export const AUDIT_ACTION_COLOR: Record<AuditActionType, string> = {
-	[AuditActionEnum.SERVICE_CREATED]: 'mint',
-	[AuditActionEnum.SERVICE_UPDATED]: 'sky',
-	[AuditActionEnum.SERVICE_DELETED]: 'danger',
-	[AuditActionEnum.TEMPLATE_USED]: 'lavender',
-	[AuditActionEnum.ROLE_CHANGED]: 'peach',
-	[AuditActionEnum.TEAM_MEMBER_ADDED]: 'mint',
-	[AuditActionEnum.TEAM_MEMBER_REMOVED]: 'gray',
-	[AuditActionEnum.INTEGRATION_CONNECTED]: 'mint',
-	[AuditActionEnum.INTEGRATION_DISCONNECTED]: 'gray',
+export const AUDIT_ACTION_COLOR: Record<AuditAction, string> = {
+	[AuditAction.SERVICE_CREATED]: 'mint',
+	[AuditAction.SERVICE_UPDATED]: 'sky',
+	[AuditAction.SERVICE_DELETED]: 'danger',
+	[AuditAction.TEMPLATE_USED]: 'lavender',
+	[AuditAction.ROLE_CHANGED]: 'peach',
+	[AuditAction.TEAM_MEMBER_ADDED]: 'mint',
+	[AuditAction.TEAM_MEMBER_REMOVED]: 'gray',
+	[AuditAction.INTEGRATION_CONNECTED]: 'mint',
+	[AuditAction.INTEGRATION_DISCONNECTED]: 'gray',
 };
 
-export const TARGET_TYPE_LABEL: Record<AuditTargetTypeType, string> = {
-	[AuditTargetTypeEnum.SERVICE]: 'Сервис',
-	[AuditTargetTypeEnum.TEMPLATE]: 'Шаблон',
-	[AuditTargetTypeEnum.TEAM]: 'Команда',
-	[AuditTargetTypeEnum.USER]: 'Пользователь',
-	[AuditTargetTypeEnum.INTEGRATION]: 'Интеграция',
+export const TARGET_TYPE_LABEL: Record<AuditTargetType, string> = {
+	[AuditTargetType.SERVICE]: 'Сервис',
+	[AuditTargetType.TEMPLATE]: 'Шаблон',
+	[AuditTargetType.TEAM]: 'Команда',
+	[AuditTargetType.USER]: 'Пользователь',
+	[AuditTargetType.INTEGRATION]: 'Интеграция',
 };
 
 export const ADMIN_AUDIT_PARAM_KEYS = {
@@ -64,8 +59,8 @@ export const ADMIN_AUDIT_PARAM_KEYS = {
 	to: 'to',
 } as const;
 
-export const ACTION_OPTIONS: Array<{ value: AuditActionType; label: string }> =
-	Object.values(AuditActionEnum).map((value) => ({
+export const ACTION_OPTIONS: Array<{ value: AuditAction; label: string }> =
+	Object.values(AuditAction).map((value) => ({
 		value,
 		label: AUDIT_ACTION_LABEL[value],
 	}));

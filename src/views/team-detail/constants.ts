@@ -1,4 +1,4 @@
-import { TeamRoleEnum, type TeamRoleType } from '@/entities/team';
+import { TeamRole } from '@/entities/team';
 
 export const TEAM_DETAIL_LABELS = {
 	createdAt: 'Создана',
@@ -14,20 +14,20 @@ export const TEAM_DETAIL_LABELS = {
 	healthEmpty: 'У команды пока нет сервисов в каталоге.',
 } as const;
 
-export const ROLE_LABEL: Record<TeamRoleType, string> = {
-	[TeamRoleEnum.OWNER]: 'Владелец',
-	[TeamRoleEnum.MAINTAINER]: 'Maintainer',
-	[TeamRoleEnum.MEMBER]: 'Участник',
+export const ROLE_LABEL: Record<TeamRole, string> = {
+	[TeamRole.OWNER]: 'Владелец',
+	[TeamRole.MAINTAINER]: 'Maintainer',
+	[TeamRole.MEMBER]: 'Участник',
 };
 
-export const ROLE_COLOR: Record<TeamRoleType, string> = {
-	[TeamRoleEnum.OWNER]: 'lavender',
-	[TeamRoleEnum.MAINTAINER]: 'sky',
-	[TeamRoleEnum.MEMBER]: 'gray',
+export const ROLE_COLOR: Record<TeamRole, string> = {
+	[TeamRole.OWNER]: 'lavender',
+	[TeamRole.MAINTAINER]: 'sky',
+	[TeamRole.MEMBER]: 'gray',
 };
 
-export const ROLE_ORDER: Record<TeamRoleType, number> = {
-	[TeamRoleEnum.OWNER]: 0,
-	[TeamRoleEnum.MAINTAINER]: 1,
-	[TeamRoleEnum.MEMBER]: 2,
+export const ROLE_ORDER: Record<TeamRole, number> = {
+	[TeamRole.OWNER]: 0,
+	[TeamRole.MAINTAINER]: 1,
+	[TeamRole.MEMBER]: 2,
 };

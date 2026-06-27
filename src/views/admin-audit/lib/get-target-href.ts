@@ -1,20 +1,17 @@
-import {
-	type AuditEventType,
-	AuditTargetTypeEnum,
-} from '@/entities/audit-event';
+import { type AuditEventType, AuditTargetType } from '@/entities/audit-event';
 import { pageConfig } from '@/shared/config/page.config';
 
 export const getTargetHref = (event: AuditEventType): string | null => {
 	switch (event.targetType) {
-		case AuditTargetTypeEnum.SERVICE:
+		case AuditTargetType.SERVICE:
 			return `${pageConfig.catalog}/${event.targetId}`;
-		case AuditTargetTypeEnum.TEMPLATE:
+		case AuditTargetType.TEMPLATE:
 			return `${pageConfig.templates}/${event.targetId}`;
-		case AuditTargetTypeEnum.TEAM:
+		case AuditTargetType.TEAM:
 			return `${pageConfig.teams}/${event.targetId}`;
-		case AuditTargetTypeEnum.USER:
+		case AuditTargetType.USER:
 			return `${pageConfig.admin}/users`;
-		case AuditTargetTypeEnum.INTEGRATION:
+		case AuditTargetType.INTEGRATION:
 			return `${pageConfig.admin}/integrations`;
 		default:
 			return null;

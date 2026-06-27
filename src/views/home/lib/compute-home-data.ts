@@ -1,12 +1,11 @@
 import {
-	AuditActionEnum,
+	AuditAction,
 	type AuditEventType,
-	AuditTargetTypeEnum,
+	AuditTargetType,
 } from '@/entities/audit-event';
 import {
-	ServiceEnvironmentNameEnum,
-	type ServiceEnvironmentNameType,
-	ServiceHealthEnum,
+	ServiceEnvironmentName,
+	ServiceHealth,
 	type ServiceType,
 } from '@/entities/service';
 import type { TeamType } from '@/entities/team';
@@ -19,21 +18,16 @@ import type {
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
-const ENV_DISPLAY_NAMES: Record<ServiceEnvironmentNameType, string> = {
-	[ServiceEnvironmentNameEnum.PROD]: 'production',
-	[ServiceEnvironmentNameEnum.STAGE]: 'stage',
-	[ServiceEnvironmentNameEnum.DEV]: 'dev',
+const ENV_DISPLAY_NAMES: Record<ServiceEnvironmentName, string> = {
+	[ServiceEnvironmentName.PROD]: 'production',
+	[ServiceEnvironmentName.STAGE]: 'stage',
+	[ServiceEnvironmentName.DEV]: 'dev',
 };
-
-const ENV_ORDER: ServiceEnvironmentNameType[] = [
-	ServiceEnvironmentNameEnum.PROD,
-	ServiceEnvironmentNameEnum.STAGE,
-	ServiceEnvironmentNameEnum.DEV,
-];
 
 const formatDelta = (value: number, suffix = ''): string => {
 	if (value === 0) return `±0${suffix}`;
 	const sign = value > 0 ? '+' : '−';
+
 	return `${sign}${Math.abs(value)}${suffix}`;
 };
 
@@ -62,18 +56,18 @@ export const computeHomeData = (
 	);
 
 	const created7d = recent7d.filter(
-		(event) => event.action === AuditActionEnum.SERVICE_CREATED,
+		(event) => event.action === AuditAction.SERVICE_CREATED,
 	).length;
 	const deleted7d = recent7d.filter(
-		(event) => event.action === AuditActionEnum.SERVICE_DELETED,
+		(event) => event.action === AuditAction.SERVICE_DELETED,
 	).length;
 	const templates7d = recent7d.filter(
-		(event) => event.action === AuditActionEnum.TEMPLATE_USED,
+		(event) => event.action === AuditAction.TEMPLATE_USED,
 	).length;
 	const incidents = services.filter(
 		(service) =>
-			service.health === ServiceHealthEnum.DEGRADED ||
-			service.health === ServiceHealthEnum.DOWN,
+			service.health === ServiceHealth.DEGRADED ||
+			service.health === ServiceHealth.DOWN,
 	).length;
 	const withPipeline = services.filter(
 		(service) => !!service.pipelineUrl,
@@ -116,7 +110,7 @@ export const computeHomeData = (
 
 	const eventsByService = new Map<string, number>();
 	for (const event of recent30d) {
-		if (event.targetType === AuditTargetTypeEnum.SERVICE) {
+		if (event.targetType === AuditTargetType.SERVICE) {
 			eventsByService.set(
 				event.targetId,
 				(eventsByService.get(event.targetId) ?? 0) + 1,
@@ -143,14 +137,19 @@ export const computeHomeData = (
 			usagePercent: Math.round((entry.activity / maxActivity) * 100),
 		}));
 
-	const environments: EnvironmentSummaryType[] = ENV_ORDER.map((envName) => {
+	const environments: EnvironmentSummaryType[] = Object.values(
+		ServiceEnvironmentName,
+	).map((envName) => {
 		const matching = services.filter((service) =>
 			service.environments.some((env) => env.name === envName),
 		);
+
 		const healthy = matching.filter(
-			(service) => service.health === ServiceHealthEnum.HEALTHY,
+			(service) => service.health === ServiceHealth.HEALTHY,
 		).length;
+
 		const ratio = matching.length === 0 ? 0 : healthy / matching.length;
+
 		return {
 			id: envName,
 			name: ENV_DISPLAY_NAMES[envName],

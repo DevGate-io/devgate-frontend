@@ -1,24 +1,18 @@
-export const ServiceHealthEnum = {
-	HEALTHY: 'healthy',
-	DEGRADED: 'degraded',
-	DOWN: 'down',
-	UNKNOWN: 'unknown',
-} as const;
+export enum ServiceHealth {
+	HEALTHY = 'healthy',
+	DEGRADED = 'degraded',
+	DOWN = 'down',
+	UNKNOWN = 'unknown',
+}
 
-export type ServiceHealthType =
-	(typeof ServiceHealthEnum)[keyof typeof ServiceHealthEnum];
-
-export const ServiceEnvironmentNameEnum = {
-	DEV: 'dev',
-	STAGE: 'stage',
-	PROD: 'prod',
-} as const;
-
-export type ServiceEnvironmentNameType =
-	(typeof ServiceEnvironmentNameEnum)[keyof typeof ServiceEnvironmentNameEnum];
+export enum ServiceEnvironmentName {
+	DEV = 'dev',
+	STAGE = 'stage',
+	PROD = 'prod',
+}
 
 export type ServiceEnvironmentType = {
-	name: ServiceEnvironmentNameType;
+	name: ServiceEnvironmentName;
 	url?: string;
 };
 
@@ -41,7 +35,7 @@ export type ServiceType = {
 	docsUrl?: string;
 	environments: ServiceEnvironmentType[];
 	slo?: ServiceSloType;
-	health: ServiceHealthType;
+	health: ServiceHealth;
 	dependencies: string[];
 	createdAt: string;
 	updatedAt: string;

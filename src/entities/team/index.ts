@@ -1,14 +1,12 @@
-export const TeamRoleEnum = {
-	OWNER: 'owner',
-	MAINTAINER: 'maintainer',
-	MEMBER: 'member',
-} as const;
-
-export type TeamRoleType = (typeof TeamRoleEnum)[keyof typeof TeamRoleEnum];
+export enum TeamRole {
+	OWNER = 'owner',
+	MAINTAINER = 'maintainer',
+	MEMBER = 'member',
+}
 
 export type TeamMemberType = {
 	userId: string;
-	role: TeamRoleType;
+	role: TeamRole;
 };
 
 export type TeamType = {

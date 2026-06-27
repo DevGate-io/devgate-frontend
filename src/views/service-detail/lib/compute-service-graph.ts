@@ -1,9 +1,9 @@
-import type { ServiceHealthType, ServiceType } from '@/entities/service';
+import type { ServiceHealth, ServiceType } from '@/entities/service';
 
 export type GraphNodeType = {
 	id: string;
 	name: string;
-	health: ServiceHealthType;
+	health: ServiceHealth;
 	isCurrent: boolean;
 	isNeighbor: boolean;
 };
@@ -48,6 +48,7 @@ export const computeServiceGraph = (
 	}));
 
 	const links: GraphLinkType[] = [];
+
 	for (const service of allServices) {
 		for (const dep of service.dependencies) {
 			if (idSet.has(dep)) {

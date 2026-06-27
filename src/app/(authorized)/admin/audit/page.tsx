@@ -1,5 +1,4 @@
-import type { AuditActionType } from '@/entities/audit-event';
-import { AuditActionEnum } from '@/entities/audit-event';
+import { AuditAction } from '@/entities/audit-event';
 import { getAuditEvents } from '@/shared/api/audit/get-audit-events';
 import { getUsers } from '@/shared/api/users/get-users';
 import { AdminAuditView } from '@/views/admin-audit';
@@ -13,8 +12,8 @@ type AdminAuditPageProps = {
 	}>;
 };
 
-const isAuditAction = (value: string | undefined): value is AuditActionType =>
-	!!value && (Object.values(AuditActionEnum) as string[]).includes(value);
+const isAuditAction = (value: string | undefined): value is AuditAction =>
+	!!value && (Object.values(AuditAction) as string[]).includes(value);
 
 const AdminAuditPage = async ({ searchParams }: AdminAuditPageProps) => {
 	const params = await searchParams;

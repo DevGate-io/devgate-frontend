@@ -1,7 +1,4 @@
-import {
-	TemplateParameterKindEnum,
-	type TemplateType,
-} from '@/entities/template';
+import { TemplateParameterKind, type TemplateType } from '@/entities/template';
 import type {
 	TemplateParameterValueType,
 	TemplateRunFormStateType,
@@ -14,13 +11,13 @@ export const buildFormDefaults = (
 
 	for (const param of template.parameters) {
 		switch (param.kind) {
-			case TemplateParameterKindEnum.STRING:
+			case TemplateParameterKind.STRING:
 				parameters[param.name] = param.default ?? '';
 				break;
-			case TemplateParameterKindEnum.ENUM:
+			case TemplateParameterKind.ENUM:
 				parameters[param.name] = param.default ?? '';
 				break;
-			case TemplateParameterKindEnum.BOOLEAN:
+			case TemplateParameterKind.BOOLEAN:
 				parameters[param.name] = param.default ?? false;
 				break;
 		}

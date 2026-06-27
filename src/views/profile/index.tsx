@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import type { AuditEventType } from '@/entities/audit-event';
-import type { TeamRoleType, TeamType } from '@/entities/team';
+import type { TeamRole, TeamType } from '@/entities/team';
 import type { User } from '@/entities/user';
 import { MyActivityPanel } from '@/views/profile/ui/my-activity-panel';
 import { MyTeamsPanel } from '@/views/profile/ui/my-teams-panel';
@@ -9,7 +9,7 @@ import css from './index.module.css';
 
 type ProfileViewProps = {
 	user: User;
-	teams: Array<{ team: TeamType; role: TeamRoleType }>;
+	teams: Array<{ team: TeamType; role: TeamRole }>;
 	events: AuditEventType[];
 };
 

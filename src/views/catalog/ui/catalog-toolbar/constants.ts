@@ -1,4 +1,4 @@
-import { ServiceHealthEnum } from '@/entities/service';
+import { ServiceHealth } from '@/entities/service';
 
 export const TOOLBAR_LABELS = {
 	searchLabel: 'Поиск по сервисам',
@@ -12,10 +12,10 @@ export const TOOLBAR_LABELS = {
 export const SEARCH_DEBOUNCE_MS = 250;
 
 export const HEALTH_FILTER_OPTIONS: Array<{ value: string; label: string }> = [
-	{ value: ServiceHealthEnum.HEALTHY, label: 'Healthy' },
-	{ value: ServiceHealthEnum.DEGRADED, label: 'Degraded' },
-	{ value: ServiceHealthEnum.DOWN, label: 'Down' },
-	{ value: ServiceHealthEnum.UNKNOWN, label: 'Unknown' },
+	{ value: ServiceHealth.HEALTHY, label: 'Healthy' },
+	{ value: ServiceHealth.DEGRADED, label: 'Degraded' },
+	{ value: ServiceHealth.DOWN, label: 'Down' },
+	{ value: ServiceHealth.UNKNOWN, label: 'Unknown' },
 ];
 
 export const SEARCH_PARAM_KEYS = {

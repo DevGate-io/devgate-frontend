@@ -1,11 +1,8 @@
-export const TemplateParameterKindEnum = {
-	STRING: 'string',
-	ENUM: 'enum',
-	BOOLEAN: 'boolean',
-} as const;
-
-export type TemplateParameterKindType =
-	(typeof TemplateParameterKindEnum)[keyof typeof TemplateParameterKindEnum];
+export enum TemplateParameterKind {
+	STRING = 'string',
+	ENUM = 'enum',
+	BOOLEAN = 'boolean',
+}
 
 type BaseTemplateParameter = {
 	name: string;
@@ -15,19 +12,19 @@ type BaseTemplateParameter = {
 };
 
 export type StringTemplateParameterType = BaseTemplateParameter & {
-	kind: typeof TemplateParameterKindEnum.STRING;
+	kind: TemplateParameterKind.STRING;
 	default?: string;
 	pattern?: string;
 };
 
 export type EnumTemplateParameterType = BaseTemplateParameter & {
-	kind: typeof TemplateParameterKindEnum.ENUM;
+	kind: TemplateParameterKind.ENUM;
 	options: Array<{ value: string; label: string }>;
 	default?: string;
 };
 
 export type BooleanTemplateParameterType = BaseTemplateParameter & {
-	kind: typeof TemplateParameterKindEnum.BOOLEAN;
+	kind: TemplateParameterKind.BOOLEAN;
 	default?: boolean;
 };
 

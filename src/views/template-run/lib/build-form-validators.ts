@@ -1,7 +1,4 @@
-import {
-	TemplateParameterKindEnum,
-	type TemplateType,
-} from '@/entities/template';
+import { TemplateParameterKind, type TemplateType } from '@/entities/template';
 import { TEMPLATE_RUN_LABELS } from '@/views/template-run/constants';
 import type { TemplateParameterValueType } from '@/views/template-run/types';
 
@@ -15,7 +12,7 @@ export const buildParameterValidators = (
 	for (const param of template.parameters) {
 		const path = `parameters.${param.name}`;
 
-		if (param.kind === TemplateParameterKindEnum.STRING) {
+		if (param.kind === TemplateParameterKind.STRING) {
 			const pattern = param.pattern ? new RegExp(param.pattern) : null;
 			validators[path] = (value) => {
 				const text = typeof value === 'string' ? value.trim() : '';
@@ -30,7 +27,7 @@ export const buildParameterValidators = (
 			continue;
 		}
 
-		if (param.kind === TemplateParameterKindEnum.ENUM) {
+		if (param.kind === TemplateParameterKind.ENUM) {
 			validators[path] = (value) => {
 				if (!param.required) return null;
 				const text = typeof value === 'string' ? value : '';

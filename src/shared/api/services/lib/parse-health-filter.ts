@@ -1,15 +1,15 @@
-import { ServiceHealthEnum, type ServiceHealthType } from '@/entities/service';
+import { ServiceHealth } from '@/entities/service';
 
-const HEALTH_VALUES: ServiceHealthType[] = Object.values(ServiceHealthEnum);
+const HEALTH_VALUES: ServiceHealth[] = Object.values(ServiceHealth);
 
 export const parseHealthFilter = (
 	value: string | undefined,
-): ServiceHealthType | undefined => {
+): ServiceHealth | undefined => {
 	if (!value) {
 		return undefined;
 	}
 
-	return HEALTH_VALUES.includes(value as ServiceHealthType)
-		? (value as ServiceHealthType)
+	return HEALTH_VALUES.includes(value as ServiceHealth)
+		? (value as ServiceHealth)
 		: undefined;
 };

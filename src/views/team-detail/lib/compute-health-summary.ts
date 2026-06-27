@@ -1,22 +1,18 @@
-import {
-	ServiceHealthEnum,
-	type ServiceHealthType,
-	type ServiceType,
-} from '@/entities/service';
+import { ServiceHealth, type ServiceType } from '@/entities/service';
 
 export type HealthSummaryType = {
 	total: number;
-	counts: Record<ServiceHealthType, number>;
+	counts: Record<ServiceHealth, number>;
 };
 
 export const computeHealthSummary = (
 	services: ServiceType[],
 ): HealthSummaryType => {
-	const counts: Record<ServiceHealthType, number> = {
-		[ServiceHealthEnum.HEALTHY]: 0,
-		[ServiceHealthEnum.DEGRADED]: 0,
-		[ServiceHealthEnum.DOWN]: 0,
-		[ServiceHealthEnum.UNKNOWN]: 0,
+	const counts: Record<ServiceHealth, number> = {
+		[ServiceHealth.HEALTHY]: 0,
+		[ServiceHealth.DEGRADED]: 0,
+		[ServiceHealth.DOWN]: 0,
+		[ServiceHealth.UNKNOWN]: 0,
 	};
 
 	for (const service of services) {

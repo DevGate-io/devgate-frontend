@@ -1,4 +1,4 @@
-import type { ServiceEnvironmentNameType } from '@/entities/service';
+import type { ServiceEnvironmentName } from '@/entities/service';
 
 export type ServiceFormStateType = {
 	name: string;
@@ -11,5 +11,5 @@ export type ServiceFormStateType = {
 	pipelineUrl: string;
 	docsUrl: string;
 	tags: string[];
-	environmentNames: ServiceEnvironmentNameType[];
+	environmentNames: ServiceEnvironmentName[];
 };

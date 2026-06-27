@@ -1,7 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import type { AuditActionType, AuditEventType } from '@/entities/audit-event';
+import type { AuditAction, AuditEventType } from '@/entities/audit-event';
 import { apiClient } from '@/shared/api/client';
 import { API_URLS } from '@/shared/config/api-urls';
 import { ACCESS_TOKEN_KEY } from '@/shared/constants';
@@ -9,7 +9,7 @@ import { isTestAccessToken } from '@/shared/lib/test-auth';
 import { MOCK_AUDIT_EVENTS } from '@/shared/lib/test-audit';
 
 export type AuditFiltersType = {
-	action?: AuditActionType;
+	action?: AuditAction;
 	actorId?: string;
 	from?: string;
 	to?: string;
@@ -17,7 +17,7 @@ export type AuditFiltersType = {
 
 const matchesAction = (
 	event: AuditEventType,
-	action: AuditActionType | undefined,
+	action: AuditAction | undefined,
 ): boolean => !action || event.action === action;
 
 const matchesActor = (

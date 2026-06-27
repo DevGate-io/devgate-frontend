@@ -1,4 +1,4 @@
-import { ServiceEnvironmentNameEnum } from '@/entities/service';
+import { ServiceEnvironmentName } from '@/entities/service';
 
 export const SERVICE_FORM_LABELS = {
 	title: 'Создание сервиса',
@@ -66,7 +66,7 @@ export const LANGUAGE_OPTIONS: Array<{ value: string; label: string }> = [
 ];
 
 export const ENVIRONMENT_OPTIONS: Array<{ value: string; label: string }> = [
-	{ value: ServiceEnvironmentNameEnum.DEV, label: 'dev' },
-	{ value: ServiceEnvironmentNameEnum.STAGE, label: 'stage' },
-	{ value: ServiceEnvironmentNameEnum.PROD, label: 'production' },
+	{ value: ServiceEnvironmentName.DEV, label: 'dev' },
+	{ value: ServiceEnvironmentName.STAGE, label: 'stage' },
+	{ value: ServiceEnvironmentName.PROD, label: 'production' },
 ];

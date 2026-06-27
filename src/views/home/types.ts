@@ -1,4 +1,4 @@
-import type { ServiceHealthType } from '@/entities/service';
+import type { ServiceHealth } from '@/entities/service';
 
 export type HealthToneType = 'mint' | 'sky' | 'peach' | 'danger';
 
@@ -18,7 +18,7 @@ export type TopServiceType = {
 	name: string;
 	ownerTeamId: string;
 	ownerTeamName: string;
-	health: ServiceHealthType;
+	health: ServiceHealth;
 	activity: number;
 	usagePercent: number;
 };

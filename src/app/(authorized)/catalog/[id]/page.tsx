@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { AuditTargetTypeEnum } from '@/entities/audit-event';
+import { AuditTargetType } from '@/entities/audit-event';
 import { getAuditEvents } from '@/shared/api/audit/get-audit-events';
 import { getServiceById } from '@/shared/api/services/get-service-by-id';
 import { getServices } from '@/shared/api/services/get-services';
@@ -32,7 +32,7 @@ const ServiceDetailPage = async ({ params }: ServiceDetailPageProps) => {
 	const events = allEvents
 		.filter(
 			(event) =>
-				event.targetType === AuditTargetTypeEnum.SERVICE &&
+				event.targetType === AuditTargetType.SERVICE &&
 				event.targetId === service.id,
 		)
 		.slice(0, RECENT_ACTIVITY_LIMIT);

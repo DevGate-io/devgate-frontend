@@ -1,9 +1,4 @@
-import {
-	IntegrationKindEnum,
-	type IntegrationKindType,
-	IntegrationStatusEnum,
-	type IntegrationStatusType,
-} from '@/entities/integration';
+import { IntegrationKind, IntegrationStatus } from '@/entities/integration';
 
 export const ADMIN_INTEGRATIONS_LABELS = {
 	title: 'Интеграции',
@@ -17,22 +12,22 @@ export const ADMIN_INTEGRATIONS_LABELS = {
 	docsLink: 'Документация',
 } as const;
 
-export const KIND_LABEL: Record<IntegrationKindType, string> = {
-	[IntegrationKindEnum.SCM]: 'SCM',
-	[IntegrationKindEnum.CI]: 'CI/CD',
-	[IntegrationKindEnum.MONITORING]: 'Monitoring',
-	[IntegrationKindEnum.CHAT]: 'Chat',
-	[IntegrationKindEnum.QUALITY]: 'Quality',
+export const KIND_LABEL: Record<IntegrationKind, string> = {
+	[IntegrationKind.SCM]: 'SCM',
+	[IntegrationKind.CI]: 'CI/CD',
+	[IntegrationKind.MONITORING]: 'Monitoring',
+	[IntegrationKind.CHAT]: 'Chat',
+	[IntegrationKind.QUALITY]: 'Quality',
 };
 
-export const STATUS_LABEL: Record<IntegrationStatusType, string> = {
-	[IntegrationStatusEnum.CONNECTED]: 'Подключено',
-	[IntegrationStatusEnum.ERROR]: 'Ошибка',
-	[IntegrationStatusEnum.DISABLED]: 'Отключено',
+export const STATUS_LABEL: Record<IntegrationStatus, string> = {
+	[IntegrationStatus.CONNECTED]: 'Подключено',
+	[IntegrationStatus.ERROR]: 'Ошибка',
+	[IntegrationStatus.DISABLED]: 'Отключено',
 };
 
-export const STATUS_COLOR: Record<IntegrationStatusType, string> = {
-	[IntegrationStatusEnum.CONNECTED]: 'mint',
-	[IntegrationStatusEnum.ERROR]: 'danger',
-	[IntegrationStatusEnum.DISABLED]: 'gray',
+export const STATUS_COLOR: Record<IntegrationStatus, string> = {
+	[IntegrationStatus.CONNECTED]: 'mint',
+	[IntegrationStatus.ERROR]: 'danger',
+	[IntegrationStatus.DISABLED]: 'gray',
 };

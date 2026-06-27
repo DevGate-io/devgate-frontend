@@ -2,7 +2,7 @@ import { Select, Switch, TextInput } from '@mantine/core';
 import type { UseFormReturnType } from '@mantine/form';
 import type { FC } from 'react';
 import {
-	TemplateParameterKindEnum,
+	TemplateParameterKind,
 	type TemplateParameterType,
 } from '@/entities/template';
 import type { TemplateRunFormStateType } from '@/views/template-run/types';
@@ -18,7 +18,7 @@ export const ParameterField: FC<ParameterFieldProps> = ({
 }) => {
 	const path = `parameters.${parameter.name}`;
 
-	if (parameter.kind === TemplateParameterKindEnum.STRING) {
+	if (parameter.kind === TemplateParameterKind.STRING) {
 		return (
 			<TextInput
 				{...form.getInputProps(path)}
@@ -30,7 +30,7 @@ export const ParameterField: FC<ParameterFieldProps> = ({
 		);
 	}
 
-	if (parameter.kind === TemplateParameterKindEnum.ENUM) {
+	if (parameter.kind === TemplateParameterKind.ENUM) {
 		return (
 			<Select
 				{...form.getInputProps(path)}

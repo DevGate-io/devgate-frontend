@@ -1,7 +1,7 @@
 import { Badge } from '@mantine/core';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { TeamRoleEnum, type TeamType } from '@/entities/team';
+import { TeamRole, type TeamType } from '@/entities/team';
 import { pageConfig } from '@/shared/config/page.config';
 import { formatDate } from '@/shared/lib/format-date';
 import { TEAMS_LABELS } from '@/views/teams/constants';
@@ -18,7 +18,7 @@ type TeamCardProps = {
 
 export const TeamCard: FC<TeamCardProps> = ({ team, servicesCount }) => {
 	const ownersCount = team.members.filter(
-		(member) => member.role === TeamRoleEnum.OWNER,
+		(member) => member.role === TeamRole.OWNER,
 	).length;
 
 	return (

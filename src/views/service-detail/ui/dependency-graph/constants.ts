@@ -1,4 +1,4 @@
-import { ServiceHealthEnum, type ServiceHealthType } from '@/entities/service';
+import { ServiceHealth } from '@/entities/service';
 
 export const GRAPH_HEIGHT = 480;
 export const GRAPH_COOLDOWN_MS = 4000;
@@ -24,18 +24,18 @@ export const GRAPH_HALO_EXTRA_RADIUS = 4;
 export const GRAPH_POINTER_RADIUS_CURRENT = 14;
 export const GRAPH_POINTER_RADIUS_OTHER = 10;
 
-export const HEALTH_COLOR_LIGHT: Record<ServiceHealthType, string> = {
-	[ServiceHealthEnum.HEALTHY]: '#26be6d',
-	[ServiceHealthEnum.DEGRADED]: '#f57b0d',
-	[ServiceHealthEnum.DOWN]: '#d72440',
-	[ServiceHealthEnum.UNKNOWN]: '#b2b2bb',
+export const HEALTH_COLOR_LIGHT: Record<ServiceHealth, string> = {
+	[ServiceHealth.HEALTHY]: '#26be6d',
+	[ServiceHealth.DEGRADED]: '#f57b0d',
+	[ServiceHealth.DOWN]: '#d72440',
+	[ServiceHealth.UNKNOWN]: '#b2b2bb',
 };
 
-export const HEALTH_COLOR_DARK: Record<ServiceHealthType, string> = {
-	[ServiceHealthEnum.HEALTHY]: '#46cd84',
-	[ServiceHealthEnum.DEGRADED]: '#ff9128',
-	[ServiceHealthEnum.DOWN]: '#e0445f',
-	[ServiceHealthEnum.UNKNOWN]: '#7a7d85',
+export const HEALTH_COLOR_DARK: Record<ServiceHealth, string> = {
+	[ServiceHealth.HEALTHY]: '#46cd84',
+	[ServiceHealth.DEGRADED]: '#ff9128',
+	[ServiceHealth.DOWN]: '#e0445f',
+	[ServiceHealth.UNKNOWN]: '#7a7d85',
 };
 
 export const GRAPH_PALETTE = {

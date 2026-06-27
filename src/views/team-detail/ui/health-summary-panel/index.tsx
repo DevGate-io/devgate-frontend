@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { ServiceHealthEnum, type ServiceHealthType } from '@/entities/service';
+import { ServiceHealth } from '@/entities/service';
 import { SERVICE_HEALTH_LABEL } from '@/views/catalog/constants';
 import { TEAM_DETAIL_LABELS } from '@/views/team-detail/constants';
 import type { HealthSummaryType } from '@/views/team-detail/lib/compute-health-summary';
@@ -9,11 +9,11 @@ type HealthSummaryPanelProps = {
 	summary: HealthSummaryType;
 };
 
-const HEALTH_ORDER: ServiceHealthType[] = [
-	ServiceHealthEnum.HEALTHY,
-	ServiceHealthEnum.DEGRADED,
-	ServiceHealthEnum.DOWN,
-	ServiceHealthEnum.UNKNOWN,
+const HEALTH_ORDER: ServiceHealth[] = [
+	ServiceHealth.HEALTHY,
+	ServiceHealth.DEGRADED,
+	ServiceHealth.DOWN,
+	ServiceHealth.UNKNOWN,
 ];
 
 export const HealthSummaryPanel: FC<HealthSummaryPanelProps> = ({

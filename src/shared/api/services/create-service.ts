@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import {
 	type ServiceEnvironmentType,
-	ServiceHealthEnum,
+	ServiceHealth,
 	type ServiceType,
 } from '@/entities/service';
 import { apiClient } from '@/shared/api/client';
@@ -44,7 +44,7 @@ const buildMockService = (dto: CreateServiceDtoType): ServiceType => {
 		pipelineUrl: dto.pipelineUrl,
 		docsUrl: dto.docsUrl,
 		environments: dto.environments,
-		health: ServiceHealthEnum.UNKNOWN,
+		health: ServiceHealth.UNKNOWN,
 		dependencies: [],
 		createdAt: now,
 		updatedAt: now,

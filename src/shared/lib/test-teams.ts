@@ -1,4 +1,4 @@
-import { TeamRoleEnum, type TeamType } from '@/entities/team';
+import { TeamRole, type TeamType } from '@/entities/team';
 
 export const MOCK_TEAMS: TeamType[] = [
 	{
@@ -9,10 +9,10 @@ export const MOCK_TEAMS: TeamType[] = [
 		description:
 			'Платформенная команда: ядро портала, runtime, общие SDK и инфраструктурные сервисы.',
 		members: [
-			{ userId: 'usr-anna-ivanova', role: TeamRoleEnum.OWNER },
-			{ userId: 'usr-denis-kravtsov', role: TeamRoleEnum.MAINTAINER },
-			{ userId: 'usr-mikhail-orlov', role: TeamRoleEnum.MEMBER },
-			{ userId: 'usr-pavel-sidorov', role: TeamRoleEnum.MEMBER },
+			{ userId: 'usr-anna-ivanova', role: TeamRole.OWNER },
+			{ userId: 'usr-denis-kravtsov', role: TeamRole.MAINTAINER },
+			{ userId: 'usr-mikhail-orlov', role: TeamRole.MEMBER },
+			{ userId: 'usr-pavel-sidorov', role: TeamRole.MEMBER },
 		],
 		createdAt: '2024-09-01T09:00:00Z',
 	},
@@ -24,9 +24,9 @@ export const MOCK_TEAMS: TeamType[] = [
 		description:
 			'Команда коммерции: каталог, корзина, заказы и интеграция с каталогом сервисов.',
 		members: [
-			{ userId: 'usr-roman-volkov', role: TeamRoleEnum.OWNER },
-			{ userId: 'usr-ekaterina-belova', role: TeamRoleEnum.MAINTAINER },
-			{ userId: 'usr-natalia-popova', role: TeamRoleEnum.MEMBER },
+			{ userId: 'usr-roman-volkov', role: TeamRole.OWNER },
+			{ userId: 'usr-ekaterina-belova', role: TeamRole.MAINTAINER },
+			{ userId: 'usr-natalia-popova', role: TeamRole.MEMBER },
 		],
 		createdAt: '2024-10-12T10:30:00Z',
 	},
@@ -38,8 +38,8 @@ export const MOCK_TEAMS: TeamType[] = [
 		description:
 			'Биллинг и расчёты: тарификация, инвойсы, интеграции с платёжными системами.',
 		members: [
-			{ userId: 'usr-alexey-zaytsev', role: TeamRoleEnum.OWNER },
-			{ userId: 'usr-olga-petrova', role: TeamRoleEnum.MAINTAINER },
+			{ userId: 'usr-alexey-zaytsev', role: TeamRole.OWNER },
+			{ userId: 'usr-olga-petrova', role: TeamRole.MAINTAINER },
 		],
 		createdAt: '2025-01-20T08:15:00Z',
 	},
@@ -51,8 +51,8 @@ export const MOCK_TEAMS: TeamType[] = [
 		description:
 			'Команда роста: уведомления, активация, A/B-эксперименты, аналитика воронок.',
 		members: [
-			{ userId: 'usr-irina-fedorova', role: TeamRoleEnum.OWNER },
-			{ userId: 'usr-natalia-popova', role: TeamRoleEnum.MEMBER },
+			{ userId: 'usr-irina-fedorova', role: TeamRole.OWNER },
+			{ userId: 'usr-natalia-popova', role: TeamRole.MEMBER },
 		],
 		createdAt: '2025-03-05T11:45:00Z',
 	},

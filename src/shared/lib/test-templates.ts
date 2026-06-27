@@ -1,7 +1,4 @@
-import {
-	TemplateParameterKindEnum,
-	type TemplateType,
-} from '@/entities/template';
+import { TemplateParameterKind, type TemplateType } from '@/entities/template';
 
 export const MOCK_TEMPLATES: TemplateType[] = [
 	{
@@ -13,7 +10,7 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 		tags: ['typescript', 'fastify', 'docker', 'api'],
 		parameters: [
 			{
-				kind: TemplateParameterKindEnum.STRING,
+				kind: TemplateParameterKind.STRING,
 				name: 'serviceName',
 				label: 'Имя сервиса',
 				required: true,
@@ -21,13 +18,13 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 				description: 'Используется как slug, имя репо и пакет в registry.',
 			},
 			{
-				kind: TemplateParameterKindEnum.STRING,
+				kind: TemplateParameterKind.STRING,
 				name: 'description',
 				label: 'Описание',
 				description: 'Короткое описание для каталога DevGate.',
 			},
 			{
-				kind: TemplateParameterKindEnum.ENUM,
+				kind: TemplateParameterKind.ENUM,
 				name: 'ciProvider',
 				label: 'CI-провайдер',
 				required: true,
@@ -39,13 +36,13 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 				default: 'github-actions',
 			},
 			{
-				kind: TemplateParameterKindEnum.BOOLEAN,
+				kind: TemplateParameterKind.BOOLEAN,
 				name: 'includeOpenTelemetry',
 				label: 'Подключить OpenTelemetry',
 				default: true,
 			},
 			{
-				kind: TemplateParameterKindEnum.BOOLEAN,
+				kind: TemplateParameterKind.BOOLEAN,
 				name: 'includePostgres',
 				label: 'Добавить Postgres-зависимость',
 				default: false,
@@ -62,21 +59,21 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 		tags: ['go', 'kafka', 'worker', 'metrics'],
 		parameters: [
 			{
-				kind: TemplateParameterKindEnum.STRING,
+				kind: TemplateParameterKind.STRING,
 				name: 'serviceName',
 				label: 'Имя сервиса',
 				required: true,
 				pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$',
 			},
 			{
-				kind: TemplateParameterKindEnum.STRING,
+				kind: TemplateParameterKind.STRING,
 				name: 'kafkaTopic',
 				label: 'Kafka topic',
 				required: true,
 				description: 'Topic, который сервис будет потреблять.',
 			},
 			{
-				kind: TemplateParameterKindEnum.ENUM,
+				kind: TemplateParameterKind.ENUM,
 				name: 'consumerGroup',
 				label: 'Стратегия consumer-group',
 				options: [
@@ -86,7 +83,7 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 				default: 'shared',
 			},
 			{
-				kind: TemplateParameterKindEnum.BOOLEAN,
+				kind: TemplateParameterKind.BOOLEAN,
 				name: 'includeDeadLetterQueue',
 				label: 'Подключить DLQ',
 				default: true,
@@ -103,14 +100,14 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 		tags: ['python', 'cli', 'pypi'],
 		parameters: [
 			{
-				kind: TemplateParameterKindEnum.STRING,
+				kind: TemplateParameterKind.STRING,
 				name: 'toolName',
 				label: 'Имя утилиты',
 				required: true,
 				pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$',
 			},
 			{
-				kind: TemplateParameterKindEnum.ENUM,
+				kind: TemplateParameterKind.ENUM,
 				name: 'pythonVersion',
 				label: 'Python',
 				options: [
@@ -121,7 +118,7 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 				default: '3.12',
 			},
 			{
-				kind: TemplateParameterKindEnum.BOOLEAN,
+				kind: TemplateParameterKind.BOOLEAN,
 				name: 'publishToPypi',
 				label: 'Публиковать в корпоративный PyPI',
 				default: true,
@@ -138,14 +135,14 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 		tags: ['typescript', 'nextjs', 'mantine', 'frontend'],
 		parameters: [
 			{
-				kind: TemplateParameterKindEnum.STRING,
+				kind: TemplateParameterKind.STRING,
 				name: 'projectName',
 				label: 'Имя проекта',
 				required: true,
 				pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$',
 			},
 			{
-				kind: TemplateParameterKindEnum.ENUM,
+				kind: TemplateParameterKind.ENUM,
 				name: 'styling',
 				label: 'Подход к стилизации',
 				options: [
@@ -155,13 +152,13 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 				default: 'css-modules',
 			},
 			{
-				kind: TemplateParameterKindEnum.BOOLEAN,
+				kind: TemplateParameterKind.BOOLEAN,
 				name: 'includeAuth',
 				label: 'Включить шаблон авторизации',
 				default: false,
 			},
 			{
-				kind: TemplateParameterKindEnum.BOOLEAN,
+				kind: TemplateParameterKind.BOOLEAN,
 				name: 'enableE2e',
 				label: 'Подключить Playwright e2e',
 				default: false,
@@ -178,21 +175,21 @@ export const MOCK_TEMPLATES: TemplateType[] = [
 		tags: ['rust', 'grpc', 'tonic', 'critical'],
 		parameters: [
 			{
-				kind: TemplateParameterKindEnum.STRING,
+				kind: TemplateParameterKind.STRING,
 				name: 'serviceName',
 				label: 'Имя сервиса',
 				required: true,
 				pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$',
 			},
 			{
-				kind: TemplateParameterKindEnum.STRING,
+				kind: TemplateParameterKind.STRING,
 				name: 'protoPackage',
 				label: 'Имя proto-пакета',
 				required: true,
 				description: 'Например, devgate.payments.v1',
 			},
 			{
-				kind: TemplateParameterKindEnum.BOOLEAN,
+				kind: TemplateParameterKind.BOOLEAN,
 				name: 'includeOpenTelemetry',
 				label: 'Подключить OpenTelemetry',
 				default: true,

@@ -1,8 +1,8 @@
-import type { ServiceHealthType } from '@/entities/service';
+import type { ServiceHealth } from '@/entities/service';
 
 export type ServicesFiltersType = {
 	search?: string;
 	tags?: string[];
-	health?: ServiceHealthType;
+	health?: ServiceHealth;
 	ownerTeamId?: string;
 };
