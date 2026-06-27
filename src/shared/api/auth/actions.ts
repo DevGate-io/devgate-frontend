@@ -2,6 +2,8 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { apiClient } from '@/shared/api/client';
+import { API_URLS } from '@/shared/config/api-urls';
 import { pageConfig } from '@/shared/config/page.config';
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/shared/constants';
 
@@ -28,6 +30,12 @@ export const clearAuthCookies = async () => {
 };
 
 export const logout = async () => {
+	try {
+		await apiClient.post(API_URLS.logout);
+	} catch (error) {
+		console.error(error);
+	}
+
 	await clearAuthCookies();
 	redirect(pageConfig.auth);
 };
