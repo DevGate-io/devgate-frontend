@@ -26,14 +26,24 @@ export const useSession = () => {
 	);
 
 	const wasAuthenticated = useRef(false);
+	const hasTriedRefetch = useRef(false);
 
 	useEffect(() => {
-		if (query.data && !wasAuthenticated.current) {
-			wasAuthenticated.current = true;
+		if (query.data) {
+			if (!wasAuthenticated.current) {
+				wasAuthenticated.current = true;
+			}
+			hasTriedRefetch.current = false;
+			return;
 		}
 
-		if (wasAuthenticated.current && !query.data && !query.isLoading) {
-			window.location.href = pageConfig.auth;
+		if (wasAuthenticated.current && !query.isLoading) {
+			if (!hasTriedRefetch.current) {
+				hasTriedRefetch.current = true;
+				query.refetch();
+			} else {
+				window.location.href = pageConfig.auth;
+			}
 		}
 	}, [query.data, query.isLoading]);
 
