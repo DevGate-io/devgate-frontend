@@ -30,6 +30,7 @@
 		"@biomejs/biome": "2.2.0",
 		"@commitlint/cli": "20.2.0",
 		"@commitlint/config-conventional": "20.2.0",
+		"@csstools/postcss-light-dark-function": "^3.0.2",
 		"@types/node": "^20.19.27",
 		"@types/react": "^19.2.7",
 		"@types/react-dom": "^19.2.3",

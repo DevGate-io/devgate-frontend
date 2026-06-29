@@ -5,6 +5,7 @@ module.exports = {
 		'postcss-import': {
 			path: [path.resolve(__dirname, 'shared/styles')],
 		},
+		'@csstools/postcss-light-dark-function': {},
 		'postcss-mixins': {
 			mixinsDir: path.resolve(__dirname, 'shared/styles/mixins'),
 		},

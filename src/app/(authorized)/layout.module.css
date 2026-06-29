@@ -8,9 +8,17 @@
 	gap: 14px;
 	align-items: center;
 	padding-inline: 18px;
-	background-color: var(--devgate-surface-color);
+	background-color: var(--mantine-color-white);
 	border-block-end: 1px solid var(--devgate-shell-border-color);
 	box-shadow: var(--devgate-shell-shadow);
+}
+
+[data-mantine-color-scheme="dark"] .header {
+	background-color: var(--mantine-color-dark-8);
+}
+
+[data-mantine-color-scheme="light"] .header {
+	background-color: var(--mantine-color-gray-2);
 }
 
 .navbar {

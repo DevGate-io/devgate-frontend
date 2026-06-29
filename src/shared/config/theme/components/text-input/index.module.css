@@ -16,7 +16,10 @@
 
 	&:has(input:focus) {
 		.label {
-			color: var(--mantine-color-gray-9);
+			color: light-dark(
+				var(--mantine-color-gray-9),
+				var(--mantine-color-gray-1)
+			);
 		}
 	}
 }
