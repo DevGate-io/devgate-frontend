@@ -30,8 +30,15 @@ export const getUsers = async (
 		);
 	}
 
-	const response = await apiClient.get<TeamMemberUserType[]>(API_URLS.users, {
-		params: filters,
-	});
-	return response.data;
+	try {
+		const response = await apiClient.get<TeamMemberUserType[]>(API_URLS.users, {
+			params: filters,
+		});
+
+		return response.data;
+	} catch (error) {
+		console.error(error);
+
+		return [];
+	}
 };

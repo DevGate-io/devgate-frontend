@@ -5,6 +5,6 @@ export const MOCK_API = {
 	teams: true,
 	templates: true,
 	integrations: true,
-	audit: true,
+	audit: false,
 	users: false,
 } as const;

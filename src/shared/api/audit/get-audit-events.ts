@@ -29,18 +29,22 @@ const matchesDateRange = (
 	to: string | undefined,
 ): boolean => {
 	const eventTime = new Date(event.createdAt).getTime();
+
 	if (from) {
 		const fromTime = new Date(from).getTime();
-		if (Number.isNaN(fromTime) === false && eventTime < fromTime) {
+		if (!Number.isNaN(fromTime) && eventTime < fromTime) {
 			return false;
 		}
 	}
+
 	if (to) {
 		const toTime = new Date(to).getTime() + 24 * 60 * 60 * 1000;
-		if (Number.isNaN(toTime) === false && eventTime > toTime) {
+
+		if (!Number.isNaN(toTime) && eventTime > toTime) {
 			return false;
 		}
 	}
+
 	return true;
 };
 
@@ -59,8 +63,17 @@ export const getAuditEvents = async (
 		);
 	}
 
-	const response = await apiClient.get<AuditEventType[]>(API_URLS.auditEvents, {
-		params: filters,
-	});
-	return response.data;
+	try {
+		const response = await apiClient.get<AuditEventType[]>(
+			API_URLS.auditEvents,
+			{
+				params: filters,
+			},
+		);
+
+		return response.data;
+	} catch (error) {
+		console.error(error);
+		return [];
+	}
 };

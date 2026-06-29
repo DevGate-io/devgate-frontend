@@ -24,9 +24,13 @@ export const setAuthCookies = async (
 };
 
 export const clearAuthCookies = async () => {
-	const store = await cookies();
-	store.delete(ACCESS_TOKEN_KEY);
-	store.delete(REFRESH_TOKEN_KEY);
+	try {
+		const store = await cookies();
+		store.delete(ACCESS_TOKEN_KEY);
+		store.delete(REFRESH_TOKEN_KEY);
+	} catch (error) {
+		console.error(error);
+	}
 };
 
 export const logout = async () => {
