@@ -13,6 +13,7 @@ const NAVBAR_WIDTH_COLLAPSED = 72;
 
 const AuthorizedLayout: FC<PropsWithChildren> = ({ children }) => {
 	const isCollapsed = useSidebarStore((state) => state.isCollapsed);
+	const mobileOpened = useSidebarStore((state) => state.mobileOpened);
 	const navbarWidth = isCollapsed
 		? NAVBAR_WIDTH_COLLAPSED
 		: NAVBAR_WIDTH_EXPANDED;
@@ -20,8 +21,16 @@ const AuthorizedLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<AppShell
 			header={{ height: 60 }}
-			navbar={{ width: navbarWidth, breakpoint: 'sm' }}
-			aside={{ width: 320, breakpoint: 'lg' }}
+			navbar={{
+				width: navbarWidth,
+				breakpoint: 'sm',
+				collapsed: { mobile: !mobileOpened },
+			}}
+			aside={{
+				width: 320,
+				breakpoint: 'lg',
+				collapsed: { mobile: true },
+			}}
 			padding={24}
 			classNames={{
 				root: css.shell,
@@ -33,16 +42,15 @@ const AuthorizedLayout: FC<PropsWithChildren> = ({ children }) => {
 			<AppShell.Header>
 				<Header />
 			</AppShell.Header>
-
 			<AppShell.Navbar data-collapsed={isCollapsed || undefined}>
 				<Sidebar />
 			</AppShell.Navbar>
-
 			<AppShell.Main>{children}</AppShell.Main>
 
-			<AppShell.Aside>
-				<ActivityPanel />
-			</AppShell.Aside>
+			{/*TODO: поправить панель с уведомлениями*/}
+			{/*<AppShell.Aside>*/}
+			{/*	<ActivityPanel />*/}
+			{/*</AppShell.Aside>*/}
 		</AppShell>
 	);
 };

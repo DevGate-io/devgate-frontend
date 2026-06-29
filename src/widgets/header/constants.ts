@@ -6,6 +6,8 @@ export const HEADER_LABELS = {
 	settingsAriaLabel: 'Настройки',
 	sidebarExpand: 'Развернуть боковую панель',
 	sidebarCollapse: 'Свернуть боковую панель',
+	sidebarOpen: 'Открыть меню',
+	sidebarClose: 'Закрыть меню',
 	profileAriaLabel: 'Меню профиля',
 	themeLight: 'Светлая тема',
 	themeDark: 'Тёмная тема',

@@ -18,10 +18,16 @@ export const NavItem: FC<NavItemProps> = ({ href, label }) => {
 	const pathname = usePathname();
 	const isActive = isActiveHref(pathname, href);
 	const isCollapsed = useSidebarStore((state) => state.isCollapsed);
+	const closeMobile = useSidebarStore((state) => state.closeMobile);
+
+	const handleClick = () => {
+		closeMobile();
+	};
 
 	return (
 		<Link
 			href={href}
+			onClick={handleClick}
 			className={clsx(css.root, isActive && css.active)}
 			aria-current={isActive ? 'page' : undefined}
 			data-collapsed={isCollapsed || undefined}
