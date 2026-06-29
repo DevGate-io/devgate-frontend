@@ -19,12 +19,14 @@ export enum AuditTargetType {
 }
 
 export type AuditEventType = {
-	id: string;
+	id: number;
 	action: AuditAction;
 	actorId: string;
-	targetType: AuditTargetType;
-	targetId: string;
-	targetLabel: string;
 	createdAt: string;
-	payload?: Record<string, string | number | boolean>;
+	payload: Record<string, string | number | boolean> | null;
+	target: {
+		id: string;
+		label: string;
+		type: AuditTargetType;
+	};
 };

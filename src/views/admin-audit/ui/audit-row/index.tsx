@@ -42,14 +42,14 @@ export const AuditRow: FC<AuditRowProps> = ({ event, actorName }) => {
 			</td>
 			<td className={css.targetCell}>
 				<span className={css.targetType}>
-					{TARGET_TYPE_LABEL[event.targetType]}
+					{TARGET_TYPE_LABEL[event.target.type]}
 				</span>{' '}
 				{href ? (
 					<Link className={css.targetLink} href={href}>
-						{event.targetLabel}
+						{event.target.label}
 					</Link>
 				) : (
-					<span className={css.targetLabel}>{event.targetLabel}</span>
+					<span className={css.targetLabel}>{event.target.label}</span>
 				)}
 			</td>
 		</tr>

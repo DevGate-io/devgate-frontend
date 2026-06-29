@@ -45,15 +45,15 @@ export const MyActivityPanel: FC<MyActivityPanelProps> = ({ events }) => {
 								</div>
 								<div className={css.target}>
 									<span className={css.targetType}>
-										{TARGET_TYPE_LABEL[event.targetType] ??
+										{TARGET_TYPE_LABEL[event.target.type] ??
 											ADMIN_AUDIT_LABELS.headerTarget}
 									</span>{' '}
 									{href ? (
 										<Link className={css.targetLink} href={href}>
-											{event.targetLabel}
+											{event.target.label}
 										</Link>
 									) : (
-										<span>{event.targetLabel}</span>
+										<span>{event.target.label}</span>
 									)}
 								</div>
 							</li>

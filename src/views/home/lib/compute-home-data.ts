@@ -110,10 +110,10 @@ export const computeHomeData = (
 
 	const eventsByService = new Map<string, number>();
 	for (const event of recent30d) {
-		if (event.targetType === AuditTargetType.SERVICE) {
+		if (event.target.type === AuditTargetType.SERVICE) {
 			eventsByService.set(
-				event.targetId,
-				(eventsByService.get(event.targetId) ?? 0) + 1,
+				event.target.id,
+				(eventsByService.get(event.target.id) ?? 0) + 1,
 			);
 		}
 	}

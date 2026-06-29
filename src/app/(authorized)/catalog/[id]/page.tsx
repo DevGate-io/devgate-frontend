@@ -32,8 +32,8 @@ const ServiceDetailPage = async ({ params }: ServiceDetailPageProps) => {
 	const events = allEvents
 		.filter(
 			(event) =>
-				event.targetType === AuditTargetType.SERVICE &&
-				event.targetId === service.id,
+				event.target.type === AuditTargetType.SERVICE &&
+				event.target.id === service.id,
 		)
 		.slice(0, RECENT_ACTIVITY_LIMIT);
 
