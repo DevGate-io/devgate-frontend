@@ -10,9 +10,9 @@
 	display: flex;
 	gap: 12px;
 	align-items: center;
+	min-inline-size: 220px;
 	padding-block: 10px;
 	padding-inline: 8px;
-	min-inline-size: 220px;
 }
 
 .avatar {
@@ -49,9 +49,9 @@
 }
 
 .roleCell {
+	min-inline-size: 180px;
 	padding-block: 10px;
 	padding-inline: 8px;
-	min-inline-size: 180px;
 }
 
 .lastLoginCell {
@@ -62,6 +62,42 @@
 }
 
 .muted {
-	color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-gray-6));
 	font-style: italic;
+	color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-gray-6));
+}
+
+.actionsCell {
+	padding-block: 10px;
+	padding-inline: 12px;
+	white-space: nowrap;
+}
+
+.iconBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 32px;
+	block-size: 32px;
+	padding: 0;
+	margin: 0;
+	color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-gray-6));
+	cursor: pointer;
+	background: none;
+	border: none;
+	border-radius: 50%;
+	transition:
+		color 0.15s,
+		background-color 0.15s;
+}
+
+.iconBtn:hover {
+	color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-3));
+	background-color: light-dark(
+		var(--mantine-color-gray-1),
+		var(--mantine-color-dark-6)
+	);
+}
+
+.iconBtn:last-child:hover {
+	color: var(--mantine-color-red-6);
 }

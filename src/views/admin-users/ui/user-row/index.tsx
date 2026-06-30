@@ -9,18 +9,21 @@ import {
 	ROLE_OPTIONS,
 } from '@/views/admin-users/constants';
 import { useUpdateUserRole } from '@/views/admin-users/hooks/use-update-user-role';
+import { PencilIcon, TrashIcon } from '@/views/admin-users/icons';
 import { formatLastLogin } from '@/views/admin-users/lib/format-last-login';
 import { getNameInitials } from '@/views/team-detail/lib/get-name-initials';
 import css from './index.module.css';
 
 type UserRowProps = {
 	user: TeamMemberUserType;
+	onEdit: (user: TeamMemberUserType) => void;
+	onDelete: (user: TeamMemberUserType) => void;
 };
 
 const isRole = (value: string): value is Role =>
 	(Object.values(Role) as string[]).includes(value);
 
-export const UserRow: FC<UserRowProps> = ({ user }) => {
+export const UserRow: FC<UserRowProps> = ({ user, onEdit, onDelete }) => {
 	const mutation = useUpdateUserRole();
 
 	const handleRoleChange = (value: string | null) => {
@@ -63,6 +66,24 @@ export const UserRow: FC<UserRowProps> = ({ user }) => {
 				) : (
 					<span className={css.muted}>{ADMIN_USERS_LABELS.neverLoggedIn}</span>
 				)}
+			</td>
+			<td className={css.actionsCell}>
+				<button
+					type='button'
+					className={css.iconBtn}
+					aria-label='Редактировать пользователя'
+					onClick={() => onEdit(user)}
+				>
+					<PencilIcon />
+				</button>
+				<button
+					type='button'
+					className={css.iconBtn}
+					aria-label='Удалить пользователя'
+					onClick={() => onDelete(user)}
+				>
+					<TrashIcon />
+				</button>
 			</td>
 		</tr>
 	);

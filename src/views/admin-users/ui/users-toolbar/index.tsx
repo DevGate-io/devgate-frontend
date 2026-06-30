@@ -1,41 +1,23 @@
 'use client';
 
-import { TextInput } from '@mantine/core';
-import { useDebouncedCallback } from '@mantine/hooks';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { type ChangeEvent, type FC, useId, useState } from 'react';
+import { Button, TextInput } from '@mantine/core';
+import type { FC } from 'react';
+import { useId } from 'react';
 import {
 	ADMIN_USERS_LABELS,
-	ADMIN_USERS_SEARCH_PARAM,
+	ADMIN_USERS_MODAL_LABELS,
 } from '@/views/admin-users/constants';
+import { useUsersSearch } from '@/views/admin-users/hooks/use-users-search';
+import { PlusIcon } from '@/views/admin-users/icons';
 import css from './index.module.css';
 
-const SEARCH_DEBOUNCE_MS = 250;
+type UsersToolbarProps = {
+	onAddUser: () => void;
+};
 
-export const UsersToolbar: FC = () => {
-	const router = useRouter();
-	const pathname = usePathname();
-	const searchParams = useSearchParams();
-	const initialSearch = searchParams.get(ADMIN_USERS_SEARCH_PARAM) ?? '';
+export const UsersToolbar: FC<UsersToolbarProps> = ({ onAddUser }) => {
 	const inputId = useId();
-	const [draft, setDraft] = useState(initialSearch);
-
-	const commit = useDebouncedCallback((value: string) => {
-		const next = new URLSearchParams(searchParams);
-		if (value.length > 0) {
-			next.set(ADMIN_USERS_SEARCH_PARAM, value);
-		} else {
-			next.delete(ADMIN_USERS_SEARCH_PARAM);
-		}
-		const query = next.toString();
-		router.replace(query ? `${pathname}?${query}` : pathname);
-	}, SEARCH_DEBOUNCE_MS);
-
-	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-		const value = event.currentTarget.value;
-		setDraft(value);
-		commit(value);
-	};
+	const { draft, handleChange } = useUsersSearch();
 
 	return (
 		<search className={css.root}>
@@ -51,6 +33,15 @@ export const UsersToolbar: FC = () => {
 				size='sm'
 				className={css.input}
 			/>
+			<Button
+				type='button'
+				onClick={onAddUser}
+				radius='md'
+				size='sm'
+				leftSection={<PlusIcon />}
+			>
+				{ADMIN_USERS_MODAL_LABELS.addUser}
+			</Button>
 		</search>
 	);
 };

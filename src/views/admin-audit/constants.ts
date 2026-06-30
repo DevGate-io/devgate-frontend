@@ -30,6 +30,9 @@ export const AUDIT_ACTION_LABEL: Record<AuditAction, string> = {
 	[AuditAction.TEAM_MEMBER_REMOVED]: 'Удалён участник',
 	[AuditAction.INTEGRATION_CONNECTED]: 'Подключена интеграция',
 	[AuditAction.INTEGRATION_DISCONNECTED]: 'Отключена интеграция',
+	[AuditAction.USER_CREATED]: 'Создание пользователя',
+	[AuditAction.USER_DELETED]: 'Удаление пользователя',
+	[AuditAction.USER_UPDATED]: 'Изменение пользователя',
 };
 
 export const AUDIT_ACTION_COLOR: Record<AuditAction, string> = {
@@ -42,6 +45,9 @@ export const AUDIT_ACTION_COLOR: Record<AuditAction, string> = {
 	[AuditAction.TEAM_MEMBER_REMOVED]: 'gray',
 	[AuditAction.INTEGRATION_CONNECTED]: 'mint',
 	[AuditAction.INTEGRATION_DISCONNECTED]: 'gray',
+	[AuditAction.USER_CREATED]: 'mint',
+	[AuditAction.USER_UPDATED]: 'sky',
+	[AuditAction.USER_DELETED]: 'danger',
 };
 
 export const TARGET_TYPE_LABEL: Record<AuditTargetType, string> = {

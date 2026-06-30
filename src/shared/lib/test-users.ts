@@ -1,4 +1,6 @@
 import { Role, type User } from '@/entities/user';
+import type { CreateUserDtoType } from '@/shared/api/users/create-user';
+import type { UpdateUserDtoType } from '@/shared/api/users/update-user';
 
 export type TeamMemberUserType = Pick<
 	User,
@@ -77,6 +79,8 @@ export const MOCK_TEAM_MEMBER_USERS: TeamMemberUserType[] = [
 	},
 ];
 
+let mockIdCounter = 11;
+
 export const findMockUserById = (id: string): TeamMemberUserType | undefined =>
 	MOCK_TEAM_MEMBER_USERS.find((user) => user.id === id);
 
@@ -90,4 +94,40 @@ export const updateMockUserRole = (
 	}
 	MOCK_TEAM_MEMBER_USERS[index] = { ...MOCK_TEAM_MEMBER_USERS[index], role };
 	return MOCK_TEAM_MEMBER_USERS[index];
+};
+
+export const createMockUser = (dto: CreateUserDtoType): TeamMemberUserType => {
+	const id = `usr-mock-${mockIdCounter++}`;
+	const newUser: TeamMemberUserType = {
+		id,
+		fullName: dto.fullName,
+		email: dto.email,
+		role: dto.role ?? Role.MEMBER,
+	};
+	MOCK_TEAM_MEMBER_USERS.push(newUser);
+	return newUser;
+};
+
+export const updateMockUser = (
+	dto: UpdateUserDtoType,
+): TeamMemberUserType | null => {
+	const index = MOCK_TEAM_MEMBER_USERS.findIndex(
+		(user) => user.email === dto.email,
+	);
+	if (index === -1) {
+		return null;
+	}
+	MOCK_TEAM_MEMBER_USERS[index] = {
+		...MOCK_TEAM_MEMBER_USERS[index],
+		fullName: dto.fullName,
+		role: dto.role ?? MOCK_TEAM_MEMBER_USERS[index].role,
+	};
+	return MOCK_TEAM_MEMBER_USERS[index];
+};
+
+export const deleteMockUser = (id: string): void => {
+	const index = MOCK_TEAM_MEMBER_USERS.findIndex((user) => user.id === id);
+	if (index !== -1) {
+		MOCK_TEAM_MEMBER_USERS.splice(index, 1);
+	}
 };

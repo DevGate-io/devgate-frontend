@@ -37,3 +37,35 @@ export const ROLE_OPTIONS: Array<{ value: Role; label: string }> = [
 ];
 
 export const ADMIN_USERS_SEARCH_PARAM = 'q';
+
+export const ADMIN_USERS_MODAL_LABELS = {
+	createTitle: 'Создать пользователя',
+	editTitle: 'Изменить пользователя',
+	deleteTitle: 'Удалить пользователя',
+	deleteConfirm: 'Вы уверены, что хотите удалить пользователя',
+	deleteConfirmDetail: 'Это действие нельзя отменить.',
+	cancel: 'Отмена',
+	confirm: 'Подтвердить',
+	create: 'Создать',
+	save: 'Сохранить',
+	delete: 'Удалить',
+	addUser: 'Добавить пользователя',
+	fieldFullName: 'Полное имя',
+	fieldEmail: 'Email',
+	fieldPassword: 'Пароль',
+	fieldRole: 'Роль',
+	fullNameRequired: 'Введите полное имя',
+	emailRequired: 'Введите email',
+	emailInvalid: 'Неверный формат email',
+	passwordRequired: 'Введите пароль',
+	passwordMin: 'Пароль должен содержать минимум 8 символов',
+	createSuccessTitle: 'Пользователь создан',
+	createSuccessMessage: 'Новый аккаунт добавлен в систему.',
+	updateSuccessTitle: 'Пользователь обновлён',
+	updateSuccessMessage: 'Данные аккаунта сохранены.',
+	deleteSuccessTitle: 'Пользователь удалён',
+	deleteSuccessMessage: 'Аккаунт удалён из системы.',
+	errorTitle: 'Не удалось выполнить операцию',
+	errorMessage: 'Попробуйте ещё раз через несколько секунд.',
+	actions: 'Действия',
+} as const;
