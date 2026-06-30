@@ -2,12 +2,17 @@ export enum AuditAction {
 	SERVICE_CREATED = 'service.created',
 	SERVICE_UPDATED = 'service.updated',
 	SERVICE_DELETED = 'service.deleted',
+
 	TEMPLATE_USED = 'template.used',
-	ROLE_CHANGED = 'user.role_changed',
 	TEAM_MEMBER_ADDED = 'team.member_added',
 	TEAM_MEMBER_REMOVED = 'team.member_removed',
 	INTEGRATION_CONNECTED = 'integration.connected',
 	INTEGRATION_DISCONNECTED = 'integration.disconnected',
+
+	USER_DELETED = 'user.deleted',
+	USER_CREATED = 'user.created',
+	USER_UPDATED = 'user.updated',
+	ROLE_CHANGED = 'user.role_changed',
 }
 
 export enum AuditTargetType {
