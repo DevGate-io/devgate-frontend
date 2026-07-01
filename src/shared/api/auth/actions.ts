@@ -19,6 +19,7 @@ export const setAuthCookies = async (
 	refreshToken: string,
 ) => {
 	const store = await cookies();
+
 	store.set(ACCESS_TOKEN_KEY, accessToken, cookieOptions);
 	store.set(REFRESH_TOKEN_KEY, refreshToken, cookieOptions);
 };
